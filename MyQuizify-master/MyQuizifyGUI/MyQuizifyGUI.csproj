@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{839FEB0F-AA4C-4BFF-B533-2B0843329895}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MyQuizifyGUI</RootNamespace>
+    <AssemblyName>MyQuizifyGUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MyQuizifyGUI.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="FireSharp, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FireSharp.2.0.4\lib\portable-net45+sl5+wp8+win8\FireSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\AlumnoQuizes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AlumnoQuizes.Designer.cs">
+      <DependentUpon>AlumnoQuizes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CaracterisiticasPrincipales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CaracterisiticasPrincipales.Designer.cs">
+      <DependentUpon>CaracterisiticasPrincipales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ContestacionQuizes\ContestacionDeQuizesMultiOpcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContestacionQuizes\ContestacionDeQuizesMultiOpcion.Designer.cs">
+      <DependentUpon>ContestacionDeQuizesMultiOpcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ContestacionQuizes\ContestacionQuizRA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContestacionQuizes\ContestacionQuizRA.Designer.cs">
+      <DependentUpon>ContestacionQuizRA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ContestacionQuizes\ContestacionQuizVF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContestacionQuizes\ContestacionQuizVF.Designer.cs">
+      <DependentUpon>ContestacionQuizVF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreacionQuizes\CreacionDeQuizes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreacionQuizes\CreacionDeQuizes.Designer.cs">
+      <DependentUpon>CreacionDeQuizes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreacionQuizes\CrearQuiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreacionQuizes\CrearQuiz.Designer.cs">
+      <DependentUpon>CrearQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CrearBateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CrearBateria.Designer.cs">
+      <DependentUpon>CrearBateria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CrearPreguntaA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CrearPreguntaA.Designer.cs">
+      <DependentUpon>CrearPreguntaA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CrearPreguntaMO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CrearPreguntaMO.Designer.cs">
+      <DependentUpon>CrearPreguntaMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CrearPreguntasBaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CrearPreguntasBaterias.Designer.cs">
+      <DependentUpon>CrearPreguntasBaterias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CrearPreguntaVF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CrearPreguntaVF.Designer.cs">
+      <DependentUpon>CrearPreguntaVF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditarPreguntas\EditarPreguntasMO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditarPreguntas\EditarPreguntasMO.designer.cs">
+      <DependentUpon>EditarPreguntasMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Estadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Estadisticas.Designer.cs">
+      <DependentUpon>Estadisticas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InicioSesion\InicioInstructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InicioSesion\InicioInstructor.Designer.cs">
+      <DependentUpon>InicioInstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NotasAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NotasAlumno.designer.cs">
+      <DependentUpon>NotasAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quizzes\Clonacion de Quizes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quizzes\Clonacion de Quizes.Designer.cs">
+      <DependentUpon>Clonacion de Quizes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quizzes\Competencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quizzes\Competencias.Designer.cs">
+      <DependentUpon>Competencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quizzes\FormAbierto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quizzes\FormAbierto.Designer.cs">
+      <DependentUpon>FormAbierto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quizzes\FormMO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quizzes\FormMO.Designer.cs">
+      <DependentUpon>FormMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quizzes\FormVF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quizzes\FormVF.Designer.cs">
+      <DependentUpon>FormVF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InicioSesion\InicioAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InicioSesion\InicioAlumno.Designer.cs">
+      <DependentUpon>InicioAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quizzes\QuizesActivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quizzes\QuizesActivos.Designer.cs">
+      <DependentUpon>QuizesActivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InicioSesion\InicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InicioSesion\InicioSesion.Designer.cs">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CursosInstructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CursosInstructor.Designer.cs">
+      <DependentUpon>CursosInstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InicioSesion\Registrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InicioSesion\Registrar.Designer.cs">
+      <DependentUpon>Registrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SeleccionarEstrategia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SeleccionarEstrategia.designer.cs">
+      <DependentUpon>SeleccionarEstrategia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AlumnoQuizes.resx">
+      <DependentUpon>AlumnoQuizes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CaracterisiticasPrincipales.resx">
+      <DependentUpon>CaracterisiticasPrincipales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContestacionQuizes\ContestacionDeQuizesMultiOpcion.resx">
+      <DependentUpon>ContestacionDeQuizesMultiOpcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContestacionQuizes\ContestacionQuizRA.resx">
+      <DependentUpon>ContestacionQuizRA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContestacionQuizes\ContestacionQuizVF.resx">
+      <DependentUpon>ContestacionQuizVF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreacionQuizes\CreacionDeQuizes.resx">
+      <DependentUpon>CreacionDeQuizes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreacionQuizes\CrearQuiz.resx">
+      <DependentUpon>CrearQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CrearBateria.resx">
+      <DependentUpon>CrearBateria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CrearPreguntaA.resx">
+      <DependentUpon>CrearPreguntaA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CrearPreguntaMO.resx">
+      <DependentUpon>CrearPreguntaMO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CrearPreguntasBaterias.resx">
+      <DependentUpon>CrearPreguntasBaterias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CrearPreguntaVF.resx">
+      <DependentUpon>CrearPreguntaVF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditarPreguntas\EditarPreguntasMO.resx">
+      <DependentUpon>EditarPreguntasMO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Estadisticas.resx">
+      <DependentUpon>Estadisticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InicioSesion\InicioInstructor.resx">
+      <DependentUpon>InicioInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NotasAlumno.resx">
+      <DependentUpon>NotasAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Quizzes\Clonacion de Quizes.resx">
+      <DependentUpon>Clonacion de Quizes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Quizzes\Competencias.resx">
+      <DependentUpon>Competencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Quizzes\FormAbierto.resx">
+      <DependentUpon>FormAbierto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Quizzes\FormMO.resx">
+      <DependentUpon>FormMO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Quizzes\FormVF.resx">
+      <DependentUpon>FormVF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InicioSesion\InicioAlumno.resx">
+      <DependentUpon>InicioAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Quizzes\QuizesActivos.resx">
+      <DependentUpon>QuizesActivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InicioSesion\InicioSesion.resx">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CursosInstructor.resx">
+      <DependentUpon>CursosInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InicioSesion\Registrar.resx">
+      <DependentUpon>Registrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SeleccionarEstrategia.resx">
+      <DependentUpon>SeleccionarEstrategia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyQuizifyLib\MyQuizifyLib.csproj">
+      <Project>{696a5071-cd2b-4ce7-acbe-5f459db56e27}</Project>
+      <Name>MyQuizifyLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Forms\ContestacionQuizes\pregunta.jpg" />
+    <Content Include="Forms\InicioSesion\pregunta.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+</Project>
