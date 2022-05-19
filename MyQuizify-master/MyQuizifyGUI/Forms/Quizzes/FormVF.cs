@@ -20,9 +20,12 @@ namespace MyQuizifyGUI.Forms
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-
+            botonVerdadero.Checked = false;
         }
-
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            botonFalso.Checked = false;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -36,10 +39,7 @@ namespace MyQuizifyGUI.Forms
             }
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void FormVF_Load(object sender, EventArgs e)
         {

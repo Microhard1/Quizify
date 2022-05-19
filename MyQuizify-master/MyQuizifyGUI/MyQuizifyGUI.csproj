@@ -99,10 +99,10 @@
     <Compile Include="Forms\AlumnoQuizes.Designer.cs">
       <DependentUpon>AlumnoQuizes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CaracterisiticasPrincipales.cs">
+    <Compile Include="Forms\ContestacionQuizes\CaracterisiticasPrincipales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CaracterisiticasPrincipales.Designer.cs">
+    <Compile Include="Forms\ContestacionQuizes\CaracterisiticasPrincipales.Designer.cs">
       <DependentUpon>CaracterisiticasPrincipales.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ContestacionQuizes\ContestacionDeQuizesMultiOpcion.cs">
@@ -135,34 +135,34 @@
     <Compile Include="Forms\CreacionQuizes\CrearQuiz.Designer.cs">
       <DependentUpon>CrearQuiz.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CrearBateria.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearBateria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CrearBateria.Designer.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearBateria.Designer.cs">
       <DependentUpon>CrearBateria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CrearPreguntaA.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearPreguntaA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CrearPreguntaA.Designer.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearPreguntaA.Designer.cs">
       <DependentUpon>CrearPreguntaA.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CrearPreguntaMO.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearPreguntaMO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CrearPreguntaMO.Designer.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearPreguntaMO.Designer.cs">
       <DependentUpon>CrearPreguntaMO.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CrearPreguntasBaterias.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearPreguntasBaterias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CrearPreguntasBaterias.Designer.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearPreguntasBaterias.Designer.cs">
       <DependentUpon>CrearPreguntasBaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CrearPreguntaVF.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearPreguntaVF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CrearPreguntaVF.Designer.cs">
+    <Compile Include="Forms\CreacionQuizes\CrearPreguntaVF.Designer.cs">
       <DependentUpon>CrearPreguntaVF.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditarPreguntas\EditarPreguntasMO.cs">
@@ -176,6 +176,12 @@
     </Compile>
     <Compile Include="Forms\Estadisticas.Designer.cs">
       <DependentUpon>Estadisticas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EstadisticasAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EstadisticasAlumno.Designer.cs">
+      <DependentUpon>EstadisticasAlumno.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\InicioSesion\InicioInstructor.cs">
       <SubType>Form</SubType>
@@ -260,7 +266,7 @@
     <EmbeddedResource Include="Forms\AlumnoQuizes.resx">
       <DependentUpon>AlumnoQuizes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CaracterisiticasPrincipales.resx">
+    <EmbeddedResource Include="Forms\ContestacionQuizes\CaracterisiticasPrincipales.resx">
       <DependentUpon>CaracterisiticasPrincipales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContestacionQuizes\ContestacionDeQuizesMultiOpcion.resx">
@@ -278,19 +284,19 @@
     <EmbeddedResource Include="Forms\CreacionQuizes\CrearQuiz.resx">
       <DependentUpon>CrearQuiz.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CrearBateria.resx">
+    <EmbeddedResource Include="Forms\CreacionQuizes\CrearBateria.resx">
       <DependentUpon>CrearBateria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CrearPreguntaA.resx">
+    <EmbeddedResource Include="Forms\CreacionQuizes\CrearPreguntaA.resx">
       <DependentUpon>CrearPreguntaA.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CrearPreguntaMO.resx">
+    <EmbeddedResource Include="Forms\CreacionQuizes\CrearPreguntaMO.resx">
       <DependentUpon>CrearPreguntaMO.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CrearPreguntasBaterias.resx">
+    <EmbeddedResource Include="Forms\CreacionQuizes\CrearPreguntasBaterias.resx">
       <DependentUpon>CrearPreguntasBaterias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CrearPreguntaVF.resx">
+    <EmbeddedResource Include="Forms\CreacionQuizes\CrearPreguntaVF.resx">
       <DependentUpon>CrearPreguntaVF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditarPreguntas\EditarPreguntasMO.resx">
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Estadisticas.resx">
       <DependentUpon>Estadisticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EstadisticasAlumno.resx">
+      <DependentUpon>EstadisticasAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InicioSesion\InicioInstructor.resx">
       <DependentUpon>InicioInstructor.cs</DependentUpon>

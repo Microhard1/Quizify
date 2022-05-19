@@ -50,8 +50,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             return "id: " + id + "\n" + 
                 "Enunciado: " + enunciado + "\n" + 
                 "Explicacion: " + explicacion + "\n" 
-                + "puntuacion: " + puntuacion + "\n" 
-                + "imagen: " + imagen + "\n";
+                + "puntuacion: " + puntuacion + "\n" ;
         }
     }   
 }

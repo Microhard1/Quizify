@@ -54,7 +54,7 @@ namespace MyQuizifyGUI.Forms.EdicionDePreguntas
         {
             FirebaseResponse actualizarPregQuiz =
                ConexionBD.getInstancia().client.Set
-               ("PreguntasQuiz/PreguntasMultiOpcion/"+ aEditar.nombreQuiz + "/" + p.id + "/enunciado", textBox1.Text);
+               ("Preguntas/PreguntasMultiOpcion/"+ aEditar.nombreQuiz + "/" + p.id + "/enunciado", textBox1.Text);
             FirebaseResponse actualizarPreg0 =
                ConexionBD.getInstancia().client.Set
                ("Preguntas/PreguntasMultiOpcion/" + p.id + "/enunciado", textBox1.Text);

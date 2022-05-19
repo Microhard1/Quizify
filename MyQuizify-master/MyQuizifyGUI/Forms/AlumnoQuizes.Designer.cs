@@ -42,10 +42,11 @@ namespace MyQuizifyGUI.Forms
             this.dataGridQuizes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridQuizes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridQuizes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridQuizes.Location = new System.Drawing.Point(47, 152);
+            this.dataGridQuizes.Location = new System.Drawing.Point(63, 187);
+            this.dataGridQuizes.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridQuizes.Name = "dataGridQuizes";
             this.dataGridQuizes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridQuizes.Size = new System.Drawing.Size(573, 324);
+            this.dataGridQuizes.Size = new System.Drawing.Size(764, 399);
             this.dataGridQuizes.TabIndex = 0;
             this.dataGridQuizes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridQuizes_CellContentClick);
             // 
@@ -55,8 +56,9 @@ namespace MyQuizifyGUI.Forms
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(439, 55);
+            this.label1.Size = new System.Drawing.Size(550, 69);
             this.label1.TabIndex = 1;
             this.label1.Text = "Quizes disponibles:";
             // 
@@ -65,9 +67,10 @@ namespace MyQuizifyGUI.Forms
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(249, 500);
+            this.button1.Location = new System.Drawing.Point(332, 615);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 62);
+            this.button1.Size = new System.Drawing.Size(207, 76);
             this.button1.TabIndex = 2;
             this.button1.Text = "Realizar quiz";
             this.button1.UseVisualStyleBackColor = true;
@@ -77,9 +80,10 @@ namespace MyQuizifyGUI.Forms
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(256, 84);
+            this.button2.Location = new System.Drawing.Point(341, 103);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(157, 61);
+            this.button2.Size = new System.Drawing.Size(209, 75);
             this.button2.TabIndex = 4;
             this.button2.Text = "Cargar quizzes";
             this.button2.UseVisualStyleBackColor = true;
@@ -87,16 +91,17 @@ namespace MyQuizifyGUI.Forms
             // 
             // AlumnoQuizes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(685, 572);
+            this.ClientSize = new System.Drawing.Size(913, 704);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridQuizes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AlumnoQuizes";
             this.Text = "AlumnoQuizes";
             this.Load += new System.EventHandler(this.AlumnoQuizes_Load);

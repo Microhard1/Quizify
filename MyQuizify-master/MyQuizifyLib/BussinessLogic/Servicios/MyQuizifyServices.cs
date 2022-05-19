@@ -126,6 +126,15 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             return listaCursos;
         }
 
+        public List<string> nombreQuizes()
+        {
+            List<Quiz> lista = listaQuizes();
+            List<string> res = new List<string>();
+            foreach (Quiz q in lista) {
+                res.Add(q.nombreQuiz);
+            }
+            return res;
+        }
         public List<Quiz> listaQuizes()
         {
             List<Quiz> quizes = new List<Quiz>();
@@ -315,6 +324,29 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             Dictionary<string, CalificacionVF> diccionarioCalificacion =
                 JsonConvert.DeserializeObject<Dictionary<string, CalificacionVF>>(calificaciones.Body.ToString());
             return diccionarioCalificacion;
+        }
+        public Dictionary<string, CalificacionVF> getDiccionarioCalificacionesAlumno()
+        {
+            ConexionBD cf = ConexionBD.getInstancia();
+            Dictionary<string, CalificacionVF> diccionarioRespuesta = new Dictionary<string, CalificacionVF>();
+            List<string> nombresQuizes = nombreQuizes();
+            Dictionary<string, CalificacionVF> diccionarioCalificacion = new Dictionary<string, CalificacionVF>();
+            Dictionary<string, CalificacionVF> diccionarioRes = new Dictionary<string, CalificacionVF>();
+
+            foreach (string nombre in nombresQuizes)
+            {
+                FirebaseResponse calificaciones = cf.client.Get("Calificaciones/"+ nombre+"/");
+                diccionarioCalificacion =
+                JsonConvert.DeserializeObject<Dictionary<string, CalificacionVF>>(calificaciones.Body.ToString());
+            }
+            foreach (var calificacion in diccionarioCalificacion)
+            {
+                if (calificacion.Value.examinado.username == cf.usuarioConectado.username)
+                {
+                    diccionarioRes.Add(calificacion.Key, calificacion.Value);
+                }
+            }
+                return diccionarioRespuesta;
         }
         public Dictionary<string, Competencia> getListaCompetencias()
         {

@@ -23,7 +23,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             this.nota = nota;
             this.quizRealizado = quizRealizado;
             this.examinado = examinado;
-
+            
             FirebaseResponse nuevaCalificacion = 
                 cf.client.Set("Calificaciones/" + quizRealizado.nombreQuiz + "/" + examinado.username + "/", this);
         }

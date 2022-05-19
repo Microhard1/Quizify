@@ -32,10 +32,7 @@ namespace MyQuizifyGUI
             int ancho = this.Width - (navBar.Width*2);
             int alto = this.Height - panel1.Height;
             AlumnoQuizes alumnoQuizes = new AlumnoQuizes(ancho,alto);
-
-            alumnoQuizes.TopLevel = false;
-            panelForms.Controls.Add(alumnoQuizes);
-            alumnoQuizes.Show();
+            abrirFormHijo(alumnoQuizes);
             cambiarColorBotones(button1.Name);
 
         }
@@ -43,15 +40,31 @@ namespace MyQuizifyGUI
         {
             cambiarColorBotones(button3.Name);
         }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            cambiarColorBotones(button4.Name);
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            abrirFormHijo(new EstadisticasAlumno());
             cambiarColorBotones(button2.Name);
         }
+
+        private void abrirFormHijo(object formHijo)
+        {
+            if (this.panelForms.Controls.Count > 0)
+            {
+                this.panelForms.Controls.RemoveAt(0);
+            }
+            Form formularioHijo = formHijo as Form;
+            formularioHijo.TopMost = true;
+            formularioHijo.TopLevel = false;
+            formularioHijo.Dock = DockStyle.Fill;
+            formularioHijo.FormBorderStyle = FormBorderStyle.None;
+            formularioHijo.Width = panelForms.Width;
+            formularioHijo.Height = panelForms.Height;
+            this.panelForms.Controls.Add(formularioHijo);
+            this.panelForms.Tag = formularioHijo;
+            formularioHijo.Show();
+        }
+
         private void cambiarColorBotones(string nombreBoton)
         {
             ControlCollection objetosDelFormulario = (ControlCollection)this.Controls;

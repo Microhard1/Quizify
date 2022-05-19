@@ -32,7 +32,6 @@ namespace MyQuizifyGUI.Forms
             {
                 // display image in picture box  
                 inputImagen.Image = new Bitmap(open.FileName);
-                button1.Visible = false;
             }
         }
 

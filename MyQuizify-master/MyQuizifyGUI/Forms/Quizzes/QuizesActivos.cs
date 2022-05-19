@@ -40,10 +40,6 @@ namespace MyQuizifyGUI
 
         private void InicioInstructor_Load(object sender, EventArgs e)
         {
-            
-            dataGridQuizes.Rows.Clear();
-            
-
             dataGridQuizes.Columns.Add("nombre", "Nombre");
             dataGridQuizes.Columns.Add("tipo", "Tipo");
             dataGridQuizes.Columns.Add("dificultad", "Dificultad");
@@ -51,7 +47,7 @@ namespace MyQuizifyGUI
             dataGridQuizes.Columns.Add("fechaDeInicio", "Inicio");
             dataGridQuizes.Columns.Add("fechaFin", "Fin");
             dataGridQuizes.Columns.Add("estado", "Estado");
-            mostrarQuizes();
+            
 
         }
 
@@ -365,6 +361,14 @@ namespace MyQuizifyGUI
                     }
                 }
              new Competencias(listaQuizes).ShowDialog();
+        }
+
+        private void botonCargarQuizzes_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            dataGridQuizes.Rows.Clear();
+            mostrarQuizes();
+            Cursor.Current = Cursors.Default;
         }
     }
 }

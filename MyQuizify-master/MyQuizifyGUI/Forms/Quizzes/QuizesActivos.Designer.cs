@@ -44,6 +44,7 @@ namespace MyQuizifyGUI
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.botonCargarQuizzes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridQuizes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,10 +54,11 @@ namespace MyQuizifyGUI
             this.dataGridQuizes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridQuizes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Selecciona});
-            this.dataGridQuizes.Location = new System.Drawing.Point(36, 138);
+            this.dataGridQuizes.Location = new System.Drawing.Point(48, 170);
+            this.dataGridQuizes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridQuizes.Name = "dataGridQuizes";
             this.dataGridQuizes.RowHeadersWidth = 51;
-            this.dataGridQuizes.Size = new System.Drawing.Size(841, 316);
+            this.dataGridQuizes.Size = new System.Drawing.Size(1121, 389);
             this.dataGridQuizes.TabIndex = 0;
             this.dataGridQuizes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridQuizes_CellContentClick);
             // 
@@ -72,18 +74,20 @@ namespace MyQuizifyGUI
             this.label1.AccessibleName = "labelQuizesActivos";
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 18);
+            this.label1.Location = new System.Drawing.Point(43, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 20);
+            this.label1.Size = new System.Drawing.Size(140, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Quizes activos";
             // 
             // button1
             // 
             this.button1.AccessibleName = "botonCrearQuiz";
-            this.button1.Location = new System.Drawing.Point(36, 479);
+            this.button1.Location = new System.Drawing.Point(48, 590);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 48);
+            this.button1.Size = new System.Drawing.Size(125, 59);
             this.button1.TabIndex = 2;
             this.button1.Text = "Crear Quiz";
             this.button1.UseVisualStyleBackColor = true;
@@ -98,26 +102,29 @@ namespace MyQuizifyGUI
             "Cancelado",
             "Corregido",
             "Terminado"});
-            this.comboBoxEstados.Location = new System.Drawing.Point(756, 82);
+            this.comboBoxEstados.Location = new System.Drawing.Point(1008, 101);
+            this.comboBoxEstados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEstados.Name = "comboBoxEstados";
-            this.comboBoxEstados.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxEstados.Size = new System.Drawing.Size(160, 24);
             this.comboBoxEstados.TabIndex = 9;
             this.comboBoxEstados.SelectedIndexChanged += new System.EventHandler(this.comboBoxEstados_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(692, 85);
+            this.label2.Location = new System.Drawing.Point(923, 105);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 10;
             this.label2.Text = "Filtrar por:";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(917, 288);
+            this.button2.Location = new System.Drawing.Point(1223, 354);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 48);
+            this.button2.Size = new System.Drawing.Size(207, 59);
             this.button2.TabIndex = 12;
             this.button2.Text = "Generar informe de calificaciones";
             this.button2.UseVisualStyleBackColor = true;
@@ -126,9 +133,10 @@ namespace MyQuizifyGUI
             // button3
             // 
             this.button3.AccessibleName = "botonCrearQuiz";
-            this.button3.Location = new System.Drawing.Point(136, 479);
+            this.button3.Location = new System.Drawing.Point(181, 590);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 48);
+            this.button3.Size = new System.Drawing.Size(125, 59);
             this.button3.TabIndex = 13;
             this.button3.Text = "Clonar Quizes";
             this.button3.UseVisualStyleBackColor = true;
@@ -137,9 +145,10 @@ namespace MyQuizifyGUI
             // button4
             // 
             this.button4.AccessibleName = "botonCrearQuiz";
-            this.button4.Location = new System.Drawing.Point(236, 479);
+            this.button4.Location = new System.Drawing.Point(315, 590);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 48);
+            this.button4.Size = new System.Drawing.Size(125, 59);
             this.button4.TabIndex = 14;
             this.button4.Text = "Estadisticas";
             this.button4.UseVisualStyleBackColor = true;
@@ -147,9 +156,10 @@ namespace MyQuizifyGUI
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(917, 351);
+            this.button5.Location = new System.Drawing.Point(1223, 432);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(104, 48);
+            this.button5.Size = new System.Drawing.Size(139, 59);
             this.button5.TabIndex = 15;
             this.button5.Text = "Borrar";
             this.button5.UseVisualStyleBackColor = true;
@@ -157,9 +167,10 @@ namespace MyQuizifyGUI
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(917, 138);
+            this.button6.Location = new System.Drawing.Point(1223, 170);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(140, 23);
+            this.button6.Size = new System.Drawing.Size(187, 28);
             this.button6.TabIndex = 16;
             this.button6.Text = "Publicar";
             this.button6.UseVisualStyleBackColor = true;
@@ -167,9 +178,10 @@ namespace MyQuizifyGUI
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(917, 177);
+            this.button7.Location = new System.Drawing.Point(1223, 218);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(140, 23);
+            this.button7.Size = new System.Drawing.Size(187, 28);
             this.button7.TabIndex = 17;
             this.button7.Text = "Cancelar";
             this.button7.UseVisualStyleBackColor = true;
@@ -177,18 +189,20 @@ namespace MyQuizifyGUI
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(917, 217);
+            this.button8.Location = new System.Drawing.Point(1223, 267);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(140, 23);
+            this.button8.Size = new System.Drawing.Size(187, 28);
             this.button8.TabIndex = 18;
             this.button8.Text = "Publicar resultados";
             this.button8.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(336, 479);
+            this.button9.Location = new System.Drawing.Point(448, 590);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(140, 48);
+            this.button9.Size = new System.Drawing.Size(187, 59);
             this.button9.TabIndex = 19;
             this.button9.Text = "Editar preguntas";
             this.button9.UseVisualStyleBackColor = true;
@@ -196,19 +210,33 @@ namespace MyQuizifyGUI
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(482, 479);
+            this.button10.Location = new System.Drawing.Point(643, 590);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(107, 48);
+            this.button10.Size = new System.Drawing.Size(143, 59);
             this.button10.TabIndex = 20;
             this.button10.Text = "Asignar Competencias";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // botonCargarQuizzes
+            // 
+            this.botonCargarQuizzes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCargarQuizzes.Location = new System.Drawing.Point(504, 78);
+            this.botonCargarQuizzes.Margin = new System.Windows.Forms.Padding(4);
+            this.botonCargarQuizzes.Name = "botonCargarQuizzes";
+            this.botonCargarQuizzes.Size = new System.Drawing.Size(213, 62);
+            this.botonCargarQuizzes.TabIndex = 22;
+            this.botonCargarQuizzes.Text = "Cargar quizzes";
+            this.botonCargarQuizzes.UseVisualStyleBackColor = true;
+            this.botonCargarQuizzes.Click += new System.EventHandler(this.botonCargarQuizzes_Click);
+            // 
             // QuizesActivos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 539);
+            this.ClientSize = new System.Drawing.Size(1453, 663);
+            this.Controls.Add(this.botonCargarQuizzes);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -223,6 +251,7 @@ namespace MyQuizifyGUI
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridQuizes);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "QuizesActivos";
             this.Text = "InicioInstructor";
             this.Load += new System.EventHandler(this.InicioInstructor_Load);
@@ -249,5 +278,6 @@ namespace MyQuizifyGUI
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button botonCargarQuizzes;
     }
 }

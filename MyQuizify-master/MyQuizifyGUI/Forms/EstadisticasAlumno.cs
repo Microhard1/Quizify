@@ -1,8 +1,5 @@
-﻿using FireSharp.Response;
-using MyQuizifyLib.BussinessLogic.Entidades;
+﻿using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.BussinessLogic.Servicios;
-using MyQuizifyLib.Persistencia;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,27 +12,17 @@ using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
 {
-    public partial class Estadisticas : Form
+    public partial class EstadisticasAlumno : Form
     {
-        ConexionBD cf = ConexionBD.getInstancia();
-        Quiz quiz;
+        Dictionary<string, CalificacionVF> diccionarioCalificacion;
         MyQuizifyServices services = new MyQuizifyServices();
-        Dictionary<string, CalificacionVF> diccionarioCalificacion = new Dictionary<string, CalificacionVF>();
-        Dictionary<string, CalificacionVF> diccionarioFiltrado = new Dictionary<string, CalificacionVF>();
-        public Estadisticas(Quiz q)
+        public EstadisticasAlumno()
         {
             InitializeComponent();
-            quiz = q;
-            lblNombreQuiz.Text = quiz.nombreQuiz;
-        }
-
-        private void Estadisticas_Load(object sender, EventArgs e)
-        {
+            diccionarioCalificacion = services.getDiccionarioCalificacionesAlumno();
             dataGridEstadisticas.Columns.Add("nombre", "Nombre");
             dataGridEstadisticas.Columns.Add("apellidos", "Apellidos");
             dataGridEstadisticas.Columns.Add("nota", "Nota");
-            diccionarioCalificacion = services.getDiccionarioCalificacionVF(quiz);
-            diccionarioFiltrado = diccionarioCalificacion;
             mostrarEstadisticas();
         }
         public void mostrarEstadisticas()
@@ -44,29 +31,20 @@ namespace MyQuizifyGUI.Forms
             int count = 0;
             foreach (var calificacion in diccionarioCalificacion)
             {
-                if (calificacion.Value.quizRealizado.nombreQuiz == quiz.nombreQuiz)
-                {
                     dataGridEstadisticas.Rows.Add(calificacion.Value.examinado.nombre, calificacion.Value.examinado.apellidos, calificacion.Value.nota);
                     media = media + calificacion.Value.nota;
                     count++;
                     if (maxima < calificacion.Value.nota) { maxima = calificacion.Value.nota; }
                     if (minima > calificacion.Value.nota) { minima = calificacion.Value.nota; }
-                }
             }
             media = media / count;
             lblMedia.Text = media.ToString();
             lblMaxima.Text = maxima.ToString();
             lblMinima.Text = minima.ToString();
         }
-
         private void btbVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -88,7 +66,7 @@ namespace MyQuizifyGUI.Forms
             mostrarEstadisticas();
         }
 
-        private void dataGridEstadisticas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void EstadisticasAlumno_Load(object sender, EventArgs e)
         {
 
         }

@@ -90,9 +90,6 @@ namespace MyQuizifyGUI.Forms
             }
             else MessageBox.Show("Solo puedes realizar un quiz al mismo tiempo." +
                 "Escoge tan solo un quiz para realizar");
-
-            
-
         }
 
         private void dataGridQuizes_CellContentClick(object sender, DataGridViewCellEventArgs e)
