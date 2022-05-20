@@ -32,8 +32,8 @@ namespace MyQuizifyGUI.Forms
             this.textBoxEnunciado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonVerdadero = new System.Windows.Forms.RadioButton();
             this.radioButtonFalso = new System.Windows.Forms.RadioButton();
+            this.radioButtonVerdadero = new System.Windows.Forms.RadioButton();
             this.textBoxExplicacion = new System.Windows.Forms.TextBox();
             this.textBoxNombrePregunta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,18 +68,6 @@ namespace MyQuizifyGUI.Forms
             this.groupBox1.Size = new System.Drawing.Size(277, 100);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // radioButtonVerdadero
-            // 
-            this.radioButtonVerdadero.AutoSize = true;
-            this.radioButtonVerdadero.Location = new System.Drawing.Point(31, 47);
-            this.radioButtonVerdadero.Name = "radioButtonVerdadero";
-            this.radioButtonVerdadero.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonVerdadero.TabIndex = 0;
-            this.radioButtonVerdadero.TabStop = true;
-            this.radioButtonVerdadero.Text = "Verdadero";
-            this.radioButtonVerdadero.UseVisualStyleBackColor = true;
             // 
             // radioButtonFalso
             // 
@@ -91,6 +79,17 @@ namespace MyQuizifyGUI.Forms
             this.radioButtonFalso.TabStop = true;
             this.radioButtonFalso.Text = "Falso";
             this.radioButtonFalso.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonVerdadero
+            // 
+            this.radioButtonVerdadero.AutoSize = true;
+            this.radioButtonVerdadero.Location = new System.Drawing.Point(31, 47);
+            this.radioButtonVerdadero.Name = "radioButtonVerdadero";
+            this.radioButtonVerdadero.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonVerdadero.TabIndex = 0;
+            this.radioButtonVerdadero.TabStop = true;
+            this.radioButtonVerdadero.Text = "Verdadero";
+            this.radioButtonVerdadero.UseVisualStyleBackColor = true;
             // 
             // textBoxExplicacion
             // 

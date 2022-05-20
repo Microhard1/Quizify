@@ -50,7 +50,6 @@ namespace MyQuizifyGUI.Forms
                 comboBoxCursos.Items.Add(item.Key);
             }
 
-
             formVF.TopLevel = false;
             formMO.TopLevel = false;
             formAb.TopLevel = false;
@@ -89,7 +88,7 @@ namespace MyQuizifyGUI.Forms
                        "Borrador", duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, servicio.getCursoById(comboBoxCursos.Text));
                     AñadirPreguntas(quizActual);
                 }
-                MessageBox.Show("Quiz creado: " + quizActual.ToString());
+                MessageBox.Show("Quiz creado \n" + quizActual.ToString());
             }
             Cursor.Current = Cursors.Default;
 

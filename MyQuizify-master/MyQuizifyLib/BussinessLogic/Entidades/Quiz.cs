@@ -161,7 +161,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 public override string ToString()
         {
             return "Nombre: " + nombreQuiz + "\n" +
-                "Creado por: " + creadoPor.nombre + "\n" +
+                "Creado por: " + creadoPor.username + "\n" +
                 "peso: " + peso + "\n"
                 + "duracion: " + duracion + "\n"
                 + "dificultad: " + dificultad + "\n"
@@ -171,11 +171,10 @@ public override string ToString()
                 + "estado: " + estado + "\n"
                 + "asignatura: " + asignatura + "\n"; 
         }
-        public void añadirCompetencia(string nombreComp)
+        public void añadirCompetencia(Competencia c)
         {
-            Competencia comp = new Competencia(nombreComp);
-            competencias.Add(comp);
-            FirebaseResponse añadirCompetencia = cf.client.Set("CompetenciasQuiz/" + this.nombreQuiz + "/" + nombreComp, comp);
+            competencias.Add(c);
+            FirebaseResponse añadirCompetencia = cf.client.Set("CompetenciasQuiz/" + nombreQuiz + "/", competencias);
         }
 
 

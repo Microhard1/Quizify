@@ -12,13 +12,14 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
     public class Competencia
     {
         public string texto;
-        private Quiz quiz;
-        ConexionBD cf = ConexionBD.getInstancia();
-        public Competencia(string textoComp)
+        public string id;
+        private ConexionBD cf = ConexionBD.getInstancia();
+        public Competencia(string id, string texto)
         {
-            this.texto = textoComp;
+            this.id = id;
+            this.texto = texto;
             FirebaseResponse nuevaCompetencia =
-                cf.client.Set("Competencias/" + this.texto, this);
+                cf.client.Set("Competencias/" + id, this);
         }
     }
 }

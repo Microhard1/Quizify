@@ -183,9 +183,7 @@ namespace MyQuizifyGUI
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            new Competencia("Pensamiento Analitico");
-            new Competencia("Aprendizaje activo");
-            new Competencia("Resolucion de problemas");
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

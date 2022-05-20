@@ -14,23 +14,29 @@ namespace MyQuizifyGUI.Forms.Quizzes
 {
     public partial class Competencias : Form
     {
-        List<string> listaComp = new List<string>();
-        List<Quiz> listaQuizes;
+        List<Competencia> listaComp;
+        List<Quiz> listaQuizes = new List<Quiz>();
+        
         MyQuizifyServices servicios = new MyQuizifyServices();
         public Competencias(List<Quiz> q)
         {
             InitializeComponent();
             listaQuizes = q;
-            cargarCompetencias();
+            listaComp = new List<Competencia>();
+
         }
 
         private void cargarCompetencias()
         {
-            Dictionary<string,Competencia> diccionarioComp= servicios.getListaCompetencias();
-            foreach (var c in diccionarioComp)
+            listaCompetencias.Items.Clear();
+            if (listaComp != null)
             {
-                listaCompetencias.Items.Add(c.Value.texto);
+                foreach (var c in listaComp)
+                {
+                    listaCompetencias.Items.Add(c.id + " (" + c.texto + ")");
+                }
             }
+            else MessageBox.Show("No existen competencias aun");
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,9 +46,13 @@ namespace MyQuizifyGUI.Forms.Quizzes
 
         private void botonCrearCompetencia_Click(object sender, EventArgs e)
         {
-            listaComp.Add(textoCompetencia.Text);
-            listaCompetencias.Items.Add(textoCompetencia.Text);
-            textoCompetencia.Clear();
+            string id = textboxID.Text;
+            string definicion = textBoxDefinicon.Text;
+            Competencia c= new Competencia(id, definicion);
+            listaComp.Add(c);
+            cargarCompetencias();
+            textboxID.Clear();
+            textBoxDefinicon.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,14 +61,24 @@ namespace MyQuizifyGUI.Forms.Quizzes
             foreach (Quiz q in listaQuizes)
             {
                 foreach (object elemento in listaCompetencias.CheckedItems) {
-                    q.añadirCompetencia(elemento.ToString());
+                    Competencia c = servicios.getCompetenciaByID(elemento.ToString());
+                    q.añadirCompetencia(c);
                 }
             }
-            foreach (string s in listaComp) {
-                new Competencia(s);
-            }
+            
             Cursor.Current = Cursors.Default;
             MessageBox.Show("Competencias añadidas");
+        }
+
+        private void Competencias_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listaComp = servicios.getListaCompetencias();
+            cargarCompetencias();
         }
     }
 }
