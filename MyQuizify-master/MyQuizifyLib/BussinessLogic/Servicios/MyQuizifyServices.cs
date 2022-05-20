@@ -327,7 +327,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
         }
         public Dictionary<string, CalificacionVF> getDiccionarioCalificacionesAlumno()
         {
-            ConexionBD cf = ConexionBD.getInstancia();
+            
             Dictionary<string, CalificacionVF> diccionarioRespuesta = new Dictionary<string, CalificacionVF>();
             List<string> nombresQuizes = nombreQuizes();
             Dictionary<string, CalificacionVF> diccionarioCalificacion = new Dictionary<string, CalificacionVF>();
@@ -348,12 +348,20 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             }
                 return diccionarioRespuesta;
         }
-        public Dictionary<string, Competencia> getListaCompetencias()
+        public List<Competencia> getListaCompetencias()
         {
-            FirebaseResponse competencias = cf.client.Get(@"Competencias");
-            Dictionary<string, Competencia> diccionarioCalificacion =
-                JsonConvert.DeserializeObject<Dictionary<string, Competencia>>(competencias.Body.ToString());
-            return diccionarioCalificacion;
+            List<Competencia> competencias = new List<Competencia>();
+            FirebaseResponse competenciasDicc = cf.client.Get(@"Competencias/");
+            Dictionary<string, Competencia> diccionarioCompetencia =
+                JsonConvert.DeserializeObject<Dictionary<string, Competencia>>(competenciasDicc.Body.ToString());
+            if (diccionarioCompetencia != null) {
+                foreach (var competencia in diccionarioCompetencia)
+                {
+                    competencias.Add(competencia.Value);
+                }
+                return competencias;
+            }
+            return null;
         }
         public List<Calificacion> listarCalificaciones(Quiz q)
         {
@@ -379,6 +387,14 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             if (batMO != null) return batA.ResultAs<BateriaAbierta>();
             FirebaseResponse batVF = cf.client.Get("Baterias/VerdaderoFalso/" + idBateria);
             if (batMO != null) return batVF.ResultAs<BateriaVerdaderoFalso>();
+            return null;
+        }
+
+        public Competencia getCompetenciaByID(string id)
+        {
+            FirebaseResponse compe = cf.client.Get("Competencias/" + id);
+            Competencia c = compe.ResultAs<Competencia>();
+            if (c != null) return c;
             return null;
         }
 
