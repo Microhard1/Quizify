@@ -63,7 +63,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.groupBox1.Size = new System.Drawing.Size(739, 174);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // botonVerdadero
             // 
@@ -118,7 +117,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.inputImagen.Size = new System.Drawing.Size(427, 268);
             this.inputImagen.TabIndex = 13;
             this.inputImagen.TabStop = false;
-            this.inputImagen.Click += new System.EventHandler(this.inputImagen_Click);
             // 
             // Enunciado
             // 
@@ -129,7 +127,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.Enunciado.Size = new System.Drawing.Size(127, 29);
             this.Enunciado.TabIndex = 16;
             this.Enunciado.Text = "Enunciado";
-            this.Enunciado.Click += new System.EventHandler(this.Enunciado_Click);
             // 
             // panel1
             // 
@@ -153,7 +150,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.labelTiempo.Size = new System.Drawing.Size(115, 24);
             this.labelTiempo.TabIndex = 20;
             this.labelTiempo.Text = "labelTiempo";
-            this.labelTiempo.Click += new System.EventHandler(this.label1_Click);
             // 
             // botonPausa
             // 
@@ -173,7 +169,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(827, 23);
             this.progressBar1.TabIndex = 0;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // botonSiguiente
             // 
@@ -230,7 +225,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.Name = "ContestacionQuizVF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionQuizVF";
-            this.Load += new System.EventHandler(this.ContestacionQuizVF_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputImagen)).EndInit();

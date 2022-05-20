@@ -41,10 +41,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             return 100 / quiz.preguntas.Count;
         }
 
-        private void Enunciado_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void TiempoQuiz_Tick(object sender, EventArgs e)
         {
@@ -155,16 +151,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 return true;
             }
             return false;
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ContestacionQuizRA_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void botonAyuda_Click(object sender, EventArgs e)

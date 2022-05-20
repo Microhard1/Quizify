@@ -44,6 +44,7 @@ namespace MyQuizifyGUI.Forms
             dataGridQuizes.Columns.Add("fechaFin", "Fin");
             this.Size = new Size(ancho,alto);
             setWidthColumnas();
+
         }
 
         public void setWidthColumnas()
@@ -51,10 +52,7 @@ namespace MyQuizifyGUI.Forms
             int w = dataGridQuizes.Width / dataGridQuizes.Columns.Count;
             for (int i = 0; i <= dataGridQuizes.Columns.Count - 1; i++)
             {
-                // Remove AutoSizing:
                 dataGridQuizes.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-
-                // Set Width to calculated AutoSize value:
                 dataGridQuizes.Columns[i].Width = w;
             }
         }

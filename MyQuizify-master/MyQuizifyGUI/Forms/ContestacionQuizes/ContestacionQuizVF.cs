@@ -74,15 +74,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             }
             return Image.FromStream(ms);
         }
-        private void ContestacionQuizVF_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void Enunciado_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -113,10 +105,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 return true;
             }
             return false;
-        }
-        private void inputImagen_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void botonPausa_Click(object sender, EventArgs e)
@@ -167,21 +155,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 string segundos = tiempo % 60 + "";
                 labelTiempo.Text = minutos + " : " + segundos;
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void botonAyuda_Click(object sender, EventArgs e)

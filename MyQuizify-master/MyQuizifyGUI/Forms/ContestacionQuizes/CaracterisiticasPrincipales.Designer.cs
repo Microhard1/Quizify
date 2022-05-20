@@ -94,7 +94,6 @@
             this.panelQuizes.Name = "panelQuizes";
             this.panelQuizes.Size = new System.Drawing.Size(1067, 454);
             this.panelQuizes.TabIndex = 4;
-            this.panelQuizes.Paint += new System.Windows.Forms.PaintEventHandler(this.panelQuizes_Paint);
             // 
             // btbAceptar
             // 
@@ -251,7 +250,6 @@
             this.lblDuracion.Size = new System.Drawing.Size(93, 32);
             this.lblDuracion.TabIndex = 1;
             this.lblDuracion.Text = "label3";
-            this.lblDuracion.Click += new System.EventHandler(this.lblDuracion_Click);
             // 
             // lblNombreQuiz
             // 

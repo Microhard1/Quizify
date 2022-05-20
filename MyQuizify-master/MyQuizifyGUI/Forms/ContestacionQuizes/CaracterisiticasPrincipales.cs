@@ -28,10 +28,6 @@ namespace MyQuizifyGUI.Forms
             this.quiz = quiz;
         }
 
-        private void panelQuizes_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btbAceptar_Click(object sender, EventArgs e)
         {
@@ -54,11 +50,6 @@ namespace MyQuizifyGUI.Forms
                 this.Close();
             }
             
-        }
-
-        private void lblDuracion_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

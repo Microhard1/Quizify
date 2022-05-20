@@ -67,7 +67,6 @@ namespace MyQuizifyGUI.Forms
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1013, 81);
             this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label1
             // 
@@ -79,7 +78,7 @@ namespace MyQuizifyGUI.Forms
             this.label1.Size = new System.Drawing.Size(350, 39);
             this.label1.TabIndex = 1;
             this.label1.Text = "Creacion de quizzes";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // panel1
             // 
@@ -107,7 +106,6 @@ namespace MyQuizifyGUI.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(171, 531);
             this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // comboBoxDificultad
             // 
@@ -120,7 +118,6 @@ namespace MyQuizifyGUI.Forms
             this.comboBoxDificultad.Name = "comboBoxDificultad";
             this.comboBoxDificultad.Size = new System.Drawing.Size(73, 21);
             this.comboBoxDificultad.TabIndex = 20;
-            this.comboBoxDificultad.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -130,7 +127,6 @@ namespace MyQuizifyGUI.Forms
             this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 19;
             this.label8.Text = "Dificultad:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // botonAñadirPregunta
             // 
@@ -276,7 +272,6 @@ namespace MyQuizifyGUI.Forms
             this.panelQuizes.Name = "panelQuizes";
             this.panelQuizes.Size = new System.Drawing.Size(842, 528);
             this.panelQuizes.TabIndex = 3;
-            this.panelQuizes.Paint += new System.Windows.Forms.PaintEventHandler(this.panelQuizes_Paint);
             // 
             // multiopcion
             // 

@@ -102,15 +102,6 @@ namespace MyQuizifyGUI.Forms
             }
         }
 
-        private void panelQuizes_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void botonAñadirPregunta_Click(object sender, EventArgs e)
         {
@@ -449,10 +440,6 @@ namespace MyQuizifyGUI.Forms
             return imagen;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         public void abrirRespuestaAbierta()
         {
@@ -524,21 +511,6 @@ namespace MyQuizifyGUI.Forms
         private void multiopcion_Click(object sender, EventArgs e)
         {
             abrirMultiopcion();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

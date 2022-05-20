@@ -27,6 +27,7 @@ namespace MyQuizifyGUI.Forms.Quizzes
         private void cargarCompetencias()
         {
             Dictionary<string,Competencia> diccionarioComp= servicios.getListaCompetencias();
+            listaCompetencias.Items.Clear();
             foreach (var c in diccionarioComp)
             {
                 listaCompetencias.Items.Add(c.Value.texto);

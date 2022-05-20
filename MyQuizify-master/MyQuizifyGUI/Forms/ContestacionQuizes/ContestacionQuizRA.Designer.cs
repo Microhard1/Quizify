@@ -108,7 +108,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(827, 23);
             this.progressBar1.TabIndex = 0;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // Enunciado
             // 
@@ -119,7 +118,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.Enunciado.Size = new System.Drawing.Size(127, 29);
             this.Enunciado.TabIndex = 26;
             this.Enunciado.Text = "Enunciado";
-            this.Enunciado.Click += new System.EventHandler(this.Enunciado_Click);
             // 
             // botonSiguiente
             // 
@@ -186,7 +184,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.Name = "ContestacionQuizRA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionQuizRA";
-            this.Load += new System.EventHandler(this.ContestacionQuizRA_Load);
             ((System.ComponentModel.ISupportInitialize)(this.inputImagen)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
