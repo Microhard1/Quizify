@@ -165,17 +165,35 @@ public override string ToString()
                 "peso: " + peso + "\n"
                 + "duracion: " + duracion + "\n"
                 + "dificultad: " + dificultad + "\n"
-                + "dificultad: " + dificultad + "\n"
-                +"fechaDeInicio: " + fechaDeInicio + "\n"
+                + "fechaDeInicio: " + fechaDeInicio + "\n"
                 + "fechaFin: " + fechaFin + "\n"
                 + "estado: " + estado + "\n"
                 + "asignatura: " + asignatura + "\n"; 
         }
-        public void añadirCompetencia(Competencia c)
+        public void añadirCompetencias(List<Competencia> compe)
         {
-            competencias.Add(c);
-            FirebaseResponse añadirCompetencia = cf.client.Set("CompetenciasQuiz/" + nombreQuiz + "/", competencias);
+            List<Competencia> auxiliar = new List<Competencia>();
+            int counter = 0;
+            
+            foreach(Competencia c in compe)
+            {
+                for(int i = 0; i < competencias.Count - 1; i++)
+                {
+                    if (c.texto.Equals(competencias.ToArray<Competencia>()[i].texto)){
+                        counter++;
+                        break;
+                    }
+                }
+                if (counter == 0) auxiliar.Add(c);
+            }
+            FirebaseResponse subirCompetencias = 
+                cf.client.Set("CompetenciasQuiz/" + nombreQuiz + "/", auxiliar);       
         }
+
+        /*public void añadirCompetencia(Competencia c)
+        {
+            cf.client.Set("CompetenciasQuiz/" + nombreQuiz + "/" + c.id, c);
+        }*/
 
 
 

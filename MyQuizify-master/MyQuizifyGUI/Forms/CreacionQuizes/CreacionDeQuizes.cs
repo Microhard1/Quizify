@@ -240,7 +240,7 @@ namespace MyQuizifyGUI.Forms
                     }
                     else if (c.Name == "textBoxPuntuacion")
                     {
-                        puntuacion = Double.Parse(((TextBox)p).Text);
+                        puntuacion = Double.Parse(((TextBox)c).Text);
                     }
                     else if (c.Name == "textBoxExplicacion")
                     {

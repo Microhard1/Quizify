@@ -392,12 +392,19 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
 
         public Competencia getCompetenciaByID(string id)
         {
-            FirebaseResponse compe = cf.client.Get("Competencias/" + id);
-            Competencia c = compe.ResultAs<Competencia>();
-            if (c != null) return c;
+            FirebaseResponse compes = cf.client.Get(@"Competencias/");
+            Dictionary<string, Competencia> competencias =
+                JsonConvert.DeserializeObject<Dictionary<string, Competencia>>(compes.Body.ToString());
+            foreach(var c in competencias)
+            {
+                if (c.Value.texto == id) return c.Value;
+            }
+
             return null;
         }
 
         
+
+
     }
 }

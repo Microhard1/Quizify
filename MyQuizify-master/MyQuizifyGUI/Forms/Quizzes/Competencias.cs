@@ -23,6 +23,7 @@ namespace MyQuizifyGUI.Forms.Quizzes
             InitializeComponent();
             listaQuizes = q;
             listaComp = new List<Competencia>();
+            
 
         }
 
@@ -33,7 +34,7 @@ namespace MyQuizifyGUI.Forms.Quizzes
             {
                 foreach (var c in listaComp)
                 {
-                    listaCompetencias.Items.Add(c.id + " (" + c.texto + ")");
+                    listaCompetencias.Items.Add(c.texto);
                 }
             }
             else MessageBox.Show("No existen competencias aun");
@@ -57,17 +58,19 @@ namespace MyQuizifyGUI.Forms.Quizzes
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<Competencia> aux = new List<Competencia>();
             Cursor.Current = Cursors.WaitCursor;
             foreach (Quiz q in listaQuizes)
             {
-                foreach (object elemento in listaCompetencias.CheckedItems) {
-                    Competencia c = servicios.getCompetenciaByID(elemento.ToString());
-                    q.añadirCompetencia(c);
+                foreach (object item in listaCompetencias.CheckedItems) {
+                    Competencia c = servicios.getCompetenciaByID(item.ToString());
+                    aux.Add(c);
                 }
+                q.añadirCompetencias(aux);
             }
             
             Cursor.Current = Cursors.Default;
-            MessageBox.Show("Competencias añadidas");
+            
         }
 
         private void Competencias_Load(object sender, EventArgs e)
@@ -80,5 +83,6 @@ namespace MyQuizifyGUI.Forms.Quizzes
             listaComp = servicios.getListaCompetencias();
             cargarCompetencias();
         }
+        
     }
 }

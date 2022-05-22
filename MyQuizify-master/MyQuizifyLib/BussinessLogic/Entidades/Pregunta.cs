@@ -40,17 +40,17 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             Respuesta r = crearRespuesta(enunciado);
 
             respuestas.Add(r);
-            FirebaseResponse addRespuesta = cf.client.Set("Respuestas/"+tipo + "/" + this.id, respuestas);
+            FirebaseResponse addRespuesta = cf.client.Set("Respuestas/"+ tipo + "/" + this.id, respuestas);
         }
 
         public abstract Respuesta crearRespuesta(string enunciado);
 
         public override string ToString()
         {
-            return "id: " + id + "\n" + 
-                "Enunciado: " + enunciado + "\n" + 
-                "Explicacion: " + explicacion + "\n" 
-                + "puntuacion: " + puntuacion + "\n" ;
+            return "id: " + this.id + "\n" + 
+                "Enunciado: " + this.enunciado + "\n" + 
+                "Explicacion: " + this.explicacion + "\n" 
+                + "puntuacion: " + this.puntuacion + "\n" ;
         }
     }   
 }
