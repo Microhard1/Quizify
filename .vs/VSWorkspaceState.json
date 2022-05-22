@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MyQuizify-master",
+    "\\MyQuizify-master\\MyQuizifyGUI",
+    "\\MyQuizify-master\\MyQuizifyGUI\\Forms",
+    "\\MyQuizify-master\\MyQuizifyGUI\\Forms\\Quizzes"
   ],
-  "SelectedNode": "\\MyQuizify.sln",
+  "SelectedNode": "\\MyQuizify-master\\MyQuizifyGUI\\Forms\\Quizzes\\Competencias.cs",
   "PreviewInSolutionExplorer": false
 }

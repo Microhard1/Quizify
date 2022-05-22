@@ -28,7 +28,6 @@ namespace MyQuizifyGUI.Forms
         List<Pregunta> preguntas = new List<Pregunta>();
         string tipoDeQuiz = "";
         MyQuizifyServices servicio = new MyQuizifyServices();
-
         Quiz quizActual;
         public CreacionDeQuizes()
         {
@@ -88,6 +87,7 @@ namespace MyQuizifyGUI.Forms
                        "Borrador", duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, servicio.getCursoById(comboBoxCursos.Text));
                     AñadirPreguntas(quizActual);
                 }
+                
                 MessageBox.Show("Quiz creado \n" + quizActual.ToString());
             }
             Cursor.Current = Cursors.Default;
@@ -95,52 +95,45 @@ namespace MyQuizifyGUI.Forms
         }
         private void AñadirPreguntas(Quiz q)
         {
-            foreach(Pregunta p in preguntas)
+            double suma = 0.0;
+            foreach (Pregunta p in preguntas)
             {
-                q.añadirPregunta(p.id,p.enunciado,p.imagen, p.puntuacion, p.explicacion);
+                suma += p.puntuacion;
+            }
+            foreach (Pregunta p in preguntas)
+            {
+                p.puntuacion = (preguntas.Count * p.puntuacion) / suma;
+                q.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);
             }
         }
 
 
         private void botonAñadirPregunta_Click(object sender, EventArgs e)
         {
-            string peso = "";
-            foreach (Control c in panelQuizes.Controls)
-            {
-                if (c.Name == "textBoxPuntuacion")
-                {
-                    peso = ((TextBox)c).Text;
-                    if(Int32.Parse(peso) > 5) { 
-                        MessageBox.Show("La pregunta no puede " +
-                        "tener una puntuacion mayor a 5"); }
-                    else
-                    {
-                    Cursor.Current = Cursors.WaitCursor;
-            if (tipoDeQuiz == "MultiOpcion")
-            {
-                CrearPreguntaTipoTest();
-                panelQuizes.Controls.Clear();
-                abrirMultiopcion();
-            }
-            else if (tipoDeQuiz == "Verdadero/Falso")
-            {
-                CrearPreguntaVerdaderoFalso();
-                panelQuizes.Controls.Clear();
-                abrirVerdaderoFalso();
-            }
-            else if (tipoDeQuiz == "Respuesta Abierta")
-            {
-                CrearPreguntaRespuestaAbierta();
-                panelQuizes.Controls.Clear();
-                abrirRespuestaAbierta();
-            }
-            numeroDePregunta++;
-            Cursor.Current = Cursors.Default;
-                    }
-                }
-            }
+          
             
-
+                        Cursor.Current = Cursors.WaitCursor;
+                        if (tipoDeQuiz == "MultiOpcion")
+                        {
+                            CrearPreguntaTipoTest();
+                            panelQuizes.Controls.Clear();
+                            abrirMultiopcion();
+                        }
+                        else if(tipoDeQuiz == "VerdaderoFalso")
+                        {
+                            CrearPreguntaVerdaderoFalso();
+                            panelQuizes.Controls.Clear();
+                            abrirVerdaderoFalso();
+                        }
+                        else if (tipoDeQuiz == "Respuesta Abierta")
+                        {
+                            CrearPreguntaRespuestaAbierta();
+                            panelQuizes.Controls.Clear();
+                            abrirRespuestaAbierta();
+                        }
+                        numeroDePregunta++;
+                        Cursor.Current = Cursors.Default;
+              
         }
        
         public void CrearPreguntaVerdaderoFalso()
@@ -170,7 +163,7 @@ namespace MyQuizifyGUI.Forms
                     {
                         if (p.GetType() == typeof(TextBox))
                         {
-                             if (p.Name == "textBoxPuntuacion")
+                            if (p.Name == "textBoxPuntuacion")
                             {
                                 puntuacion = Double.Parse(((TextBox)p).Text);
                             }
@@ -225,14 +218,14 @@ namespace MyQuizifyGUI.Forms
             string enunciado = "";
 
             Respuesta resp;
-            
+
             string imagen = "";
             double puntuacion = 0.0;
             string explicacion = "";
             Pregunta pregunta;
             foreach (Control c in objetosDelFormulario)
             {
-                 if (c.GetType() == typeof(TextBox))
+                if (c.GetType() == typeof(TextBox))
                 {
                     if (c.Name == "enunciadoTipoTest")
                     {
@@ -248,7 +241,7 @@ namespace MyQuizifyGUI.Forms
                     }
 
                 }
-               
+
                 else if (c.GetType() == typeof(PictureBox))
                 {
                     imagen = convertirImagen((PictureBox)c);
@@ -257,23 +250,14 @@ namespace MyQuizifyGUI.Forms
             }
             foreach (TextBox t in listaRespuestas)
             {
-                if (t.Name == "textBoxPuntuacion")
-                {
-                    puntuacion = Double.Parse(t.Text);
-                }
-                else if (t.Name == "textBoxExplicacion")
-                {
-                    explicacion = t.Text;
-                }
-                
-                else if (t.Name == "textPregunta1")
+                if (t.Name == "textPregunta1")
                 {
                     resp = new RespuestaMO(t.Text);
                     foreach (RadioButton check in listaChecRadioBtn)
                     {
                         if (check.Name == "ckeckPregunta1")
                         {
-                            if(check.Checked) { resp.inicialize(true); } else { resp.inicialize(false); }
+                            if (check.Checked) { resp.inicialize(true); } else { resp.inicialize(false); }
                         }
                     }
                     respuestas.Add(resp);
@@ -290,7 +274,7 @@ namespace MyQuizifyGUI.Forms
                     }
                     respuestas.Add(resp);
                 }
-                else if(t.Name == "textPregunta3")
+                else if (t.Name == "textPregunta3")
                 {
                     resp = new RespuestaMO(t.Text);
                     foreach (RadioButton check in listaChecRadioBtn)
@@ -302,26 +286,29 @@ namespace MyQuizifyGUI.Forms
                     }
                     respuestas.Add(resp);
                 }
-                else if(t.Name == "textPregunta4")
+                else if (t.Name == "textPregunta4")
                 {
                     resp = new RespuestaMO(t.Text);
                     foreach (RadioButton check in listaChecRadioBtn)
                     {
-                        if (check.Name == "ckeckPregunta4")
+                        if (check.Name == "ckeckPregunta4" && check.Checked)
                         {
-                            if (check.Checked) { resp.inicialize(true); } else { resp.inicialize(false); }
+                            resp.inicialize(true);
                         }
                     }
                     respuestas.Add(resp);
                 }
             }
             string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
+            if (puntuacion > 5.0) MessageBox.Show("La pregunta no puede superar los 5 puntos");
+            else
+            {
+                pregunta = new PreguntaMO(id, enunciado, imagen, puntuacion, explicacion);
+                añadirRespuestas(respuestas, pregunta);
+                preguntas.Add(pregunta);
 
-            pregunta = new PreguntaMO(id,enunciado, imagen, puntuacion, explicacion);
-            añadirRespuestas(respuestas,pregunta);
-            preguntas.Add(pregunta);
-
-            MessageBox.Show("Se ha insertado una pregunta: " + pregunta.ToString());
+                MessageBox.Show("Se ha insertado una pregunta: " + pregunta.ToString());
+            }
         }
 
         public void CrearPreguntaRespuestaAbierta()
