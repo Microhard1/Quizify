@@ -46,5 +46,9 @@ namespace MyQuizifyGUI.Forms
             MessageBox.Show("Pregunta creada con exito");
         }
 
+        private void CrearPreguntaMO_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

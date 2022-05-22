@@ -15,7 +15,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public PreguntaVF(string id, string enunciado, string imagen, double puntuacion, string explicacion) :
             base(id, enunciado, imagen, puntuacion, explicacion)
         {
-            
+            FirebaseResponse nuevaPreguntaA = cf.client.Set("Preguntas/PreguntasVerdaderoFalso/" + id, this);
         }
         public override Respuesta crearRespuesta(string enunciado)
         {

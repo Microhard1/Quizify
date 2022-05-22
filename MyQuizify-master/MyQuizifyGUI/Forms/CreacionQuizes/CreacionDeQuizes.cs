@@ -104,7 +104,18 @@ namespace MyQuizifyGUI.Forms
 
         private void botonAñadirPregunta_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
+            string peso = "";
+            foreach (Control c in panelQuizes.Controls)
+            {
+                if (c.Name == "textBoxPuntuacion")
+                {
+                    peso = ((TextBox)c).Text;
+                    if(Int32.Parse(peso) > 5) { 
+                        MessageBox.Show("La pregunta no puede " +
+                        "tener una puntuacion mayor a 5"); }
+                    else
+                    {
+                    Cursor.Current = Cursors.WaitCursor;
             if (tipoDeQuiz == "MultiOpcion")
             {
                 CrearPreguntaTipoTest();
@@ -125,6 +136,10 @@ namespace MyQuizifyGUI.Forms
             }
             numeroDePregunta++;
             Cursor.Current = Cursors.Default;
+                    }
+                }
+            }
+            
 
         }
        
@@ -217,34 +232,23 @@ namespace MyQuizifyGUI.Forms
             Pregunta pregunta;
             foreach (Control c in objetosDelFormulario)
             {
-                
-                        
                  if (c.GetType() == typeof(TextBox))
                 {
                     if (c.Name == "enunciadoTipoTest")
                     {
                         enunciado = ((TextBox)c).Text;
                     }
+                    else if (c.Name == "textBoxPuntuacion")
+                    {
+                        puntuacion = Double.Parse(((TextBox)p).Text);
+                    }
+                    else if (c.Name == "textBoxExplicacion")
+                    {
+                        explicacion = ((TextBox)c).Text;
+                    }
 
                 }
-                else if (c is Panel)
-                {
-                   
-                    foreach (Control p in c.Controls)
-                    {
-                        if (p.GetType() == typeof(TextBox))
-                        {
-                            if (p.Name == "textBoxPuntuacion")
-                            {
-                                puntuacion = Double.Parse(((TextBox)p).Text);
-                            }
-                            else if (p.Name == "textboxExplicacion")
-                            {
-                                explicacion = ((TextBox)p).Text;
-                            }
-                        }
-                    }
-                }
+               
                 else if (c.GetType() == typeof(PictureBox))
                 {
                     imagen = convertirImagen((PictureBox)c);
@@ -255,11 +259,11 @@ namespace MyQuizifyGUI.Forms
             {
                 if (t.Name == "textBoxPuntuacion")
                 {
-                puntuacion = Double.Parse(t.Text);
+                    puntuacion = Double.Parse(t.Text);
                 }
-                else if (t.Name == "textboxExplicacion")
+                else if (t.Name == "textBoxExplicacion")
                 {
-                explicacion = t.Text;
+                    explicacion = t.Text;
                 }
                 
                 else if (t.Name == "textPregunta1")
@@ -267,7 +271,7 @@ namespace MyQuizifyGUI.Forms
                     resp = new RespuestaMO(t.Text);
                     foreach (RadioButton check in listaChecRadioBtn)
                     {
-                        if (check.Name== "ckeckPregunta1")
+                        if (check.Name == "ckeckPregunta1")
                         {
                             if(check.Checked) { resp.inicialize(true); } else { resp.inicialize(false); }
                         }

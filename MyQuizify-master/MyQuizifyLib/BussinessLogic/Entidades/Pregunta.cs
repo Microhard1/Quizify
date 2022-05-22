@@ -10,7 +10,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 {
     public abstract class Pregunta
     {
-        ConexionBD cf = ConexionBD.getInstancia();
+        public ConexionBD cf = ConexionBD.getInstancia();
         public ICollection<Respuesta> respuestas;
         public string id;
         public string enunciado;

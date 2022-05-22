@@ -55,5 +55,10 @@ namespace MyQuizifyGUI.Forms
         {
 
         }
+
+        private void textBoxPuntuacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
