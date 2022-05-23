@@ -273,11 +273,25 @@ namespace MyQuizifyGUI
                     q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
                     dataGridQuizes.Rows.Remove(dataGridQuizes.Rows[i]);
                     string tipo = q.GetType().Name;
-                    if (tipo == "QuizMO")cf.client.Delete("Quizes/QuizesMO/" + q.nombreQuiz);
+                    if (tipo == "QuizMO") {
+                        cf.client.Delete("Quizes/QuizesMO/" + q.nombreQuiz);
+                        cf.client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
+                    }
+                   
                         
-                    if (tipo == "QuizVF")cf.client.Delete("Quizes/QuizesVF/" + q.nombreQuiz);
+                    else if (tipo == "QuizVF")
+                    {
+                        cf.client.Delete("Quizes/QuizesVF/" + q.nombreQuiz);
+                        cf.client.Delete("Preguntas/PreguntasVerdaderoFalso/" + q.nombreQuiz);
+                    }
                         
-                    if (tipo == "QuizPA")cf.client.Delete("Quizes/QuizesPA/" + q.nombreQuiz);
+                        
+                    else if (tipo == "QuizPA")
+                    {
+                        cf.client.Delete("Quizes/QuizesPA/" + q.nombreQuiz);
+                        cf.client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
+                    }
+                       
                         
                 }
             }
