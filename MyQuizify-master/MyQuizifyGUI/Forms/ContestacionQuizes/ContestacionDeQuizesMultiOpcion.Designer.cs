@@ -64,11 +64,9 @@ namespace MyQuizifyGUI.Forms
             this.groupBox1.Controls.Add(this.botonC);
             this.groupBox1.Controls.Add(this.botonB);
             this.groupBox1.Controls.Add(this.botonA);
-            this.groupBox1.Location = new System.Drawing.Point(163, 268);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(122, 218);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(546, 452);
+            this.groupBox1.Size = new System.Drawing.Size(410, 367);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -76,10 +74,9 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelP4.AutoSize = true;
             this.labelP4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP4.Location = new System.Drawing.Point(163, 279);
-            this.labelP4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelP4.Location = new System.Drawing.Point(122, 227);
             this.labelP4.Name = "labelP4";
-            this.labelP4.Size = new System.Drawing.Size(93, 29);
+            this.labelP4.Size = new System.Drawing.Size(72, 24);
             this.labelP4.TabIndex = 7;
             this.labelP4.Text = "textoP4";
             // 
@@ -87,10 +84,9 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelP3.AutoSize = true;
             this.labelP3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP3.Location = new System.Drawing.Point(161, 210);
-            this.labelP3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelP3.Location = new System.Drawing.Point(121, 171);
             this.labelP3.Name = "labelP3";
-            this.labelP3.Size = new System.Drawing.Size(93, 29);
+            this.labelP3.Size = new System.Drawing.Size(72, 24);
             this.labelP3.TabIndex = 6;
             this.labelP3.Text = "textoP3";
             // 
@@ -98,10 +94,9 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelP2.AutoSize = true;
             this.labelP2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP2.Location = new System.Drawing.Point(163, 140);
-            this.labelP2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelP2.Location = new System.Drawing.Point(122, 114);
             this.labelP2.Name = "labelP2";
-            this.labelP2.Size = new System.Drawing.Size(93, 29);
+            this.labelP2.Size = new System.Drawing.Size(72, 24);
             this.labelP2.TabIndex = 5;
             this.labelP2.Text = "textoP2";
             // 
@@ -109,10 +104,9 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelP1.AutoSize = true;
             this.labelP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP1.Location = new System.Drawing.Point(161, 65);
-            this.labelP1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelP1.Location = new System.Drawing.Point(121, 53);
             this.labelP1.Name = "labelP1";
-            this.labelP1.Size = new System.Drawing.Size(93, 29);
+            this.labelP1.Size = new System.Drawing.Size(72, 24);
             this.labelP1.TabIndex = 4;
             this.labelP1.Text = "textoP1";
             // 
@@ -120,10 +114,9 @@ namespace MyQuizifyGUI.Forms
             // 
             this.botonD.AutoSize = true;
             this.botonD.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonD.Location = new System.Drawing.Point(92, 276);
-            this.botonD.Margin = new System.Windows.Forms.Padding(4);
+            this.botonD.Location = new System.Drawing.Point(69, 224);
             this.botonD.Name = "botonD";
-            this.botonD.Size = new System.Drawing.Size(51, 33);
+            this.botonD.Size = new System.Drawing.Size(41, 28);
             this.botonD.TabIndex = 3;
             this.botonD.TabStop = true;
             this.botonD.Text = "D";
@@ -133,10 +126,9 @@ namespace MyQuizifyGUI.Forms
             // 
             this.botonC.AutoSize = true;
             this.botonC.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonC.Location = new System.Drawing.Point(92, 207);
-            this.botonC.Margin = new System.Windows.Forms.Padding(4);
+            this.botonC.Location = new System.Drawing.Point(69, 168);
             this.botonC.Name = "botonC";
-            this.botonC.Size = new System.Drawing.Size(51, 33);
+            this.botonC.Size = new System.Drawing.Size(41, 28);
             this.botonC.TabIndex = 2;
             this.botonC.TabStop = true;
             this.botonC.Text = "C";
@@ -146,10 +138,9 @@ namespace MyQuizifyGUI.Forms
             // 
             this.botonB.AutoSize = true;
             this.botonB.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonB.Location = new System.Drawing.Point(92, 137);
-            this.botonB.Margin = new System.Windows.Forms.Padding(4);
+            this.botonB.Location = new System.Drawing.Point(69, 111);
             this.botonB.Name = "botonB";
-            this.botonB.Size = new System.Drawing.Size(50, 33);
+            this.botonB.Size = new System.Drawing.Size(40, 28);
             this.botonB.TabIndex = 1;
             this.botonB.TabStop = true;
             this.botonB.Text = "B";
@@ -159,10 +150,9 @@ namespace MyQuizifyGUI.Forms
             // 
             this.botonA.AutoSize = true;
             this.botonA.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonA.Location = new System.Drawing.Point(92, 65);
-            this.botonA.Margin = new System.Windows.Forms.Padding(4);
+            this.botonA.Location = new System.Drawing.Point(69, 53);
             this.botonA.Name = "botonA";
-            this.botonA.Size = new System.Drawing.Size(49, 33);
+            this.botonA.Size = new System.Drawing.Size(41, 28);
             this.botonA.TabIndex = 0;
             this.botonA.TabStop = true;
             this.botonA.Text = "A";
@@ -176,45 +166,46 @@ namespace MyQuizifyGUI.Forms
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1352, 110);
+            this.panel1.Size = new System.Drawing.Size(1014, 89);
             this.panel1.TabIndex = 26;
             // 
             // labelTiempo
             // 
             this.labelTiempo.AutoSize = true;
             this.labelTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTiempo.Location = new System.Drawing.Point(1200, 34);
+            this.labelTiempo.Location = new System.Drawing.Point(900, 28);
+            this.labelTiempo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTiempo.Name = "labelTiempo";
-            this.labelTiempo.Size = new System.Drawing.Size(115, 24);
+            this.labelTiempo.Size = new System.Drawing.Size(88, 18);
             this.labelTiempo.TabIndex = 20;
             this.labelTiempo.Text = "labelTiempo";
+            this.labelTiempo.Click += new System.EventHandler(this.labelTiempo_Click);
             // 
             // botonPausa
             // 
-            this.botonPausa.Location = new System.Drawing.Point(1216, 71);
-            this.botonPausa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.botonPausa.Location = new System.Drawing.Point(912, 58);
+            this.botonPausa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.botonPausa.Name = "botonPausa";
-            this.botonPausa.Size = new System.Drawing.Size(87, 37);
+            this.botonPausa.Size = new System.Drawing.Size(65, 30);
             this.botonPausa.TabIndex = 19;
             this.botonPausa.Text = "Pausar";
             this.botonPausa.UseVisualStyleBackColor = true;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(163, 34);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.progressBar1.Location = new System.Drawing.Point(122, 28);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(827, 23);
+            this.progressBar1.Size = new System.Drawing.Size(620, 19);
             this.progressBar1.TabIndex = 0;
             // 
             // botonAyuda
             // 
-            this.botonAyuda.Location = new System.Drawing.Point(1204, 783);
-            this.botonAyuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.botonAyuda.Location = new System.Drawing.Point(903, 636);
+            this.botonAyuda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.botonAyuda.Name = "botonAyuda";
-            this.botonAyuda.Size = new System.Drawing.Size(87, 37);
+            this.botonAyuda.Size = new System.Drawing.Size(65, 30);
             this.botonAyuda.TabIndex = 30;
             this.botonAyuda.Text = "Ayuda";
             this.botonAyuda.UseVisualStyleBackColor = true;
@@ -222,20 +213,19 @@ namespace MyQuizifyGUI.Forms
             // 
             // inputImagen
             // 
-            this.inputImagen.Location = new System.Drawing.Point(882, 268);
-            this.inputImagen.Margin = new System.Windows.Forms.Padding(4);
+            this.inputImagen.Location = new System.Drawing.Point(662, 218);
             this.inputImagen.Name = "inputImagen";
-            this.inputImagen.Size = new System.Drawing.Size(409, 452);
+            this.inputImagen.Size = new System.Drawing.Size(307, 367);
             this.inputImagen.TabIndex = 31;
             this.inputImagen.TabStop = false;
             // 
             // botonSiguiente
             // 
             this.botonSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonSiguiente.Location = new System.Drawing.Point(500, 764);
-            this.botonSiguiente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.botonSiguiente.Location = new System.Drawing.Point(375, 621);
+            this.botonSiguiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.botonSiguiente.Name = "botonSiguiente";
-            this.botonSiguiente.Size = new System.Drawing.Size(307, 66);
+            this.botonSiguiente.Size = new System.Drawing.Size(230, 54);
             this.botonSiguiente.TabIndex = 32;
             this.botonSiguiente.Text = "Siguiente";
             this.botonSiguiente.UseVisualStyleBackColor = true;
@@ -245,14 +235,16 @@ namespace MyQuizifyGUI.Forms
             // 
             this.TiempoQuiz.Enabled = true;
             this.TiempoQuiz.Interval = 1000;
+            this.TiempoQuiz.Tick += new System.EventHandler(this.TiempoQuiz_Tick_1);
             // 
             // Peso
             // 
             this.Peso.AutoSize = true;
             this.Peso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Peso.Location = new System.Drawing.Point(1231, 148);
+            this.Peso.Location = new System.Drawing.Point(923, 120);
+            this.Peso.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Peso.Name = "Peso";
-            this.Peso.Size = new System.Drawing.Size(60, 24);
+            this.Peso.Size = new System.Drawing.Size(46, 18);
             this.Peso.TabIndex = 33;
             this.Peso.Text = "label1";
             // 
@@ -260,17 +252,18 @@ namespace MyQuizifyGUI.Forms
             // 
             this.Enunciado.AutoSize = true;
             this.Enunciado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Enunciado.Location = new System.Drawing.Point(177, 143);
+            this.Enunciado.Location = new System.Drawing.Point(133, 116);
+            this.Enunciado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Enunciado.Name = "Enunciado";
-            this.Enunciado.Size = new System.Drawing.Size(158, 36);
+            this.Enunciado.Size = new System.Drawing.Size(127, 29);
             this.Enunciado.TabIndex = 34;
             this.Enunciado.Text = "Enunciado";
             // 
             // ContestacionDeQuizesMultiOpcion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1352, 880);
+            this.ClientSize = new System.Drawing.Size(1014, 715);
             this.Controls.Add(this.Enunciado);
             this.Controls.Add(this.Peso);
             this.Controls.Add(this.botonSiguiente);
@@ -278,8 +271,8 @@ namespace MyQuizifyGUI.Forms
             this.Controls.Add(this.botonAyuda);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ContestacionDeQuizesMultiOpcion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionDeQuizesMultiOpcion";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

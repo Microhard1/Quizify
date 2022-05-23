@@ -96,16 +96,16 @@ namespace MyQuizifyGUI.Forms
             if (preguntasSinContestar.Count > 0)
             {    
                 Pregunta p = preguntasSinContestar.ElementAt(0);
-                res = servicios.respuestasDeUnaPregunta(p.id);
+                p.respuestas = servicios.respuestasDeUnaPregunta(p.id);
                 Peso.Text = p.puntuacion + " puntos";
                 string resultado = servicios.getRespuestaA(preguntasSinContestar.ElementAt(0));
                 inputImagen.Image = getImagen();
                 Enunciado.Text = p.enunciado;
 
-                labelP1.Text=res.ElementAt(0).enunciado;
-                labelP2.Text = res.ElementAt(1).enunciado;
-                labelP3.Text = res.ElementAt(2).enunciado;
-                labelP4.Text = res.ElementAt(3).enunciado;
+                labelP1.Text=  p.respuestas.ElementAt(0).enunciado;
+                labelP2.Text = p.respuestas.ElementAt(1).enunciado;
+                labelP3.Text = p.respuestas.ElementAt(2).enunciado;
+                labelP4.Text = p.respuestas.ElementAt(3).enunciado;
             }
             else
             {
@@ -166,9 +166,35 @@ namespace MyQuizifyGUI.Forms
                     MessageBox.Show("Respuesta correcta");
                 }
                 preguntasSinContestar.Remove(preguntasSinContestar.ElementAt(0));
-                progressBar1.Value += progreso;
+                progressBar1.Value += progreso; 
             }
             cargarPregunta();
+        }
+
+        private void labelTiempo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TiempoQuiz_Tick_1(object sender, EventArgs e)
+        {
+            tiempo--;
+            if (tiempo == 0)
+            {
+                var result = MessageBox.Show("Se acabó el tiempo, su quiz se enviará automáticamente", "Envio",
+                 MessageBoxButtons.OK,
+                 MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                string minutos = tiempo / 60 + "";
+                string segundos = tiempo % 60 + "";
+                labelTiempo.Text = minutos + " : " + segundos;
+            }
         }
     }
 }
