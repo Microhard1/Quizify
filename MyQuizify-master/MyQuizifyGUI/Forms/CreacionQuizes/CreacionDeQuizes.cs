@@ -112,27 +112,31 @@ namespace MyQuizifyGUI.Forms
 
         private void botonAñadirPregunta_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-            if (tipoDeQuiz == "MultiOpcion")
+            if (textBoxNombreQuiz.Text != "")
             {
-                CrearPreguntaTipoTest();
-                panelQuizes.Controls.Clear();
-                abrirMultiopcion();
+                Cursor.Current = Cursors.WaitCursor;
+                if (tipoDeQuiz == "MultiOpcion")
+                {
+                    CrearPreguntaTipoTest();
+                    panelQuizes.Controls.Clear();
+                    abrirMultiopcion();
+                }
+                else if (tipoDeQuiz == "Verdadero/Falso")
+                {
+                    CrearPreguntaVerdaderoFalso();
+                    panelQuizes.Controls.Clear();
+                    abrirVerdaderoFalso();
+                }
+                else if (tipoDeQuiz == "Respuesta Abierta")
+                {
+                    CrearPreguntaRespuestaAbierta();
+                    panelQuizes.Controls.Clear();
+                    abrirRespuestaAbierta();
+                }
+                numeroDePregunta++;
+                Cursor.Current = Cursors.Default;
             }
-            else if (tipoDeQuiz == "Verdadero/Falso")
-            {
-                CrearPreguntaVerdaderoFalso();
-                panelQuizes.Controls.Clear();
-                abrirVerdaderoFalso();
-            }
-            else if (tipoDeQuiz == "Respuesta Abierta")
-            {
-                CrearPreguntaRespuestaAbierta();
-                panelQuizes.Controls.Clear();
-                abrirRespuestaAbierta();
-            }
-            numeroDePregunta++;
-            Cursor.Current = Cursors.Default;
+            else MessageBox.Show("Se ha de introducir el nombre del quiz a crear");
 
 
         }

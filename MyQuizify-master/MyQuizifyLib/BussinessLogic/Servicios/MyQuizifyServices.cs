@@ -174,7 +174,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             Quiz q = getQuizById(nombreQuiz);
             if (getTipoQuiz(q) == "QuizPA")
             {
-                FirebaseResponse preguntasDelQuiz = cf.client.Get(@"Preguntas/PreguntasAbiertas/" + q.nombreQuiz);
+                FirebaseResponse preguntasDelQuiz = cf.client.Get(@"PreguntasQuiz/PreguntasAbiertas/" + q.nombreQuiz);
                 Dictionary<string, PreguntaA> p =
                     JsonConvert.DeserializeObject<Dictionary<string, PreguntaA>>(preguntasDelQuiz.Body.ToString());
                 if (p != null)
@@ -188,7 +188,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             }
             if (getTipoQuiz(q) == "QuizMO")
             {
-                FirebaseResponse preguntasDelQuiz = cf.client.Get(@"Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
+                FirebaseResponse preguntasDelQuiz = cf.client.Get(@"PreguntasQuiz/PreguntasMultiOpcion/" + q.nombreQuiz);
                 Dictionary<string, PreguntaMO> p =
                     JsonConvert.DeserializeObject<Dictionary<string, PreguntaMO>>(preguntasDelQuiz.Body.ToString());
                 if (p != null)
@@ -202,7 +202,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             }
             if (getTipoQuiz(q) == "QuizVF")
             {
-                FirebaseResponse preguntasDelQuiz = cf.client.Get(@"Preguntas/PreguntasVerdaderoFalso/" + q.nombreQuiz);
+                FirebaseResponse preguntasDelQuiz = cf.client.Get(@"PreguntasQuiz/PreguntasVerdaderoFalso/" + q.nombreQuiz);
                 Dictionary<string, PreguntaVF> p =
                     JsonConvert.DeserializeObject<Dictionary<string, PreguntaVF>>(preguntasDelQuiz.Body.ToString());
                 if (p != null)
@@ -234,13 +234,13 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             {
 
                 FirebaseResponse resp1 = cf.client.Get("Respuestas/RespuestasMultiOpcion/" + idPregunta + "/0");
-                Respuesta a = resp1.ResultAs<Respuesta>();
+                Respuesta a = resp1.ResultAs<RespuestaMO>();
                 FirebaseResponse resp2 = cf.client.Get("Respuestas/RespuestasMultiOpcion/" + idPregunta + "/1");
-                Respuesta b = resp2.ResultAs<Respuesta>();
+                Respuesta b = resp2.ResultAs<RespuestaMO>();
                 FirebaseResponse resp3 = cf.client.Get("Respuestas/RespuestasMultiOpcion/" + idPregunta + "/2");
-                Respuesta c = resp3.ResultAs<Respuesta>();
+                Respuesta c = resp3.ResultAs<RespuestaMO>();
                 FirebaseResponse resp4 = cf.client.Get("Respuestas/RespuestasMultiOpcion/" + idPregunta + "/3");
-                Respuesta d = resp4.ResultAs<Respuesta>();
+                Respuesta d = resp4.ResultAs<RespuestaMO>();
                 respuestas.Add(a);
                 respuestas.Add(b);
                 respuestas.Add(c);
@@ -249,13 +249,13 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             else if (getPreguntaAById(idPregunta) != null)
             {
                 FirebaseResponse resp1 = cf.client.Get("Respuestas/RespuestasAbiertas/" + idPregunta + "/0");
-                Respuesta a = resp1.ResultAs<Respuesta>();
+                Respuesta a = resp1.ResultAs<RespuestaA>();
                 FirebaseResponse resp2 = cf.client.Get("Respuestas/RespuestasAbiertas/" + idPregunta + "/1");
-                Respuesta b = resp2.ResultAs<Respuesta>();
+                Respuesta b = resp2.ResultAs<RespuestaA>();
                 FirebaseResponse resp3 = cf.client.Get("Respuestas/RespuestasAbiertas/" + idPregunta + "/2");
-                Respuesta c = resp3.ResultAs<Respuesta>();
+                Respuesta c = resp3.ResultAs<RespuestaA>();
                 FirebaseResponse resp4 = cf.client.Get("Respuestas/RespuestasAbiertas/" + idPregunta + "/3");
-                Respuesta d = resp4.ResultAs<Respuesta>();
+                Respuesta d = resp4.ResultAs<RespuestaA>();
                 respuestas.Add(a);
                 respuestas.Add(b);
                 respuestas.Add(c);
@@ -264,13 +264,13 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             else if (getPreguntaVFById(idPregunta) != null)
             {
                 FirebaseResponse resp1 = cf.client.Get("Respuestas/RespuestasVerdaderoFalso/" + idPregunta + "/0");
-                Respuesta a = resp1.ResultAs<Respuesta>();
+                Respuesta a = resp1.ResultAs<RespuestaVF>();
                 FirebaseResponse resp2 = cf.client.Get("Respuestas/RespuestasVerdaderoFalso/" + idPregunta + "/1");
-                Respuesta b = resp2.ResultAs<Respuesta>();
+                Respuesta b = resp2.ResultAs<RespuestaVF>();
                 FirebaseResponse resp3 = cf.client.Get("Respuestas/RespuestasVerdaderoFalso/" + idPregunta + "/2");
-                Respuesta c = resp3.ResultAs<Respuesta>();
+                Respuesta c = resp3.ResultAs<RespuestaVF>();
                 FirebaseResponse resp4 = cf.client.Get("Respuestas/RespuestasVerdaderoFalso/" + idPregunta + "/3");
-                Respuesta d = resp4.ResultAs<Respuesta>();
+                Respuesta d = resp4.ResultAs<RespuestaVF>();
                 respuestas.Add(a);
                 respuestas.Add(b);
                 respuestas.Add(c);

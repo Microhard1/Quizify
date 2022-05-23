@@ -65,7 +65,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 
             Pregunta p = crearPregunta(id, enunciado, imagen, puntuacion, explicacion);
             this.preguntas.Add(p);
-            FirebaseResponse addPregunta = ConexionBD.getInstancia().client.Set("Preguntas/" + tipo + "/" +
+            FirebaseResponse addPregunta = ConexionBD.getInstancia().client.Set("PreguntasQuiz/" + tipo + "/" +
                this.nombreQuiz + "/" + p.id, p);
         }
 
@@ -189,10 +189,7 @@ public override string ToString()
                 cf.client.Set("CompetenciasQuiz/" + nombreQuiz + "/", auxiliar);       
         }
 
-        /*public void añadirCompetencia(Competencia c)
-        {
-            cf.client.Set("CompetenciasQuiz/" + nombreQuiz + "/" + c.id, c);
-        }*/
+        
 
 
 

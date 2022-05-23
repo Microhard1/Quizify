@@ -16,7 +16,6 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public Quiz quizRealizado;
         public Alumno examinado;
 
-        public DateTime fecha;
 
         public Calificacion(double nota, Quiz quizRealizado, Alumno examinado)
         {
@@ -25,7 +24,8 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             this.examinado = examinado;
 
             FirebaseResponse nuevaCalificacion = 
-                cf.client.Set("Calificaciones/" + quizRealizado.nombreQuiz + "/" + examinado.username+"/", this);
+                cf.client.Set("Calificaciones/" + 
+                quizRealizado.nombreQuiz + "/" + examinado.username+"/", this);
         }
     }
 }

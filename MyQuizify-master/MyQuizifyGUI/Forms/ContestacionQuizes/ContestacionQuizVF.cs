@@ -163,5 +163,10 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Question);
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
