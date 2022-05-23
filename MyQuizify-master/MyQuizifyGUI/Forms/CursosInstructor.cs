@@ -36,6 +36,7 @@ namespace MyQuizifyGUI.Forms
 
         public void poblarGrid()
         {
+            dataGridViewCursos.Rows.Clear();
             List<Curso> lista = services.listarCursos();
             foreach (Curso c in lista)
             {
@@ -76,6 +77,21 @@ namespace MyQuizifyGUI.Forms
         private void button2_Click_1(object sender, EventArgs e)
         {
             poblarGrid();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void botonCrearCompetencia_Click(object sender, EventArgs e)
+        {
+            string id = textboxID.Text;
+            string definicion = textBoxDefinicon.Text;
+            Curso c = new Curso(id, definicion);
+            dataGridViewCursos.Rows.Add(false,definicion,id);
+            textboxID.Clear();
+            textBoxDefinicon.Clear();
         }
     }
 }

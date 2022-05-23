@@ -27,11 +27,12 @@ namespace MyQuizifyGUI.Forms
         {
             OpenFileDialog open = new OpenFileDialog();
             // image filters  
-            open.Filter = "Image Files(*.jpeg;)|*.jpeg;";
+            open.Filter = "Image Files(*.jpg;)|*.jpg;";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 // display image in picture box  
                 inputImagen.Image = new Bitmap(open.FileName);
+
             }
         }
 

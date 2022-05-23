@@ -68,7 +68,6 @@ namespace MyQuizifyGUI.Forms.Quizzes
                 }
                 q.añadirCompetencias(aux);
             }
-            
             Cursor.Current = Cursors.Default;
             
         }

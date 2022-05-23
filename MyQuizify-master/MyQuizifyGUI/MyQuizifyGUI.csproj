@@ -231,10 +231,10 @@
     <Compile Include="Forms\InicioSesion\InicioAlumno.Designer.cs">
       <DependentUpon>InicioAlumno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Quizzes\QuizesActivos.cs">
+    <Compile Include="Forms\QuizesActivos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Quizzes\QuizesActivos.Designer.cs">
+    <Compile Include="Forms\QuizesActivos.Designer.cs">
       <DependentUpon>QuizesActivos.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\InicioSesion\InicioSesion.cs">
@@ -332,7 +332,7 @@
     <EmbeddedResource Include="Forms\InicioSesion\InicioAlumno.resx">
       <DependentUpon>InicioAlumno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Quizzes\QuizesActivos.resx">
+    <EmbeddedResource Include="Forms\QuizesActivos.resx">
       <DependentUpon>QuizesActivos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InicioSesion\InicioSesion.resx">
