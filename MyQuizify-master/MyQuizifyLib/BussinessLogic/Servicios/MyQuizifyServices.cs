@@ -177,9 +177,12 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
                 FirebaseResponse preguntasDelQuiz = cf.client.Get(@"Preguntas/PreguntasAbiertas/" + q.nombreQuiz);
                 Dictionary<string, PreguntaA> p =
                     JsonConvert.DeserializeObject<Dictionary<string, PreguntaA>>(preguntasDelQuiz.Body.ToString());
-                foreach (var preg in p)
+                if (p != null)
                 {
-                    preguntas.Add(preg.Value);
+                    foreach (var preg in p)
+                    {
+                        preguntas.Add(preg.Value);
+                    }
                 }
 
             }
@@ -188,9 +191,12 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
                 FirebaseResponse preguntasDelQuiz = cf.client.Get(@"Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
                 Dictionary<string, PreguntaMO> p =
                     JsonConvert.DeserializeObject<Dictionary<string, PreguntaMO>>(preguntasDelQuiz.Body.ToString());
-                foreach (var preg in p)
+                if (p != null)
                 {
-                    preguntas.Add(preg.Value);
+                    foreach (var preg in p)
+                    {
+                        preguntas.Add(preg.Value);
+                    }
                 }
 
             }
@@ -199,9 +205,12 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
                 FirebaseResponse preguntasDelQuiz = cf.client.Get(@"Preguntas/PreguntasVerdaderoFalso/" + q.nombreQuiz);
                 Dictionary<string, PreguntaVF> p =
                     JsonConvert.DeserializeObject<Dictionary<string, PreguntaVF>>(preguntasDelQuiz.Body.ToString());
-                foreach (var preg in p)
+                if (p != null)
                 {
-                    preguntas.Add(preg.Value);
+                    foreach (var preg in p)
+                    {
+                        preguntas.Add(preg.Value);
+                    }
                 }
 
             }
@@ -269,6 +278,42 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             }
 
             return respuestas;
+        }
+
+        public List<Bateria> getBaterias()
+        {
+            List<Bateria> baterias = new List<Bateria>();
+            FirebaseResponse bateriasMO = cf.client.Get(@"Baterias/MultiOpcion");
+            Dictionary<string, BateriaMultiOpcion> diccBatMO =
+                JsonConvert.DeserializeObject<Dictionary<string, BateriaMultiOpcion>>(bateriasMO.Body.ToString());
+            if (diccBatMO != null)
+            {
+                foreach (var bat in diccBatMO)
+                {
+                    baterias.Add(bat.Value);
+                }
+            }
+            FirebaseResponse bateriasA = cf.client.Get(@"Baterias/Abiertas");
+            Dictionary<string, BateriaAbierta> diccBatA =
+                JsonConvert.DeserializeObject<Dictionary<string, BateriaAbierta>>(bateriasA.Body.ToString());
+            if (diccBatA != null)
+            {
+                foreach (var bat in diccBatA)
+                {
+                    baterias.Add(bat.Value);
+                }
+            }
+            FirebaseResponse bateriasVF = cf.client.Get(@"Baterias/VerdaderoFalso");
+            Dictionary<string, BateriaVerdaderoFalso> diccBatVF =
+                JsonConvert.DeserializeObject<Dictionary<string, BateriaVerdaderoFalso>>(bateriasVF.Body.ToString());
+            if (diccBatVF != null)
+            {
+                foreach (var bat in diccBatVF)
+                {
+                    baterias.Add(bat.Value);
+                }
+            }
+            return baterias;
         }
 
         public PreguntaMO getPreguntaMOById(string id)

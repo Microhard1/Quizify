@@ -11,9 +11,6 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 {
     public class BateriaMultiOpcion : Bateria
     {
-
-
-
         public BateriaMultiOpcion(string id, ArrayList preguntasBateria) : base(id, preguntasBateria)
         {
             this.preguntasBateria = preguntasBateria;
@@ -28,9 +25,10 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         override public List<Pregunta> getPreguntas()
         {
             List<Pregunta> listaPreguntas = new List<Pregunta>();
-            foreach (PreguntaMO p in preguntasBateria)
+            foreach (object p in preguntasBateria)
             {
-                listaPreguntas.Add(p);
+                PreguntaMO preg = (PreguntaMO)p;
+                listaPreguntas.Add(preg);
             }
             return listaPreguntas;
         }

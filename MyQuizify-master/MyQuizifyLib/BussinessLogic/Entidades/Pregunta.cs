@@ -10,7 +10,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 {
     public abstract class Pregunta
     {
-        public ConexionBD cf = ConexionBD.getInstancia();
+        
         public ICollection<Respuesta> respuestas;
         public string id;
         public string enunciado;
@@ -40,7 +40,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             Respuesta r = crearRespuesta(enunciado);
 
             respuestas.Add(r);
-            FirebaseResponse addRespuesta = cf.client.Set("Respuestas/"+ tipo + "/" + this.id, respuestas);
+            FirebaseResponse addRespuesta = ConexionBD.getInstancia().client.Set("Respuestas/"+ tipo + "/" + this.id, respuestas);
         }
 
         public abstract Respuesta crearRespuesta(string enunciado);

@@ -44,11 +44,13 @@ namespace MyQuizifyGUI.Forms
             FirebaseResponse r = cf.client.Get(@"Cursos/");
             Dictionary<string, Curso> cursos = new Dictionary<string, Curso>();
             cursos = r.ResultAs<Dictionary<string, Curso>>();
-            foreach(var item in cursos)
+            if (cursos != null)
             {
-                comboBoxCursos.Items.Add(item.Key);
+                foreach (var item in cursos)
+                {
+                    comboBoxCursos.Items.Add(item.Key);
+                }
             }
-
             formVF.TopLevel = false;
             formMO.TopLevel = false;
             formAb.TopLevel = false;
@@ -110,30 +112,29 @@ namespace MyQuizifyGUI.Forms
 
         private void botonAñadirPregunta_Click(object sender, EventArgs e)
         {
-          
-            
-                        Cursor.Current = Cursors.WaitCursor;
-                        if (tipoDeQuiz == "MultiOpcion")
-                        {
-                            CrearPreguntaTipoTest();
-                            panelQuizes.Controls.Clear();
-                            abrirMultiopcion();
-                        }
-                        else if(tipoDeQuiz == "VerdaderoFalso")
-                        {
-                            CrearPreguntaVerdaderoFalso();
-                            panelQuizes.Controls.Clear();
-                            abrirVerdaderoFalso();
-                        }
-                        else if (tipoDeQuiz == "Respuesta Abierta")
-                        {
-                            CrearPreguntaRespuestaAbierta();
-                            panelQuizes.Controls.Clear();
-                            abrirRespuestaAbierta();
-                        }
-                        numeroDePregunta++;
-                        Cursor.Current = Cursors.Default;
-              
+            Cursor.Current = Cursors.WaitCursor;
+            if (tipoDeQuiz == "MultiOpcion")
+            {
+                CrearPreguntaTipoTest();
+                panelQuizes.Controls.Clear();
+                abrirMultiopcion();
+            }
+            else if (tipoDeQuiz == "VerdaderoFalso")
+            {
+                CrearPreguntaVerdaderoFalso();
+                panelQuizes.Controls.Clear();
+                abrirVerdaderoFalso();
+            }
+            else if (tipoDeQuiz == "Respuesta Abierta")
+            {
+                CrearPreguntaRespuestaAbierta();
+                panelQuizes.Controls.Clear();
+                abrirRespuestaAbierta();
+            }
+            numeroDePregunta++;
+            Cursor.Current = Cursors.Default;
+
+
         }
        
         public void CrearPreguntaVerdaderoFalso()
@@ -488,6 +489,7 @@ namespace MyQuizifyGUI.Forms
             formMO.Show();
             Cursor.Current = Cursors.Default;
         }
+       
         private void respuestaAbierta_Click(object sender, EventArgs e)
         {
             abrirRespuestaAbierta();

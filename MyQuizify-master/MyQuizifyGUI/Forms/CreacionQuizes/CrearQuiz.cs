@@ -241,5 +241,69 @@ namespace MyQuizifyGUI
             }
             return null;
         }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            dataGridPreguntas.Columns.Clear();
+            dataGridPreguntas.Rows.Clear();
+
+            Dictionary<string, PreguntaMO> preguntasMO = services.obtenerPreguntasMO();
+            Dictionary<string, PreguntaVF> preguntasVF = services.obtenerPreguntasVF();
+            Dictionary<string, PreguntaA> preguntasA = services.obtenerPreguntasA();
+            string filtro = comboBox1.Text;
+            if (filtro == "Baterias")
+            {
+                List<Bateria> baterias = services.getBaterias();
+                dataGridPreguntas.Columns.Clear();
+                dataGridPreguntas.Rows.Clear();
+                DataGridViewCheckBoxColumn col1 = new DataGridViewCheckBoxColumn();
+                col1.HeaderText = "Selecciona";
+                dataGridPreguntas.Columns.Add(col1);
+                dataGridPreguntas.Columns.Add("nombre", "id");
+                dataGridPreguntas.Columns.Add("Numero de preguntas", "numero de preguntas");
+                foreach (var bat in baterias)
+                {
+                    dataGridPreguntas.Rows.Add(false, bat.id, bat.getNumeroPreguntas());
+                }
+            }
+
+            if (filtro == "Preguntas MultiOpcion") { cargarDatosMO(preguntasMO); }
+            if (filtro == "Preguntas Verdadero/Falso") { cargarDatosVF(preguntasVF); }
+            if (filtro == "Preguntas Abiertas") { cargarDatosA(preguntasA); }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string filtro = comboBox1.Text;
+            switch (filtro)
+            {
+                case "Baterias":
+                    int duracion = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
+                    int peso = Int32.Parse(textBoxPeso.Text);
+
+                    Bateria bateria = getBateria();
+                    Fachada fachada = new Fachada();
+
+                    fachada.publicarQuizCreadoPorBateria(textBoxNombreQuiz.Text,
+                        services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                        duracion, peso, textBoxDificultad.Text,
+                        dateTimePicker1.Value, dateTimePicker2.Value,
+                        services.getCursoById(comboBoxCurso.Text), bateria);
+
+
+                    MessageBox.Show("Quiz creado con exito");
+                    break;
+
+                case "Preguntas":
+                    int duracionQuiz = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
+                    Quiz qPregunta = new QuizMO(textBoxNombreQuiz.Text,
+                        services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                        duracionQuiz, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
+                        dateTimePicker1.Value, dateTimePicker2.Value,
+                        services.getCursoById(comboBoxCurso.Text));
+                    break;
+            }
+        
+    }
     }
 }

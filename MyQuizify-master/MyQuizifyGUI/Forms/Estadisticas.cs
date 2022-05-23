@@ -42,21 +42,23 @@ namespace MyQuizifyGUI.Forms
         {
             double media = 0, maxima = 0, minima = 10;
             int count = 0;
-            foreach (var calificacion in diccionarioCalificacion)
-            {
-                if (calificacion.Value.quizRealizado.nombreQuiz == quiz.nombreQuiz)
+            if (diccionarioCalificacion != null) { 
+                foreach (var calificacion in diccionarioCalificacion)
                 {
-                    dataGridEstadisticas.Rows.Add(calificacion.Value.examinado.nombre, calificacion.Value.examinado.apellidos, calificacion.Value.nota);
-                    media = media + calificacion.Value.nota;
-                    count++;
-                    if (maxima < calificacion.Value.nota) { maxima = calificacion.Value.nota; }
-                    if (minima > calificacion.Value.nota) { minima = calificacion.Value.nota; }
+                    if (calificacion.Value.quizRealizado.nombreQuiz == quiz.nombreQuiz)
+                    {
+                        dataGridEstadisticas.Rows.Add(calificacion.Value.examinado.nombre, calificacion.Value.examinado.apellidos, calificacion.Value.nota);
+                        media = media + calificacion.Value.nota;
+                        count++;
+                        if (maxima < calificacion.Value.nota) { maxima = calificacion.Value.nota; }
+                        if (minima > calificacion.Value.nota) { minima = calificacion.Value.nota; }
+                    }
                 }
+                media = media / count;
+                lblMedia.Text = media.ToString();
+                lblMaxima.Text = maxima.ToString();
+                lblMinima.Text = minima.ToString();
             }
-            media = media / count;
-            lblMedia.Text = media.ToString();
-            lblMaxima.Text = maxima.ToString();
-            lblMinima.Text = minima.ToString();
         }
 
         private void btbVolver_Click(object sender, EventArgs e)

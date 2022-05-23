@@ -24,9 +24,10 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         override public List<Pregunta> getPreguntas()
         {
             List<Pregunta> listaPreguntas = new List<Pregunta>();
-            foreach (PreguntaVF p in preguntasBateria)
+            foreach (object p in preguntasBateria)
             {
-                listaPreguntas.Add(p);
+                PreguntaVF preg = (PreguntaVF)p;
+                listaPreguntas.Add(preg);
             }
             return listaPreguntas;
         }

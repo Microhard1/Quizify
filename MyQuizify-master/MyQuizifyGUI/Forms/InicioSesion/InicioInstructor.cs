@@ -58,7 +58,7 @@ namespace MyQuizifyGUI.Forms.InicioSesion
         private void button1_Click_1(object sender, EventArgs e)
         {
             cambiarColorBotones(button1.Name);
-            //abrirFormHijo(new CrearPreguntasBaterias());
+            abrirFormHijo(new CrearPreguntasBaterias());
         }
 
         private void cambiarColorBotones(string nombreBoton) {

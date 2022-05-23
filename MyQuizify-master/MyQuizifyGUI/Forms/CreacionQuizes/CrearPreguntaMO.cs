@@ -44,6 +44,15 @@ namespace MyQuizifyGUI.Forms
                 q.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);
             }
             MessageBox.Show("Pregunta creada con exito");
+            foreach (Control c in this.Controls)
+            {
+                if (c is TextBox) c.Text = "";
+                if (c is GroupBox)
+                    foreach (Control co in c.Controls)
+                        if (co is TextBox) co.Text = "";
+            }           
+                           
+
         }
 
         private void CrearPreguntaMO_Load(object sender, EventArgs e)

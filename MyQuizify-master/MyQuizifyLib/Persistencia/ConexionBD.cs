@@ -31,10 +31,14 @@ namespace MyQuizifyLib.Persistencia
                 AuthSecret = "G8JyRbxDwLBglP0vwXdm7G0cX1Raa8nXQud4rtgw",
                 BasePath = "https://quizify-62e37-default-rtdb.firebaseio.com/"
             };
-
-            client = new FireSharp.FirebaseClient(conexionMicrohard);
+            IFirebaseConfig conexionNuevaBDD = new FirebaseConfig()
+            {
+                AuthSecret = "DGyUyvyoCUWhjlh0kG5W1r3y0WxGwjULCdrxi8q2",
+                BasePath = "https://nueva-bdd-default-rtdb.firebaseio.com/"
+            };
+            client = new FireSharp.FirebaseClient(conexionNuevaBDD);
         }
-
+        
         public static ConexionBD getInstancia()
         {
             if (instancia == null)

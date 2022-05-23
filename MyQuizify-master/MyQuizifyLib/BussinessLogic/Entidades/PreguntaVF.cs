@@ -10,12 +10,11 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 {
     public class PreguntaVF : Pregunta
     {
-        ConexionBD cf = ConexionBD.getInstancia();
 
         public PreguntaVF(string id, string enunciado, string imagen, double puntuacion, string explicacion) :
             base(id, enunciado, imagen, puntuacion, explicacion)
         {
-            FirebaseResponse nuevaPreguntaA = cf.client.Set("Preguntas/PreguntasVerdaderoFalso/" + id, this);
+            FirebaseResponse nuevaPreguntaA = ConexionBD.getInstancia().client.Set("Preguntas/PreguntasVerdaderoFalso/" + id, this);
         }
         public override Respuesta crearRespuesta(string enunciado)
         {
