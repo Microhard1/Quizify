@@ -29,8 +29,7 @@ namespace MyQuizifyGUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelP1 = new System.Windows.Forms.Label();
             this.labelP4 = new System.Windows.Forms.Label();
@@ -137,7 +136,11 @@ namespace MyQuizifyGUI.Forms
             this.radioButton4.Text = "D";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            this.progressBar1.Location = new System.Drawing.Point(122, 28);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(620, 19);
+            this.progressBar1.TabIndex = 0;
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(24, 112);
@@ -148,7 +151,14 @@ namespace MyQuizifyGUI.Forms
             this.radioButton3.Text = "C";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            this.botonAyuda.Location = new System.Drawing.Point(903, 636);
+            this.botonAyuda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonAyuda.Name = "botonAyuda";
+            this.botonAyuda.Size = new System.Drawing.Size(65, 30);
+            this.botonAyuda.TabIndex = 30;
+            this.botonAyuda.Text = "Ayuda";
+            this.botonAyuda.UseVisualStyleBackColor = true;
+            this.botonAyuda.Click += new System.EventHandler(this.botonAyuda_Click);
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(24, 72);
@@ -159,7 +169,31 @@ namespace MyQuizifyGUI.Forms
             this.radioButton2.Text = "B";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            this.inputImagen.Location = new System.Drawing.Point(662, 218);
+            this.inputImagen.Name = "inputImagen";
+            this.inputImagen.Size = new System.Drawing.Size(307, 367);
+            this.inputImagen.TabIndex = 31;
+            this.inputImagen.TabStop = false;
+            // 
+            // botonSiguiente
+            // 
+            this.botonSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonSiguiente.Location = new System.Drawing.Point(375, 621);
+            this.botonSiguiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonSiguiente.Name = "botonSiguiente";
+            this.botonSiguiente.Size = new System.Drawing.Size(230, 54);
+            this.botonSiguiente.TabIndex = 32;
+            this.botonSiguiente.Text = "Siguiente";
+            this.botonSiguiente.UseVisualStyleBackColor = true;
+            this.botonSiguiente.Click += new System.EventHandler(this.botonSiguiente_Click_1);
+            // 
+            // TiempoQuiz
+            // 
+            this.TiempoQuiz.Enabled = true;
+            this.TiempoQuiz.Interval = 1000;
+            this.TiempoQuiz.Tick += new System.EventHandler(this.TiempoQuiz_Tick_1);
+            // 
+            // Peso
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(24, 34);
@@ -170,7 +204,7 @@ namespace MyQuizifyGUI.Forms
             this.radioButton1.Text = "A";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // labelEnunciado
+            // Enunciado
             // 
             this.labelEnunciado.AutoSize = true;
             this.labelEnunciado.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -243,8 +277,8 @@ namespace MyQuizifyGUI.Forms
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelEnunciado);
             this.Name = "ContestacionDeQuizesMultiOpcion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionDeQuizesMultiOpcion";
-            this.Load += new System.EventHandler(this.ContestacionDeQuizesMultiOpcion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

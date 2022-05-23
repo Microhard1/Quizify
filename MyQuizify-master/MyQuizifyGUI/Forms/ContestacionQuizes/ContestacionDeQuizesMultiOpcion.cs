@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
+using System.IO;
+using MyQuizifyLib.Persistencia;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -20,6 +22,12 @@ namespace MyQuizifyGUI.Forms
         double nota;
         List<RadioButton> valores;
         MyQuizifyServices servicios = new MyQuizifyServices();
+        int progreso = 0;
+        int tiempo;
+        double puntuacionTotal = 0;
+        double puntuacionAlumno = 0;
+        ConexionBD cf = ConexionBD.getInstancia();
+        List<Respuesta> res = new List<Respuesta>();
         public ContestacionDeQuizesMultiOpcion(Quiz q)
         {
             InitializeComponent();
@@ -32,16 +40,10 @@ namespace MyQuizifyGUI.Forms
 
         }
 
-        private void ContestacionDeQuizesMultiOpcion_Load(object sender, EventArgs e)
+
+        private void TiempoQuiz_Tick(object sender, EventArgs e)
         {
-            button2.Enabled = false;
-            Pregunta p = aContestar.preguntas.ToArray<Pregunta>()[contadorPregunta];
-            p.respuestas = servicios.respuestasDeUnaPregunta(p.id);
-            labelEnunciado.Text = p.enunciado;
-            labelP1.Text = p.respuestas.ToArray<Respuesta>()[0].enunciado;
-            labelP2.Text = p.respuestas.ToArray<Respuesta>()[1].enunciado;
-            labelP3.Text = p.respuestas.ToArray<Respuesta>()[2].enunciado;
-            labelP4.Text = p.respuestas.ToArray<Respuesta>()[3].enunciado;
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -68,6 +70,10 @@ namespace MyQuizifyGUI.Forms
             labelP3.Text = p.respuestas.ToArray<Respuesta>()[2].enunciado;
             labelP4.Text = p.respuestas.ToArray<Respuesta>()[3].enunciado;
         }
+        private bool comprobarRespuesta()
+        {
+            Pregunta p = preguntasSinContestar.ElementAt(0);
+            
 
         private void button2_Click_1(object sender, EventArgs e)
         {

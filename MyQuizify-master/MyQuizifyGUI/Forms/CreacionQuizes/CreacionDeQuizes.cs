@@ -159,6 +159,7 @@ namespace MyQuizifyGUI.Forms
                     if (c.Name == "textBoxEnunciado")
                     {
                         enunciado = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
 
                 }
@@ -171,10 +172,12 @@ namespace MyQuizifyGUI.Forms
                             if (p.Name == "textBoxPuntuacion")
                             {
                                 puntuacion = Double.Parse(((TextBox)p).Text);
+                                ((TextBox)p).Clear();
                             }
                             else if (p.Name == "textboxExplicacion")
                             {
                                 explicacion = ((TextBox)p).Text;
+                                ((TextBox)p).Clear();
                             }
                         }
                         else if (p.GetType() == typeof(RadioButton))
@@ -235,6 +238,7 @@ namespace MyQuizifyGUI.Forms
                     if (c.Name == "enunciadoTipoTest")
                     {
                         enunciado = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
                     else if (c.Name == "textBoxPuntuacion")
                     {
@@ -243,6 +247,7 @@ namespace MyQuizifyGUI.Forms
                     else if (c.Name == "textBoxExplicacion")
                     {
                         explicacion = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
 
                 }
@@ -304,8 +309,13 @@ namespace MyQuizifyGUI.Forms
                     respuestas.Add(resp);
                 }
             }
-            string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
-            if (puntuacion > 5.0) MessageBox.Show("La pregunta no puede superar los 5 puntos");
+            string nombreQuiz = "QuizTipoTest";
+            if (textBoxNombreQuiz.Text=="")
+            {
+                nombreQuiz = textBoxNombreQuiz.Text;
+            }
+            string id = nombreQuiz+ "_" + numeroDePregunta;
+            if (puntuacion > 5.0 && false) MessageBox.Show("La pregunta no puede superar los 5 puntos");
             else
             {
                 pregunta = new PreguntaMO(id, enunciado, imagen, puntuacion, explicacion);
@@ -332,10 +342,12 @@ namespace MyQuizifyGUI.Forms
                     if (c.Name == "textboxEnunciado")
                     {
                         enunciado = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
                     else if (c.Name == "textBoxResp")
                     {
                         respuesta = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
                 }
                 else if (c is Panel)
@@ -347,10 +359,12 @@ namespace MyQuizifyGUI.Forms
                             if (p.Name == "textBoxPuntuacion")
                             {
                                 puntuacion = Double.Parse(((TextBox)p).Text);
+                                ((TextBox)p).Clear();
                             }
                             else if (p.Name == "textboxExplicacion")
                             {
                                 explicacion = ((TextBox)p).Text;
+                                ((TextBox)p).Clear();
                             }
                         }
                     }

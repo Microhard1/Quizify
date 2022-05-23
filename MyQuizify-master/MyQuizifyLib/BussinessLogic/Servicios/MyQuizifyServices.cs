@@ -318,7 +318,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
 
         public PreguntaMO getPreguntaMOById(string id)
         {
-            FirebaseResponse preguntaMO = cf.client.Get("Preguntas/PreguntasMultiOpcion/"+ id);
+            FirebaseResponse preguntaMO = cf.client.Get("PreguntasQuiz/PreguntasMultiOpcion/" + id);
             PreguntaMO p1 = preguntaMO.ResultAs<PreguntaMO>();
             if (preguntaMO != null) return p1;
 
@@ -330,7 +330,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
         public PreguntaA getPreguntaAById(string id)
         {
 
-            FirebaseResponse preguntaPA = cf.client.Get("Preguntas/PreguntasAbiertas/" + id);
+            FirebaseResponse preguntaPA = cf.client.Get("PreguntasQuiz/PreguntasAbiertas/" + id);
             PreguntaA p3 = preguntaPA.ResultAs<PreguntaA>();
             if (preguntaPA != null) return p3;
 
@@ -341,7 +341,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
         public PreguntaVF getPreguntaVFById(string id)
         {
 
-            FirebaseResponse preguntaVF = cf.client.Get("Preguntas/PreguntasVerdaderoFalso/" + id);
+            FirebaseResponse preguntaVF = cf.client.Get("PreguntasQuiz/PreguntasVerdaderoFalso/" + id);
             PreguntaVF p2 = preguntaVF.ResultAs<PreguntaVF>();
             if (preguntaVF != null) return p2;
 
