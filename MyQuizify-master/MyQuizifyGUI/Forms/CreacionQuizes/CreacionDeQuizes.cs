@@ -234,6 +234,7 @@ namespace MyQuizifyGUI.Forms
                     if (c.Name == "enunciadoTipoTest")
                     {
                         enunciado = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
                     else if (c.Name == "textBoxPuntuacion")
                     {
@@ -242,6 +243,7 @@ namespace MyQuizifyGUI.Forms
                     else if (c.Name == "textBoxExplicacion")
                     {
                         explicacion = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
 
                 }
@@ -336,10 +338,12 @@ namespace MyQuizifyGUI.Forms
                     if (c.Name == "textboxEnunciado")
                     {
                         enunciado = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
                     else if (c.Name == "textBoxResp")
                     {
                         respuesta = ((TextBox)c).Text;
+                        ((TextBox)c).Clear();
                     }
                 }
                 else if (c is Panel)
@@ -351,10 +355,12 @@ namespace MyQuizifyGUI.Forms
                             if (p.Name == "textBoxPuntuacion")
                             {
                                 puntuacion = Double.Parse(((TextBox)p).Text);
+                                ((TextBox)p).Clear();
                             }
                             else if (p.Name == "textboxExplicacion")
                             {
                                 explicacion = ((TextBox)p).Text;
+                                ((TextBox)p).Clear();
                             }
                         }
                     }
