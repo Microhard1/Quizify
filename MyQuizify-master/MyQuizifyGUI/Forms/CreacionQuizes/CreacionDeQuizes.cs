@@ -311,7 +311,7 @@ namespace MyQuizifyGUI.Forms
                 nombreQuiz = textBoxNombreQuiz.Text;
             }
             string id = nombreQuiz+ "_" + numeroDePregunta;
-            if (puntuacion > 5.0) MessageBox.Show("La pregunta no puede superar los 5 puntos");
+            if (puntuacion > 5.0 && false) MessageBox.Show("La pregunta no puede superar los 5 puntos");
             else
             {
                 pregunta = new PreguntaMO(id, enunciado, imagen, puntuacion, explicacion);

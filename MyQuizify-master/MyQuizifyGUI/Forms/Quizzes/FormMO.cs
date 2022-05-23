@@ -60,5 +60,33 @@ namespace MyQuizifyGUI.Forms
         {
 
         }
+
+        private void ckeckPregunta2_CheckedChanged(object sender, EventArgs e)
+        {
+            ckeckPregunta1.Checked = false;
+            ckeckPregunta3.Checked = false;
+            ckeckPregunta4.Checked = false;
+        }
+
+        private void ckeckPregunta1_CheckedChanged(object sender, EventArgs e)
+        {
+            ckeckPregunta2.Checked = false;
+            ckeckPregunta3.Checked = false;
+            ckeckPregunta4.Checked = false;
+        }
+
+        private void ckeckPregunta3_CheckedChanged(object sender, EventArgs e)
+        {
+            ckeckPregunta1.Checked = false;
+            ckeckPregunta2.Checked = false;
+            ckeckPregunta4.Checked = false;
+        }
+
+        private void ckeckPregunta4_CheckedChanged(object sender, EventArgs e)
+        {
+            ckeckPregunta1.Checked = false;
+            ckeckPregunta2.Checked = false;
+            ckeckPregunta3.Checked = false;
+        }
     }
 }

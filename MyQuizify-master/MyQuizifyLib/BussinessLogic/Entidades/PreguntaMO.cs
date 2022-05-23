@@ -13,7 +13,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public PreguntaMO(string id, string enunciado, string imagen, double puntuacion, string explicacion) :
                 base(id, enunciado, imagen, puntuacion, explicacion)
         {
-            FirebaseResponse nuevaPreguntaA = ConexionBD.getInstancia().client.Set("Preguntas/PreguntasMultiOpcion/" + id, this);
+            
         }
 
         public override Respuesta crearRespuesta(string enunciado)
