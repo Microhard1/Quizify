@@ -49,7 +49,6 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             this.fechaDeInicio = inicio;
             this.fechaFin = fin;
             this.asignatura = asignatura;
-
             competencias = new List<Competencia>();
             preguntas = new List<Pregunta>();
             notasQuiz = new List<Calificacion>();
@@ -66,7 +65,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 
             Pregunta p = crearPregunta(id, enunciado, imagen, puntuacion, explicacion);
             this.preguntas.Add(p);
-            FirebaseResponse addPregunta = ConexionBD.getInstancia().client.Set("PreguntasQuiz/" + tipo + "/" +
+            FirebaseResponse addPregunta = ConexionBD.getInstancia().client.Set("Preguntas/" + tipo + "/" +
                this.nombreQuiz + "/" + p.id, p);
         }
 

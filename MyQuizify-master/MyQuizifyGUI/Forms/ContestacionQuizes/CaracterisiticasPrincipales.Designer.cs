@@ -55,7 +55,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1067, 100);
             this.panel2.TabIndex = 2;
@@ -90,7 +90,7 @@
             this.panelQuizes.Controls.Add(this.lblNombreQuiz);
             this.panelQuizes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuizes.Location = new System.Drawing.Point(0, 100);
-            this.panelQuizes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelQuizes.Margin = new System.Windows.Forms.Padding(4);
             this.panelQuizes.Name = "panelQuizes";
             this.panelQuizes.Size = new System.Drawing.Size(1067, 454);
             this.panelQuizes.TabIndex = 4;
@@ -99,7 +99,7 @@
             // 
             this.btbAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btbAceptar.Location = new System.Drawing.Point(823, 375);
-            this.btbAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btbAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btbAceptar.Name = "btbAceptar";
             this.btbAceptar.Size = new System.Drawing.Size(216, 66);
             this.btbAceptar.TabIndex = 13;
@@ -154,6 +154,7 @@
             this.lblFechaInicio.Size = new System.Drawing.Size(93, 32);
             this.lblFechaInicio.TabIndex = 9;
             this.lblFechaInicio.Text = "label7";
+            this.lblFechaInicio.Click += new System.EventHandler(this.lblFechaInicio_Click);
             // 
             // label6
             // 
@@ -270,7 +271,7 @@
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.panelQuizes);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CaracteristicasPrincipales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CaracterisiticasPrincipales";

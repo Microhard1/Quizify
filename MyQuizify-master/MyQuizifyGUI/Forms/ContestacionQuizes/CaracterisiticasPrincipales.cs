@@ -23,8 +23,8 @@ namespace MyQuizifyGUI.Forms
             lblDificultad.Text = quiz.dificultad;
             lblCurso.Text = quiz.asignatura.nombre;
             lblPeso.Text = quiz.peso + "";
-            lblFechaInicio.Text = quiz.fechaDeInicio + "";
-            lblFechaFin.Text = quiz.fechaFin + "";
+            lblFechaInicio.Text = quiz.fechaDeInicio.ToString() + "";
+            lblFechaFin.Text = quiz.fechaFin.ToString() + "";
             this.quiz = quiz;
         }
 
@@ -50,6 +50,11 @@ namespace MyQuizifyGUI.Forms
                 this.Close();
             }
             
+        }
+
+        private void lblFechaInicio_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

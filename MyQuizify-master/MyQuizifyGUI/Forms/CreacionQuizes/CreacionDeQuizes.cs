@@ -119,7 +119,7 @@ namespace MyQuizifyGUI.Forms
                 panelQuizes.Controls.Clear();
                 abrirMultiopcion();
             }
-            else if (tipoDeQuiz == "VerdaderoFalso")
+            else if (tipoDeQuiz == "Verdadero/Falso")
             {
                 CrearPreguntaVerdaderoFalso();
                 panelQuizes.Controls.Clear();
