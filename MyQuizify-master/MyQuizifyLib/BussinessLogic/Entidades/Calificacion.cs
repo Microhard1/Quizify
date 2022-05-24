@@ -17,7 +17,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public Alumno examinado;
 
 
-        public Calificacion(double nota, Quiz quizRealizado, Alumno examinado)
+        public Calificacion(double nota, QuizVF quizRealizado, Alumno examinado)
         {
             this.nota = nota;
             this.quizRealizado = quizRealizado;

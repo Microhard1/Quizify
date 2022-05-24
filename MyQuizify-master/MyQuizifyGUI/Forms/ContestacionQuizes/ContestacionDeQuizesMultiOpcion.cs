@@ -70,11 +70,7 @@ namespace MyQuizifyGUI.Forms
             labelP3.Text = p.respuestas.ToArray<Respuesta>()[2].enunciado;
             labelP4.Text = p.respuestas.ToArray<Respuesta>()[3].enunciado;
         }
-        private bool comprobarRespuesta()
-        {
-            Pregunta p = preguntasSinContestar.ElementAt(0);
-            
-
+        
         private void button2_Click_1(object sender, EventArgs e)
         {
             
@@ -93,7 +89,7 @@ namespace MyQuizifyGUI.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Calificacion c = new Calificacion(nota, (QuizMO)aContestar, servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
+            Calificacion c = new Calificacion(nota, (QuizVF)aContestar, servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
             MessageBox.Show("Enviado");
             this.Close();
         }
@@ -122,6 +118,11 @@ namespace MyQuizifyGUI.Forms
                         valores.Insert(indice, aux);
                         break;
                     }
+        }
+
+        private void ContestacionDeQuizesMultiOpcion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

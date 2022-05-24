@@ -274,36 +274,91 @@ namespace MyQuizifyGUI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string filtro = comboBox1.Text;
-            switch (filtro)
-            {
-                case "Baterias":
-                    int duracion = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
-                    int peso = Int32.Parse(textBoxPeso.Text);
+                bool isChecked = false;
 
-                    Bateria bateria = getBateria();
-                    Fachada fachada = new Fachada();
+                string filtro = comboBox1.Text;
+                switch (filtro)
+                {
+                    case "Baterias":
+                        int duracion = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
+                        int peso = Int32.Parse(textBoxPeso.Text);
 
-                    fachada.publicarQuizCreadoPorBateria(textBoxNombreQuiz.Text,
-                        services.getInstructorById(cf.usuarioConectado.username), "Borrador",
-                        duracion, peso, textBoxDificultad.Text,
-                        dateTimePicker1.Value, dateTimePicker2.Value,
-                        services.getCursoById(comboBoxCurso.Text), bateria);
+                        Bateria bateria = getBateria();
+                        Fachada fachada = new Fachada();
+
+                        fachada.publicarQuizCreadoPorBateria(textBoxNombreQuiz.Text,
+                            services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                            duracion, peso, textBoxDificultad.Text,
+                            dateTimePicker1.Value, dateTimePicker2.Value,
+                            services.getCursoById(comboBoxCurso.Text), bateria);
 
 
-                    MessageBox.Show("Quiz creado con exito");
-                    break;
+                        MessageBox.Show("Quiz creado con exito");
+                        break;
 
-                case "Preguntas":
-                    int duracionQuiz = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
-                    Quiz qPregunta = new QuizMO(textBoxNombreQuiz.Text,
-                        services.getInstructorById(cf.usuarioConectado.username), "Borrador",
-                        duracionQuiz, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
-                        dateTimePicker1.Value, dateTimePicker2.Value,
-                        services.getCursoById(comboBoxCurso.Text));
-                    break;
+                    case "Preguntas MultiOpcion":
+                        int duracionQuizmo = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
+                        Quiz qmoPregunta = new QuizMO(textBoxNombreQuiz.Text,
+                            services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                            duracionQuizmo, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
+                            dateTimePicker1.Value, dateTimePicker2.Value,
+                            services.getCursoById(comboBoxCurso.Text));
+
+                        for (int i = 0; i < dataGridPreguntas.Rows.Count - 1; i++)
+                        {
+                            isChecked = (bool)dataGridPreguntas.Rows[i].Cells[0].Value;
+                            if (isChecked)
+                            {
+                                PreguntaMO p = services.getPreguntaMOById(dataGridPreguntas.Rows[i].Cells[1].Value.ToString());
+                                qmoPregunta.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);
+                            }
+                        }
+                        MessageBox.Show("Quiz creado con exito");
+                        break;
+
+                    case "Preguntas Verdadero/Falso":
+                        int duracionQuizvf = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
+                        Quiz qvfPregunta = new QuizVF(textBoxNombreQuiz.Text,
+                            services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                            duracionQuizvf, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
+                            dateTimePicker1.Value, dateTimePicker2.Value,
+                            services.getCursoById(comboBoxCurso.Text));
+
+                        for (int i = 0; i < dataGridPreguntas.Rows.Count - 1; i++)
+                        {
+                            isChecked = (bool)dataGridPreguntas.Rows[i].Cells[0].Value;
+                            if (isChecked)
+                            {
+                                PreguntaMO p = services.getPreguntaMOById(dataGridPreguntas.Rows[i].Cells[1].Value.ToString());
+                                qvfPregunta.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);
+                            }
+                        }
+                        MessageBox.Show("Quiz creado con exito");
+                        break;
+
+                    case "Preguntas Abiertas":
+                        int duracionQuizA = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
+                        Quiz qAPregunta = new QuizVF(textBoxNombreQuiz.Text,
+                            services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                            duracionQuizA, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
+                            dateTimePicker1.Value, dateTimePicker2.Value,
+                            services.getCursoById(comboBoxCurso.Text));
+
+                        for (int i = 0; i < dataGridPreguntas.Rows.Count - 1; i++)
+                        {
+                            isChecked = (bool)dataGridPreguntas.Rows[i].Cells[0].Value;
+                            if (isChecked)
+                            {
+                                PreguntaMO p = services.getPreguntaMOById(dataGridPreguntas.Rows[i].Cells[1].Value.ToString());
+                                qAPregunta.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);
+                            }
+                        }
+                        MessageBox.Show("Quiz creado con exito");
+                        break;
+
+                }
             }
-        
+
+        }
     }
-    }
-}
+

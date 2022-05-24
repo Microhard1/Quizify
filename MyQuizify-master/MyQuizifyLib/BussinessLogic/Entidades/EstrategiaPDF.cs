@@ -15,7 +15,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public void generarInforme(List<Calificacion> calificaciones, Quiz q)
         {
             Document doc = new Document(PageSize.LETTER);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\sanco\Desktop\Notas" +
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\Pc\Documents\upv\soft\PSW\" +
                 q.nombreQuiz + ".pdf", FileMode.Create));
             doc.AddTitle("Calificaciones Quiz : " + q.nombreQuiz);
             doc.AddCreator(ConexionBD.getInstancia().usuarioConectado.username);

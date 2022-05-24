@@ -105,6 +105,8 @@ namespace MyQuizifyGUI
                         }
                     }
                 }
+
+
         }
 
         public void cambiarEstado(string estadoQuiz)

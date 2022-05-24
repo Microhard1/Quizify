@@ -22,12 +22,11 @@ namespace MyQuizifyGUI.Forms
         ArrayList preguntasBateria;
         public CrearBateria()
         {
+            InitializeComponent();
             preguntasMO = services.obtenerPreguntasMO();
             preguntasVF = services.obtenerPreguntasVF();
             preguntasA = services.obtenerPreguntasA();
             preguntasBateria = new ArrayList();
-
-            InitializeComponent();
         }
 
         private void CrearPregunta_Load(object sender, EventArgs e)
@@ -39,19 +38,9 @@ namespace MyQuizifyGUI.Forms
         {
 
             dataGridPreguntas.Rows.Clear();
-            dataGridPreguntas.Columns.Clear();
-
-            DataGridViewCheckBoxColumn col1 = new DataGridViewCheckBoxColumn();
-            col1.HeaderText = "Selecciona";
-            dataGridPreguntas.Columns.Add(col1);
-            dataGridPreguntas.Columns.Add("nombre", "id");
-            dataGridPreguntas.Columns.Add("enunciado", "enunciado");
-            dataGridPreguntas.Columns.Add("puntuacion", "puntuacion");
-            dataGridPreguntas.Columns.Add("explicacion", "explicacion");
 
             foreach (var item in data)
-            {
-
+            { 
                 dataGridPreguntas.Rows.Add(false, item.Key, item.Value.enunciado,
                     item.Value.puntuacion, item.Value.explicacion);
             }
@@ -60,23 +49,16 @@ namespace MyQuizifyGUI.Forms
         }
         void cargarDatosA(Dictionary<string, PreguntaA> data)
         {
-            dataGridPreguntas.Columns.Clear();
             dataGridPreguntas.Rows.Clear();
-
-            DataGridViewCheckBoxColumn col1 = new DataGridViewCheckBoxColumn();
-            col1.HeaderText = "Selecciona";
-            dataGridPreguntas.Columns.Add(col1);
-            dataGridPreguntas.Columns.Add("nombre", "id");
-            dataGridPreguntas.Columns.Add("enunciado", "enunciado");
-            dataGridPreguntas.Columns.Add("puntuacion", "puntuacion");
-            dataGridPreguntas.Columns.Add("explicacion", "explicacion");
-
-            foreach (var item in data)
+            if (data.Count()!=0)
             {
-
-                dataGridPreguntas.Rows.Add(false, item.Key, item.Value.enunciado,
-                    item.Value.puntuacion, item.Value.explicacion);
+                foreach (var item in data)
+                {
+                    dataGridPreguntas.Rows.Add(false, item.Key, item.Value.enunciado,
+                        item.Value.puntuacion, item.Value.explicacion);
+                }
             }
+
 
 
         }
@@ -84,15 +66,6 @@ namespace MyQuizifyGUI.Forms
         {
 
             dataGridPreguntas.Rows.Clear();
-            dataGridPreguntas.Columns.Clear();
-
-            DataGridViewCheckBoxColumn col1 = new DataGridViewCheckBoxColumn();
-            col1.HeaderText = "Selecciona";
-            dataGridPreguntas.Columns.Add(col1);
-            dataGridPreguntas.Columns.Add("nombre", "id");
-            dataGridPreguntas.Columns.Add("enunciado", "enunciado");
-            dataGridPreguntas.Columns.Add("puntuacion", "puntuacion");
-            dataGridPreguntas.Columns.Add("explicacion", "explicacion");
 
             foreach (var item in data)
             {
@@ -109,7 +82,7 @@ namespace MyQuizifyGUI.Forms
 
             if (comboBox1.Text == "MultiOpcion") cargarDatosMO(preguntasMO);
             if (comboBox1.Text == "Abierta") cargarDatosA(preguntasA);
-            if (comboBox1.Text == "Verdadero Falso") cargarDatosVF(preguntasVF);
+            if (comboBox1.Text == "Verdadero/Falso") cargarDatosVF(preguntasVF);
             
         }
 

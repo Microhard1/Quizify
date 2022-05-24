@@ -29,7 +29,6 @@ namespace MyQuizifyGUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelP1 = new System.Windows.Forms.Label();
             this.labelP4 = new System.Windows.Forms.Label();
@@ -48,26 +47,6 @@ namespace MyQuizifyGUI.Forms
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(121, 455);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Anterior";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(707, 455);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Siguiente";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // groupBox1
             // 
@@ -88,40 +67,40 @@ namespace MyQuizifyGUI.Forms
             // labelP1
             // 
             this.labelP1.AutoSize = true;
-            this.labelP1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelP1.Location = new System.Drawing.Point(65, 29);
             this.labelP1.Name = "labelP1";
-            this.labelP1.Size = new System.Drawing.Size(65, 22);
+            this.labelP1.Size = new System.Drawing.Size(60, 24);
             this.labelP1.TabIndex = 8;
             this.labelP1.Text = "label1";
             // 
             // labelP4
             // 
             this.labelP4.AutoSize = true;
-            this.labelP4.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.labelP4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.labelP4.Location = new System.Drawing.Point(65, 146);
             this.labelP4.Name = "labelP4";
-            this.labelP4.Size = new System.Drawing.Size(79, 22);
+            this.labelP4.Size = new System.Drawing.Size(72, 24);
             this.labelP4.TabIndex = 7;
             this.labelP4.Text = "textoP4";
             // 
             // labelP3
             // 
             this.labelP3.AutoSize = true;
-            this.labelP3.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.labelP3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.labelP3.Location = new System.Drawing.Point(62, 107);
             this.labelP3.Name = "labelP3";
-            this.labelP3.Size = new System.Drawing.Size(79, 22);
+            this.labelP3.Size = new System.Drawing.Size(72, 24);
             this.labelP3.TabIndex = 6;
             this.labelP3.Text = "textoP3";
             // 
             // labelP2
             // 
             this.labelP2.AutoSize = true;
-            this.labelP2.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.labelP2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.labelP2.Location = new System.Drawing.Point(62, 67);
             this.labelP2.Name = "labelP2";
-            this.labelP2.Size = new System.Drawing.Size(79, 22);
+            this.labelP2.Size = new System.Drawing.Size(72, 24);
             this.labelP2.TabIndex = 5;
             this.labelP2.Text = "textoP2";
             // 
@@ -136,11 +115,7 @@ namespace MyQuizifyGUI.Forms
             this.radioButton4.Text = "D";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            this.progressBar1.Location = new System.Drawing.Point(122, 28);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(620, 19);
-            this.progressBar1.TabIndex = 0;
+            // radioButton3
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(24, 112);
@@ -151,14 +126,7 @@ namespace MyQuizifyGUI.Forms
             this.radioButton3.Text = "C";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            this.botonAyuda.Location = new System.Drawing.Point(903, 636);
-            this.botonAyuda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.botonAyuda.Name = "botonAyuda";
-            this.botonAyuda.Size = new System.Drawing.Size(65, 30);
-            this.botonAyuda.TabIndex = 30;
-            this.botonAyuda.Text = "Ayuda";
-            this.botonAyuda.UseVisualStyleBackColor = true;
-            this.botonAyuda.Click += new System.EventHandler(this.botonAyuda_Click);
+            // radioButton2
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(24, 72);
@@ -169,31 +137,7 @@ namespace MyQuizifyGUI.Forms
             this.radioButton2.Text = "B";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            this.inputImagen.Location = new System.Drawing.Point(662, 218);
-            this.inputImagen.Name = "inputImagen";
-            this.inputImagen.Size = new System.Drawing.Size(307, 367);
-            this.inputImagen.TabIndex = 31;
-            this.inputImagen.TabStop = false;
-            // 
-            // botonSiguiente
-            // 
-            this.botonSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonSiguiente.Location = new System.Drawing.Point(375, 621);
-            this.botonSiguiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.botonSiguiente.Name = "botonSiguiente";
-            this.botonSiguiente.Size = new System.Drawing.Size(230, 54);
-            this.botonSiguiente.TabIndex = 32;
-            this.botonSiguiente.Text = "Siguiente";
-            this.botonSiguiente.UseVisualStyleBackColor = true;
-            this.botonSiguiente.Click += new System.EventHandler(this.botonSiguiente_Click_1);
-            // 
-            // TiempoQuiz
-            // 
-            this.TiempoQuiz.Enabled = true;
-            this.TiempoQuiz.Interval = 1000;
-            this.TiempoQuiz.Tick += new System.EventHandler(this.TiempoQuiz_Tick_1);
-            // 
-            // Peso
+            // radioButton1
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(24, 34);
@@ -204,7 +148,7 @@ namespace MyQuizifyGUI.Forms
             this.radioButton1.Text = "A";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // Enunciado
+            // labelEnunciado
             // 
             this.labelEnunciado.AutoSize = true;
             this.labelEnunciado.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,13 +216,12 @@ namespace MyQuizifyGUI.Forms
             this.ClientSize = new System.Drawing.Size(856, 516);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelEnunciado);
             this.Name = "ContestacionDeQuizesMultiOpcion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionDeQuizesMultiOpcion";
+            this.Load += new System.EventHandler(this.ContestacionDeQuizesMultiOpcion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

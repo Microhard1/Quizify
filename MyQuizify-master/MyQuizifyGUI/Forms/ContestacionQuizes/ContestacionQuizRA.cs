@@ -134,7 +134,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 MessageBoxIcon.Information) ;
                 if (result == DialogResult.Yes)
                 {
-                    new Calificacion(notaFinal, quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
+                    new Calificacion(notaFinal, (QuizVF)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
                     this.Close();
                 }
             }

@@ -36,12 +36,23 @@ namespace MyQuizifyGUI.Forms
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Enunciado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Puntuacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Explicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPreguntas)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridPreguntas
             // 
             this.dataGridPreguntas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPreguntas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.check,
+            this.nombre,
+            this.Enunciado,
+            this.Puntuacion,
+            this.Explicacion});
             this.dataGridPreguntas.Location = new System.Drawing.Point(45, 84);
             this.dataGridPreguntas.Name = "dataGridPreguntas";
             this.dataGridPreguntas.Size = new System.Drawing.Size(561, 320);
@@ -104,6 +115,35 @@ namespace MyQuizifyGUI.Forms
             this.label3.TabIndex = 6;
             this.label3.Text = "Tipo de Bateria: ";
             // 
+            // check
+            // 
+            this.check.HeaderText = "Selecciona";
+            this.check.Name = "check";
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "ID";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // Enunciado
+            // 
+            this.Enunciado.HeaderText = "Enunciado";
+            this.Enunciado.Name = "Enunciado";
+            this.Enunciado.ReadOnly = true;
+            // 
+            // Puntuacion
+            // 
+            this.Puntuacion.HeaderText = "Puntuacion";
+            this.Puntuacion.Name = "Puntuacion";
+            this.Puntuacion.ReadOnly = true;
+            // 
+            // Explicacion
+            // 
+            this.Explicacion.HeaderText = "Explicacion";
+            this.Explicacion.Name = "Explicacion";
+            this.Explicacion.ReadOnly = true;
+            // 
             // CrearBateria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,5 +175,10 @@ namespace MyQuizifyGUI.Forms
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn check;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Enunciado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Puntuacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Explicacion;
     }
 }
