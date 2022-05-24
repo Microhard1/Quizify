@@ -371,8 +371,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             return diccionarioCalificacion;
         }
         public Dictionary<string, CalificacionVF> getDiccionarioCalificacionesAlumno()
-        {
-            
+        { 
             Dictionary<string, CalificacionVF> diccionarioRespuesta = new Dictionary<string, CalificacionVF>();
             List<string> nombresQuizes = nombreQuizes();
             Dictionary<string, CalificacionVF> diccionarioCalificacion = new Dictionary<string, CalificacionVF>();
@@ -420,8 +419,6 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             {
                 listaCalificaciones.Add(c.Value);
             }
-
-
             return listaCalificaciones;
         }
         public Bateria getBateriaById(string idBateria)

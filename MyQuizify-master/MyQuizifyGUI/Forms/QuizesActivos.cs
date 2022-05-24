@@ -301,6 +301,7 @@ namespace MyQuizifyGUI
 
         private void button6_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             Quiz q = null;
             Quiz aux = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
@@ -320,6 +321,7 @@ namespace MyQuizifyGUI
 
                 }
             }
+            Cursor.Current = Cursors.Default;
             deseleccionarChecks();
         }
 

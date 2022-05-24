@@ -29,6 +29,7 @@ namespace MyQuizifyGUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelP1 = new System.Windows.Forms.Label();
             this.labelP4 = new System.Windows.Forms.Label();
@@ -44,6 +45,9 @@ namespace MyQuizifyGUI.Forms
             this.botonPausa = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button3 = new System.Windows.Forms.Button();
+            this.BotonSig = new System.Windows.Forms.Button();
+            this.BotonAnt = new System.Windows.Forms.Button();
+            this.TiempoQuiz = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -209,11 +213,39 @@ namespace MyQuizifyGUI.Forms
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // BotonSig
+            // 
+            this.BotonSig.Location = new System.Drawing.Point(584, 455);
+            this.BotonSig.Name = "BotonSig";
+            this.BotonSig.Size = new System.Drawing.Size(94, 33);
+            this.BotonSig.TabIndex = 20;
+            this.BotonSig.Text = "Siguiente";
+            this.BotonSig.UseVisualStyleBackColor = true;
+            this.BotonSig.Click += new System.EventHandler(this.BotonSig_Click);
+            // 
+            // BotonAnt
+            // 
+            this.BotonAnt.Location = new System.Drawing.Point(210, 455);
+            this.BotonAnt.Name = "BotonAnt";
+            this.BotonAnt.Size = new System.Drawing.Size(94, 33);
+            this.BotonAnt.TabIndex = 21;
+            this.BotonAnt.Text = "Anterior";
+            this.BotonAnt.UseVisualStyleBackColor = true;
+            this.BotonAnt.Click += new System.EventHandler(this.BotonAnt_Click);
+            // 
+            // TiempoQuiz
+            // 
+            this.TiempoQuiz.Enabled = true;
+            this.TiempoQuiz.Interval = 1000;
+            this.TiempoQuiz.Tick += new System.EventHandler(this.TiempoQuiz_Tick);
+            // 
             // ContestacionDeQuizesMultiOpcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 516);
+            this.Controls.Add(this.BotonAnt);
+            this.Controls.Add(this.BotonSig);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
@@ -250,5 +282,8 @@ namespace MyQuizifyGUI.Forms
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button BotonSig;
+        private System.Windows.Forms.Button BotonAnt;
+        private System.Windows.Forms.Timer TiempoQuiz;
     }
 }

@@ -165,6 +165,12 @@
     <Compile Include="Forms\CreacionQuizes\CrearPreguntaVF.Designer.cs">
       <DependentUpon>CrearPreguntaVF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CursosAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CursosAlumno.Designer.cs">
+      <DependentUpon>CursosAlumno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditarPreguntas\EditarPreguntasMO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreacionQuizes\CrearPreguntaVF.resx">
       <DependentUpon>CrearPreguntaVF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CursosAlumno.resx">
+      <DependentUpon>CursosAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditarPreguntas\EditarPreguntasMO.resx">
       <DependentUpon>EditarPreguntasMO.cs</DependentUpon>

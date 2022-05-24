@@ -167,7 +167,7 @@ public override string ToString()
                 + "fechaDeInicio: " + fechaDeInicio + "\n"
                 + "fechaFin: " + fechaFin + "\n"
                 + "estado: " + estado + "\n"
-                + "asignatura: " + asignatura + "\n"; 
+                + "asignatura: " + asignatura.nombre + "\n"; 
         }
         public void añadirCompetencias(List<Competencia> compe)
         {
