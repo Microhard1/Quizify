@@ -58,7 +58,7 @@ namespace MyQuizifyGUI
                 case "Preguntas":
                     int duracionQuiz = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
                     Quiz qPregunta = new QuizMO(textBoxNombreQuiz.Text,
-                        services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                        services.getInstructorById(cf.usuarioConectado.username),
                         duracionQuiz, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
                         dateTimePicker1.Value, dateTimePicker2.Value,
                         services.getCursoById(comboBoxCurso.Text));
@@ -299,7 +299,7 @@ namespace MyQuizifyGUI
                     case "Preguntas MultiOpcion":
                         int duracionQuizmo = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
                         Quiz qmoPregunta = new QuizMO(textBoxNombreQuiz.Text,
-                            services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                            services.getInstructorById(cf.usuarioConectado.username),
                             duracionQuizmo, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
                             dateTimePicker1.Value, dateTimePicker2.Value,
                             services.getCursoById(comboBoxCurso.Text));
@@ -319,7 +319,7 @@ namespace MyQuizifyGUI
                     case "Preguntas Verdadero/Falso":
                         int duracionQuizvf = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
                         Quiz qvfPregunta = new QuizVF(textBoxNombreQuiz.Text,
-                            services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                            services.getInstructorById(cf.usuarioConectado.username),
                             duracionQuizvf, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
                             dateTimePicker1.Value, dateTimePicker2.Value,
                             services.getCursoById(comboBoxCurso.Text));
@@ -339,7 +339,7 @@ namespace MyQuizifyGUI
                     case "Preguntas Abiertas":
                         int duracionQuizA = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
                         Quiz qAPregunta = new QuizVF(textBoxNombreQuiz.Text,
-                            services.getInstructorById(cf.usuarioConectado.username), "Borrador",
+                            services.getInstructorById(cf.usuarioConectado.username),
                             duracionQuizA, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
                             dateTimePicker1.Value, dateTimePicker2.Value,
                             services.getCursoById(comboBoxCurso.Text));

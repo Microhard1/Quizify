@@ -116,7 +116,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                  MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
-                Quiz quizPausado = new QuizVF(quiz.nombreQuiz+"_PAUSADO", quiz.creadoPor, "Pausado", quiz.peso, tiempo/60,
+                Quiz quizPausado = new QuizVF(quiz.nombreQuiz+"_PAUSADO", quiz.creadoPor, quiz.peso, tiempo/60,
                                quiz.dificultad, quiz.fechaDeInicio, quiz.fechaFin, quiz.asignatura);
                 foreach (Pregunta p in preguntasSinContestar)
                 {
@@ -165,6 +165,11 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

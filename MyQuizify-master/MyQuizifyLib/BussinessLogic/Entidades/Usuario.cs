@@ -16,7 +16,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 
         public string telefono;
         public string correo;
-        public DateTime fechaNacimiento;
+        private DateTime fechaNacimiento;
 
         public Usuario(string username, string password, string nombre, 
             string apellidos, string telefono, string correo, DateTime fechaNacimiento) {

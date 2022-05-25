@@ -63,7 +63,7 @@ namespace MyQuizifyGUI.Forms
             foreach(var quiz in quizes)
             {
                 dataGridQuizes.Rows.Add(false, quiz.nombreQuiz, quiz.GetType().Name, quiz.dificultad, quiz.duracion,
-                    quiz.fechaDeInicio, quiz.fechaFin);
+                        quiz.fechaDeInicio, quiz.fechaFin);
             }
         }
 

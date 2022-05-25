@@ -62,8 +62,8 @@ namespace MyQuizifyGUI
         }
 
         public void mostrarQuizes()
-        {                       
-                
+        {
+            dataGridQuizes.Rows.Clear();
                 FirebaseResponse quizesMO = cf.client.Get(@"Quizes/QuizesMO");
                 Dictionary<string, QuizMO> quizesMultiOpcion =
                     JsonConvert.DeserializeObject<Dictionary<string, QuizMO>>(quizesMO.Body.ToString());
@@ -73,7 +73,7 @@ namespace MyQuizifyGUI
                     {
                         if (q.Value.creadoPor.username == cf.usuarioConectado.username)
                         {
-                            dataGridQuizes.Rows.Add(false, q.Key, "MultiOpcion", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
+                            dataGridQuizes.Rows.Add(false, q.Key, "MultiOpcion", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
                         }
                     }
                 }
@@ -87,7 +87,7 @@ namespace MyQuizifyGUI
                     {
                         if (q.Value.creadoPor.username == cf.usuarioConectado.username)
                         {
-                            dataGridQuizes.Rows.Add(false, q.Key, "Pregunta Abierta", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
+                            dataGridQuizes.Rows.Add(false, q.Key, "Pregunta Abierta", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
                         }
                     }
                 }
@@ -101,7 +101,7 @@ namespace MyQuizifyGUI
                     {
                         if (q.Value.creadoPor.username == cf.usuarioConectado.username)
                         {
-                            dataGridQuizes.Rows.Add(false, q.Key, "Verdadero/Falso", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
+                            dataGridQuizes.Rows.Add(false, q.Key, "Verdadero/Falso", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
                         }
                     }
                 }
@@ -116,7 +116,7 @@ namespace MyQuizifyGUI
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true && dataGridQuizes.Rows[i].Cells[1].Value != null)
                 {
-                    string tipo = getTipoQuiz(dataGridQuizes.Rows[i].Cells[2].Value.ToString());
+                    string tipo = services.getTipoQuiz(services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString()));
                     string nombreQuiz = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
                     FirebaseResponse editarEstado =
                         cf.client.Get("/Quizes/" + tipo + "/" + nombreQuiz);
@@ -165,7 +165,7 @@ namespace MyQuizifyGUI
                 {
                     if (q.Value.estado.GetType().Name == filtro && q.Value.creadoPor.username == cf.usuarioConectado.username)
                     {
-                        dataGridQuizes.Rows.Add(false, q.Key, "MultiOpcion", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
+                        dataGridQuizes.Rows.Add(false, q.Key, "MultiOpcion", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
                     }
                 }
             }
@@ -179,7 +179,7 @@ namespace MyQuizifyGUI
                 {
                     if (q.Value.estado.GetType().Name == filtro && q.Value.creadoPor.username == cf.usuarioConectado.username)
                     {
-                        dataGridQuizes.Rows.Add(false, q.Key, "Pregunta Abierta", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
+                        dataGridQuizes.Rows.Add(false, q.Key, "Pregunta Abierta", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
                     }
                 }
             }
@@ -193,7 +193,7 @@ namespace MyQuizifyGUI
                 {
                     if (q.Value.estado.GetType().Name == filtro && q.Value.creadoPor.username == cf.usuarioConectado.username)
                     {
-                        dataGridQuizes.Rows.Add(false, q.Key, "Verdadero/Falso", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
+                        dataGridQuizes.Rows.Add(false, q.Key, "Verdadero/Falso", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
                     }
                 }
             }
@@ -302,24 +302,24 @@ namespace MyQuizifyGUI
         private void button6_Click(object sender, EventArgs e)
         {
             Quiz q = null;
-            Quiz aux = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
                     q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    if (q.estado == "Borrador")
+                    if (q.estado is Borrador)
                     {
-                        q.cambiarEstado("Publicado");
+                        q.cambiarEstado(new Publicado());
                         MessageBox.Show("Quiz publicado con éxito");
-                        aux = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                        dataGridQuizes.Rows[i].Cells[7].Value = aux.estado;
-                    }
-                    else MessageBox.Show("El quiz " + q.nombreQuiz + " no se puede publicar ya que no está en estado Borrador");
+                        
 
+                    }
+                    else MessageBox.Show("El quiz " + q.nombreQuiz + "con estado : " + q.estado.GetType().Name +
+                        ", no se puede publicar ya que no está en estado Borrador");
                 }
             }
+            mostrarQuizes();
             deseleccionarChecks();
         }
 
@@ -333,12 +333,12 @@ namespace MyQuizifyGUI
                 if (isCellChecked == true)
                 {
                     q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    if (q.estado == "Publicado")
+                    if (q.estado is Publicado)
                     {
-                        q.cambiarEstado("Borrador");
+                        q.cambiarEstado(new Borrador());
                         MessageBox.Show("Quiz cancelado con éxito");
                         aux = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                        dataGridQuizes.Rows[i].Cells[7].Value = aux.estado;
+                        dataGridQuizes.Rows[i].Cells[7].Value = aux.estado.GetType().Name;
                     }
                     else MessageBox.Show("El quiz " + q.nombreQuiz + " no se puede cancelar ya que no se ha publicado todavia");
 
@@ -356,8 +356,12 @@ namespace MyQuizifyGUI
                 if (isCellChecked == true)
                 {
                     q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    EditarPreguntasMO edit = new EditarPreguntasMO(q);
-                    edit.ShowDialog();
+                    if (!(q.estado is Borrador)) MessageBox.Show("El quiz ya ha sido publicado, no puedes editar preguntas");
+                    else
+                    {
+                        EditarPreguntasMO edit = new EditarPreguntasMO(q);
+                        edit.ShowDialog();
+                    }
                 }
             }
             deseleccionarChecks();
@@ -385,6 +389,57 @@ namespace MyQuizifyGUI
             dataGridQuizes.Rows.Clear();
             mostrarQuizes();
             Cursor.Current = Cursors.Default;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Quiz q = null;
+            Quiz aux = null;
+            for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
+            {
+                bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
+                if (isCellChecked == true)
+                {
+                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
+                    //if (!(q.estado is Terminado)) MessageBox.Show("El quiz debe estar en estado Terminado para publicar los resultados");
+                    //else
+                    //{
+                        q.cambiarEstado(new ResultadosPublicados());
+                        q.notificar();
+                        MessageBox.Show("Resultados publicados con éxito");
+                        aux = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
+                        dataGridQuizes.Rows[i].Cells[7].Value = aux.estado;
+                    //}
+                    
+
+                }
+            }
+            deseleccionarChecks();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Quiz q = null;
+            Quiz aux = null;
+            for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
+            {
+                bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
+                if (isCellChecked == true)
+                {
+                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
+                    //if (!(q.estado is Publicado)) MessageBox.Show("El quiz debe estar en estado Publicado para poder finalizarlo");
+                    //else
+                    //{
+                        q.cambiarEstado(new Terminado());
+                        MessageBox.Show("Terminado con éxito");
+                        aux = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
+                        dataGridQuizes.Rows[i].Cells[7].Value = aux.estado;
+                    //}
+
+
+                }
+            }
+            deseleccionarChecks();
         }
     }
 }

@@ -54,6 +54,9 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="EASendMail, Version=7.8.0.7, Culture=neutral, PublicKeyToken=88adb80ecd66540b, processorArchitecture=MSIL">
+      <HintPath>..\packages\EASendMail.7.8.0.7\lib\net461\EASendMail.dll</HintPath>
+    </Reference>
     <Reference Include="FireSharp, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FireSharp.2.0.4\lib\portable-net45+sl5+wp8+win8\FireSharp.dll</HintPath>
     </Reference>
@@ -164,6 +167,12 @@
     </Compile>
     <Compile Include="Forms\CreacionQuizes\CrearPreguntaVF.Designer.cs">
       <DependentUpon>CrearPreguntaVF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CursosAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CursosAlumno.Designer.cs">
+      <DependentUpon>CursosAlumno.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditarPreguntas\EditarPreguntasMO.cs">
       <SubType>Form</SubType>
@@ -298,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreacionQuizes\CrearPreguntaVF.resx">
       <DependentUpon>CrearPreguntaVF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CursosAlumno.resx">
+      <DependentUpon>CursosAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditarPreguntas\EditarPreguntasMO.resx">
       <DependentUpon>EditarPreguntasMO.cs</DependentUpon>

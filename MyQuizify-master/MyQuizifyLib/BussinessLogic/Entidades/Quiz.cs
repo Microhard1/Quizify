@@ -8,27 +8,30 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using MyQuizifyLib.BussinessLogic.Servicios;
+using EASendMail;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
-    public abstract class Quiz
+    public abstract class Quiz : ISujeto
     {
-        protected ConexionBD cf = ConexionBD.getInstancia();
         private MyQuizifyServices services = new MyQuizifyServices();
 
-        public ICollection<Competencia> competencias;
         public ICollection<Pregunta> preguntas;
         public ICollection<Alumno> hechoPor;
         public ICollection<Calificacion> notasQuiz;
+        public ICollection<Competencia> competencias;
+
         private EstrategiaInforme estrategia;
 
-        public string estado;
+        public EstadoQuiz estado;
 
         public Curso asignatura;
         public Instructor creadoPor;
 
         public DateTime fechaDeInicio;
         public DateTime fechaFin;
+
+        
 
 
         public int peso;
@@ -37,48 +40,54 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public string nombreQuiz;
 
 
-        public Quiz(string nombreQuiz, Instructor creadoPor, string estado, int duracion, int peso, string dificultad,
-                DateTime inicio, DateTime fin, Curso asignatura)
+        public Quiz(string nombreQuiz, Instructor creadoPor, int duracion, int peso, string dificultad,
+                DateTime fechaDeInicio, DateTime fechaFin, Curso asignatura)
         {
-            this.estado = estado;
+            
             this.peso = peso;
             this.nombreQuiz = nombreQuiz;
             this.creadoPor = creadoPor;
             this.duracion = duracion;
             this.dificultad = dificultad;
-            this.fechaDeInicio = inicio;
-            this.fechaFin = fin;
+            this.fechaDeInicio = fechaDeInicio;
+            this.fechaFin = fechaFin;
             this.asignatura = asignatura;
-            competencias = new List<Competencia>();
             preguntas = new List<Pregunta>();
             notasQuiz = new List<Calificacion>();
+            competencias = new List<Competencia>();
+            hechoPor = new List<Alumno>();
+            
         }
 
 
 
         public void añadirPregunta(string id, string enunciado, string imagen, double puntuacion, string explicacion)
         {
-            string tipo = "";
-            if (this.GetType().Name == "QuizMO") tipo = "PreguntasMultiOpcion";
-            if (this.GetType().Name == "QuizVF") tipo = "PreguntasVerdaderoFalso";
-            if (this.GetType().Name == "QuizPA") tipo = "PreguntasAbiertas";
-
-            Pregunta p = crearPregunta(id, enunciado, imagen, puntuacion, explicacion);
-            this.preguntas.Add(p);
-            FirebaseResponse addPregunta = ConexionBD.getInstancia().client.Set("PreguntasQuiz/" + tipo + "/" +
-               this.nombreQuiz + "/" + p.id, p);
+            this.estado.añadirPregunta(id, enunciado, imagen, puntuacion, explicacion);
         }
 
+        public void borrarPregunta(Pregunta p)
+        {
+            this.estado.borrarPregunta(p);
+        }
         public abstract Pregunta crearPregunta(string id, string enunciado, string imagen, double puntuacion, string explicacion);
 
 
-        public void cambiarEstado(string estado)
+        public void cambiarEstado(EstadoQuiz estado)
         {
-            string tipoQuiz = "";
-            if (this.GetType().Name == "QuizMO") tipoQuiz = "QuizesMO";
-            if (this.GetType().Name == "QuizVF") tipoQuiz = "QuizesVF";
-            if (this.GetType().Name == "QuizPA") tipoQuiz = "QuizesPA";
-            ConexionBD.getInstancia().client.Set("/Quizes/" + tipoQuiz + "/" + nombreQuiz + "/estado", estado);
+            this.estado = estado;
+            this.estado.establecerContexto(this);
+
+            if (!(estado is Borrador))
+            {
+                string tipo = "";
+                if (this.GetType().Name == "QuizMO") tipo = "QuizesMO";
+                if (this.GetType().Name == "QuizPA") tipo = "QuizesPA";
+                if (this.GetType().Name == "QuizVF") tipo = "QuizesVF";
+
+                FirebaseResponse BorrarEstado = ConexionBD.getInstancia().client.Update(
+                    "/Quizes/" + tipo + "/" + nombreQuiz, this);
+            }
         }
 
         public bool preguntasRepetidas()
@@ -121,19 +130,19 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 
             if (this.GetType().Name == "QuizMO")
             {
-                QuizMO quiz = new QuizMO(q.nombreQuiz, a/*q.creadoPor*/, q.estado, q.duracion, q.peso, q.dificultad, q.fechaDeInicio, q.fechaFin, q.asignatura);
+                QuizMO quiz = new QuizMO(q.nombreQuiz, q.creadoPor, q.duracion, q.peso, q.dificultad, q.fechaDeInicio, q.fechaFin, q.asignatura);
                 quiz.preguntas = q.preguntas;
                 return quiz;
             }
             else if (this.GetType().Name == "QuizVF")
             {
-                QuizVF quiz = new QuizVF(q.nombreQuiz, a/*q.creadoPor*/, q.estado, q.duracion, q.peso, q.dificultad, q.fechaDeInicio, q.fechaFin, q.asignatura);
+                QuizVF quiz = new QuizVF(q.nombreQuiz, q.creadoPor, q.duracion, q.peso, q.dificultad, q.fechaDeInicio, q.fechaFin, q.asignatura);
                 quiz.preguntas = q.preguntas;
                 return quiz;
             }
             else
             {
-                QuizPA quiz = new QuizPA(q.nombreQuiz, a/*q.creadoPor*/, q.estado, q.duracion, q.peso, q.dificultad, q.fechaDeInicio, q.fechaFin, q.asignatura);
+                QuizPA quiz = new QuizPA(q.nombreQuiz, q.creadoPor, q.duracion, q.peso, q.dificultad, q.fechaDeInicio, q.fechaFin, q.asignatura);
                 quiz.preguntas = q.preguntas;
                 return quiz;
             }
@@ -151,13 +160,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             estrategia.generarInforme((List<Calificacion>)notasQuiz, this);
         }
 
-
-
-
-
-
-
-public override string ToString()
+        public override string ToString()
         {
             return "Nombre: " + nombreQuiz + "\n" +
                 "Creado por: " + creadoPor.username + "\n" +
@@ -166,34 +169,91 @@ public override string ToString()
                 + "dificultad: " + dificultad + "\n"
                 + "fechaDeInicio: " + fechaDeInicio + "\n"
                 + "fechaFin: " + fechaFin + "\n"
-                + "estado: " + estado + "\n"
-                + "asignatura: " + asignatura + "\n"; 
+                + "estado: " + estado.GetType().Name + "\n"
+                + "asignatura: " + asignatura.id + "\n";
         }
+
+       
         public void añadirCompetencias(List<Competencia> compe)
         {
             List<Competencia> auxiliar = new List<Competencia>();
             int counter = 0;
-            
-            foreach(Competencia c in compe)
+
+            foreach (Competencia c in compe)
             {
-                for(int i = 0; i < competencias.Count - 1; i++)
+                for (int i = 0; i < competencias.Count - 1; i++)
                 {
-                    if (c.texto.Equals(competencias.ToArray<Competencia>()[i].texto)){
+                    if (c.texto.Equals(competencias.ToArray<Competencia>()[i].texto))
+                    {
                         counter++;
                         break;
                     }
                 }
                 if (counter == 0) auxiliar.Add(c);
             }
-            FirebaseResponse subirCompetencias = 
-                cf.client.Set("CompetenciasQuiz/" + nombreQuiz + "/", auxiliar);       
+            FirebaseResponse subirCompetencias =
+                ConexionBD.getInstancia().client.Set("CompetenciasQuiz/" + nombreQuiz + "/", auxiliar);
         }
 
-        
+
+        public void eliminarObservador(IObservador observador)
+        {
+            hechoPor.Remove(observador as Alumno);
+        }
+        public void añadirObservador(IObservador observador)
+        {
+            hechoPor.Add(observador as Alumno);
+        }
+        public void notificar()
+        {
+            services.alumnosRealizadoQuiz(this);
+            foreach(IObservador a in hechoPor)
+            {
+                a.actualizar(this);
+            }
+        }
+
+        public void enviarNotificacion()
+        {
+            string mensaje = "";
+            List<string> mensajes = new List<string>();
+            foreach (IObservador observador in hechoPor)
+            {
+                Alumno aNotificar = (Alumno)observador;
+                FirebaseResponse nota = ConexionBD.getInstancia().client.Get("Calificaciones/" + this.nombreQuiz +
+                    "/" + aNotificar.username + "/nota");
+                double calificacion = nota.ResultAs<double>();
+                try
+                {
+                    SmtpMail objetoCorreo = new SmtpMail("TryIt");
+                    objetoCorreo.From = "quizifynotifications@gmail.com";
+                    objetoCorreo.To = aNotificar.correo;
+                    objetoCorreo.Subject = "NOTA " + this.nombreQuiz + " publicada";
+                    objetoCorreo.TextBody = "La nota del examen " + this.nombreQuiz + " ha sido Publicada \n" +
+                        aNotificar.nombre + " " + aNotificar.apellidos + " ha obtenido una calificacion de " + calificacion;
+
+                    SmtpServer objetoServidor = new SmtpServer("smtp.gmail.com");
+                    objetoServidor.User = "quizifyNotifications@gmail.com";
+                    objetoServidor.Password = "quizify1*";
+                    objetoServidor.Port = 587;
+                    objetoServidor.ConnectType = SmtpConnectType.ConnectSSLAuto;
+
+                    SmtpClient objetoCliente = new SmtpClient();
+                    objetoCliente.SendMail(objetoServidor, objetoCorreo);
+                    mensaje = "Mensaje enviado correctamente";
+                    mensajes.Add(mensaje);
+                }
+                catch (Exception e)
+                {
+                    mensaje = "Error al realizar el envio " + e.Message;
+                    mensajes.Add(mensaje);
+                }
+            }
+        }
+
+
 
 
 
     }
 }
-
-  

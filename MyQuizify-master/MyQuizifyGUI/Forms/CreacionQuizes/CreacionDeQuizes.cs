@@ -65,6 +65,7 @@ namespace MyQuizifyGUI.Forms
             string dificultad = comboBoxDificultad.Text;
             int horas = Int32.Parse(textBoxHoras.Text) * 60;
             int duracion = horas + Int32.Parse(textBoxMin.Text);
+            Curso asignatura = servicio.getCursoById(comboBoxCursos.Text);
             if (pesoQuiz < 5 || pesoQuiz > 65)
             {
                 MessageBox.Show("El peso del quiz debe estar entre 5% y 65%");
@@ -74,19 +75,23 @@ namespace MyQuizifyGUI.Forms
                 if (tipoDeQuiz == "MultiOpcion")
                 {
                     quizActual = new QuizMO(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
-                        "Borrador", duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, servicio.getCursoById(comboBoxCursos.Text));
+                        duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
+                    
                     AñadirPreguntas(quizActual);
                 }
                 else if (tipoDeQuiz == "Verdadero/Falso")
                 {
                     quizActual = new QuizVF(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
-                       "Borrador", duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, servicio.getCursoById(comboBoxCursos.Text));
+                       duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
+                    
                     AñadirPreguntas(quizActual);
                 }
                 else if (tipoDeQuiz == "Respuesta Abierta")
                 {
                     quizActual = new QuizPA(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
-                       "Borrador", duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, servicio.getCursoById(comboBoxCursos.Text));
+                       duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
+                    
+
                     AñadirPreguntas(quizActual);
                 }
                 
@@ -105,7 +110,7 @@ namespace MyQuizifyGUI.Forms
             foreach (Pregunta p in preguntas)
             {
                 p.puntuacion = (preguntas.Count * p.puntuacion) / suma;
-                q.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);
+                q.estado.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);
             }
         }
 
@@ -309,12 +314,9 @@ namespace MyQuizifyGUI.Forms
                     respuestas.Add(resp);
                 }
             }
-            string nombreQuiz = "QuizTipoTest";
-            if (textBoxNombreQuiz.Text=="")
-            {
-                nombreQuiz = textBoxNombreQuiz.Text;
-            }
-            string id = nombreQuiz+ "_" + numeroDePregunta;
+            
+            
+            string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
             if (puntuacion > 5.0 && false) MessageBox.Show("La pregunta no puede superar los 5 puntos");
             else
             {
