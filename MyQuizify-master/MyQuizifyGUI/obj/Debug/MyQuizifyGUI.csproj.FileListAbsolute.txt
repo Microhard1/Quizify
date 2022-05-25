@@ -557,6 +557,7 @@ C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Deb
 C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.csproj.CopyComplete
 C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.exe
 C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.pdb
+<<<<<<< HEAD
 C:\Users\sanco\source\repos\Microhard1\ENTREGA\Quizify\MyQuizify-master\MyQuizifyGUI\bin\Debug\MyQuizifyGUI.exe.config
 C:\Users\sanco\source\repos\Microhard1\ENTREGA\Quizify\MyQuizify-master\MyQuizifyGUI\bin\Debug\MyQuizifyGUI.exe
 C:\Users\sanco\source\repos\Microhard1\ENTREGA\Quizify\MyQuizify-master\MyQuizifyGUI\bin\Debug\MyQuizifyGUI.pdb
@@ -617,3 +618,6 @@ C:\Users\sanco\source\repos\Microhard1\ENTREGA\Quizify\MyQuizify-master\MyQuizif
 C:\Users\sanco\source\repos\Microhard1\ENTREGA\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.pdb
 C:\Users\sanco\source\repos\Microhard1\ENTREGA\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.Forms.CursosAlumno.resources
 C:\Users\sanco\source\repos\Microhard1\ENTREGA\Quizify\MyQuizify-master\MyQuizifyGUI\bin\Debug\EASendMail.dll
+=======
+C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.Forms.CursosAlumno.resources
+>>>>>>> 311092012d80c34af40a4058a326ac9642bad280

@@ -29,6 +29,7 @@ namespace MyQuizifyGUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelP1 = new System.Windows.Forms.Label();
             this.labelP4 = new System.Windows.Forms.Label();

@@ -42,7 +42,7 @@ namespace MyQuizifyGUI.Forms
         {
             OpenFileDialog open = new OpenFileDialog();
             // image filters  
-            open.Filter = "Image Files(*.jpeg;)|*.jpeg;";
+            open.Filter = "Image Files(*.jpg;)|*.jpg;";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 // display image in picture box  
@@ -51,7 +51,7 @@ namespace MyQuizifyGUI.Forms
             }
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
+            private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
         }

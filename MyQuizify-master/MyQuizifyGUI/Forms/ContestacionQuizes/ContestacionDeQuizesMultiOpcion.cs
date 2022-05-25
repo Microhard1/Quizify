@@ -48,7 +48,7 @@ namespace MyQuizifyGUI.Forms
             labelP4.Text = p.respuestas.ToArray<Respuesta>()[3].enunciado;
             
 
-        }
+            tiempo = q.duracion * 60;
 
 
         private void TiempoQuiz_Tick(object sender, EventArgs e)
@@ -72,14 +72,15 @@ namespace MyQuizifyGUI.Forms
             }
         }
 
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             guardarValores(contadorPregunta);
-            
+
             foreach (Control c in groupBox1.Controls)
                 if (c is RadioButton)
                     ((RadioButton)c).Checked = false;
-                 
+
             button2.Enabled = true;
             contadorPregunta++;
             getValorRB(contadorPregunta);
@@ -96,10 +97,10 @@ namespace MyQuizifyGUI.Forms
             labelP3.Text = p.respuestas.ToArray<Respuesta>()[2].enunciado;
             labelP4.Text = p.respuestas.ToArray<Respuesta>()[3].enunciado;
         }
-        
+
         private void button2_Click_1(object sender, EventArgs e)
         {
-            
+
             contadorPregunta--;
             button1.Enabled = true;
             if (contadorPregunta == 0) button2.Enabled = false;
@@ -152,6 +153,66 @@ namespace MyQuizifyGUI.Forms
         private void ContestacionDeQuizesMultiOpcion_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void BotonAnt_Click(object sender, EventArgs e)
+        {
+            contadorPregunta--;
+            BotonSig.Enabled = true;
+            if (contadorPregunta == 0) BotonAnt.Enabled = false;
+            Pregunta p = aContestar.preguntas.ToArray<Pregunta>()[contadorPregunta];
+            getValorRB(contadorPregunta);
+            p.respuestas = servicios.respuestasDeUnaPregunta(p.id);
+            labelEnunciado.Text = p.enunciado;
+            labelP1.Text = p.respuestas.ToArray<Respuesta>()[0].enunciado;
+            labelP2.Text = p.respuestas.ToArray<Respuesta>()[1].enunciado;
+            labelP3.Text = p.respuestas.ToArray<Respuesta>()[2].enunciado;
+            labelP4.Text = p.respuestas.ToArray<Respuesta>()[3].enunciado;
+        }
+
+        private void BotonSig_Click(object sender, EventArgs e)
+        {
+            guardarValores(contadorPregunta);
+
+            foreach (Control c in groupBox1.Controls)
+                if (c is RadioButton)
+                    ((RadioButton)c).Checked = false;
+
+            BotonAnt.Enabled = true;
+            contadorPregunta++;
+            if (contadorPregunta + 1 == aContestar.preguntas.Count)
+            {
+                BotonSig.Enabled = false;
+                button3.Enabled = true;
+            }
+            Pregunta p = aContestar.preguntas.ToArray<Pregunta>()[contadorPregunta];
+            p.respuestas = servicios.respuestasDeUnaPregunta(p.id);
+            labelEnunciado.Text = p.enunciado;
+            labelP1.Text = p.respuestas.ToArray<Respuesta>()[0].enunciado;
+            labelP2.Text = p.respuestas.ToArray<Respuesta>()[1].enunciado;
+            labelP3.Text = p.respuestas.ToArray<Respuesta>()[2].enunciado;
+            labelP4.Text = p.respuestas.ToArray<Respuesta>()[3].enunciado;
+        }
+
+        private void TiempoQuiz_Tick(object sender, EventArgs e)
+        {
+            tiempo--;
+            if (tiempo == 0)
+            {
+                var result = MessageBox.Show("Se acabó el tiempo, su quiz se enviará automáticamente", "Envio",
+                 MessageBoxButtons.OK,
+                 MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                string minutos = tiempo / 60 + "";
+                string segundos = tiempo % 60 + "";
+                labelTiempo.Text = minutos + " : " + segundos;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

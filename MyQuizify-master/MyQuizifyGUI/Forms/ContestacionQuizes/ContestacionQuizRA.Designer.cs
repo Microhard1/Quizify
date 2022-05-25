@@ -76,6 +76,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(854, 89);
             this.panel1.TabIndex = 25;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // labelTiempo
             // 
@@ -91,7 +92,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             // botonPausa
             // 
             this.botonPausa.Location = new System.Drawing.Point(774, 57);
-            this.botonPausa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonPausa.Margin = new System.Windows.Forms.Padding(2);
             this.botonPausa.Name = "botonPausa";
             this.botonPausa.Size = new System.Drawing.Size(65, 30);
             this.botonPausa.TabIndex = 19;
@@ -102,7 +103,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(122, 28);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(620, 19);
             this.progressBar1.TabIndex = 0;
@@ -122,7 +123,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             // 
             this.botonSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonSiguiente.Location = new System.Drawing.Point(305, 536);
-            this.botonSiguiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonSiguiente.Margin = new System.Windows.Forms.Padding(2);
             this.botonSiguiente.Name = "botonSiguiente";
             this.botonSiguiente.Size = new System.Drawing.Size(230, 54);
             this.botonSiguiente.TabIndex = 27;
@@ -159,7 +160,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             // botonAyuda
             // 
             this.botonAyuda.Location = new System.Drawing.Point(774, 552);
-            this.botonAyuda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonAyuda.Margin = new System.Windows.Forms.Padding(2);
             this.botonAyuda.Name = "botonAyuda";
             this.botonAyuda.Size = new System.Drawing.Size(65, 30);
             this.botonAyuda.TabIndex = 29;
@@ -180,7 +181,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxResp);
             this.Controls.Add(this.inputImagen);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ContestacionQuizRA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionQuizRA";
