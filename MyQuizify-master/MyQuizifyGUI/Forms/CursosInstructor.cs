@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FireSharp.Response;
-using MyQuizifyLib.BussinessLogic.Entidades;
+﻿using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -30,8 +23,8 @@ namespace MyQuizifyGUI.Forms
             dataGridViewCursos.Columns.Add("nombre", "Nombre");
             dataGridViewCursos.Columns.Add("id", "Id");
 
-            
-            
+
+
         }
 
         public void poblarGrid()
@@ -46,7 +39,7 @@ namespace MyQuizifyGUI.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             for (int i = 0; i < dataGridViewCursos.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridViewCursos.Rows[i].Cells[0].Value;
@@ -57,20 +50,10 @@ namespace MyQuizifyGUI.Forms
                 }
             }
 
-            for(int i = 0; i < dataGridViewCursos.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridViewCursos.Rows.Count - 1; i++)
             {
                 dataGridViewCursos.Rows[i].Cells[0].Value = false;
             }
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -79,17 +62,12 @@ namespace MyQuizifyGUI.Forms
             poblarGrid();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void botonCrearCompetencia_Click(object sender, EventArgs e)
         {
             string id = textboxID.Text;
             string definicion = textBoxDefinicon.Text;
             Curso c = new Curso(id, definicion);
-            dataGridViewCursos.Rows.Add(false,definicion,id);
+            dataGridViewCursos.Rows.Add(false, definicion, id);
             textboxID.Clear();
             textBoxDefinicon.Clear();
         }

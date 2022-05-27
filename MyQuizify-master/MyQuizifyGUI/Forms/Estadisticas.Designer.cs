@@ -115,7 +115,6 @@ namespace MyQuizifyGUI.Forms
             this.label1.Size = new System.Drawing.Size(66, 25);
             this.label1.TabIndex = 26;
             this.label1.Text = "Media";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblNombreQuiz
             // 
@@ -150,8 +149,6 @@ namespace MyQuizifyGUI.Forms
             this.dataGridEstadisticas.RowHeadersWidth = 51;
             this.dataGridEstadisticas.Size = new System.Drawing.Size(926, 389);
             this.dataGridEstadisticas.TabIndex = 23;
-            this.dataGridEstadisticas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEstadisticas_CellContentClick);
-            // 
             // textoBusqueda
             // 
             this.textoBusqueda.Location = new System.Drawing.Point(320, 93);

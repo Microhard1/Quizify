@@ -1,12 +1,5 @@
 ﻿using MyQuizifyLib.BussinessLogic.Entidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
@@ -16,7 +9,7 @@ namespace MyQuizifyGUI.Forms
         Quiz quiz;
         public SeleccionarEstrategia(Quiz q)
         {
-            this.quiz = q;
+            quiz = q;
             InitializeComponent();
         }
 
@@ -32,11 +25,6 @@ namespace MyQuizifyGUI.Forms
             quiz.SetEstrategia(new EstrategiaTXT());
             quiz.obtenerCalificaciones();
             MessageBox.Show("Informe generado correctamente");
-        }
-
-        private void SeleccionarEstrategia_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

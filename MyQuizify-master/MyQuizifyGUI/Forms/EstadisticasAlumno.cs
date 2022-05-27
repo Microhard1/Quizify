@@ -2,12 +2,6 @@
 using MyQuizifyLib.BussinessLogic.Servicios;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
@@ -31,11 +25,11 @@ namespace MyQuizifyGUI.Forms
             int count = 0;
             foreach (var calificacion in diccionarioCalificacion)
             {
-                    dataGridEstadisticas.Rows.Add(calificacion.Value.examinado.nombre, calificacion.Value.examinado.apellidos, calificacion.Value.nota);
-                    media = media + calificacion.Value.nota;
-                    count++;
-                    if (maxima < calificacion.Value.nota) { maxima = calificacion.Value.nota; }
-                    if (minima > calificacion.Value.nota) { minima = calificacion.Value.nota; }
+                dataGridEstadisticas.Rows.Add(calificacion.Value.examinado.nombre, calificacion.Value.examinado.apellidos, calificacion.Value.nota);
+                media = media + calificacion.Value.nota;
+                count++;
+                if (maxima < calificacion.Value.nota) { maxima = calificacion.Value.nota; }
+                if (minima > calificacion.Value.nota) { minima = calificacion.Value.nota; }
             }
             media = media / count;
             lblMedia.Text = media.ToString();
@@ -44,7 +38,7 @@ namespace MyQuizifyGUI.Forms
         }
         private void btbVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -64,11 +58,6 @@ namespace MyQuizifyGUI.Forms
         {
             dataGridEstadisticas.Rows.Clear();
             mostrarEstadisticas();
-        }
-
-        private void EstadisticasAlumno_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

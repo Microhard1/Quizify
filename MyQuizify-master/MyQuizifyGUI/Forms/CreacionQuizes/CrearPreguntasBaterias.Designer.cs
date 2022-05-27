@@ -56,7 +56,6 @@ namespace MyQuizifyGUI.Forms
             this.panelForms.Name = "panelForms";
             this.panelForms.Size = new System.Drawing.Size(800, 450);
             this.panelForms.TabIndex = 1;
-            this.panelForms.Paint += new System.Windows.Forms.PaintEventHandler(this.panelForms_Paint);
             // 
             // button1
             // 

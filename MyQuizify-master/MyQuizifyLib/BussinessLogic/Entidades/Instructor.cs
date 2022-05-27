@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Response;
+﻿using FireSharp.Response;
 using MyQuizifyLib.Persistencia;
+using System;
+using System.Collections.Generic;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
@@ -13,10 +10,10 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public ICollection<Quiz> quizesCreados;
         public ICollection<Pregunta> preguntasCreadas;
         ConexionBD cf = ConexionBD.getInstancia();
-        
+
 
         public Instructor(string username, string password, string nombre,
-                string apellidos, string telefono, string correo, DateTime fechaNacimiento) : 
+                string apellidos, string telefono, string correo, DateTime fechaNacimiento) :
             base(username, password, nombre, apellidos, telefono, correo, fechaNacimiento)
         {
 

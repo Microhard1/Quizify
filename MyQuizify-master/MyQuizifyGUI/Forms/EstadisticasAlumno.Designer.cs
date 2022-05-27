@@ -198,7 +198,6 @@ namespace MyQuizifyGUI.Forms
             this.Controls.Add(this.dataGridEstadisticas);
             this.Name = "EstadisticasAlumno";
             this.Text = "EstadisticasAlumno";
-            this.Load += new System.EventHandler(this.EstadisticasAlumno_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEstadisticas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -558,3 +558,4 @@ C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Deb
 C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.exe
 C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.pdb
 C:\Users\Pc\Documents\upv\soft\PSW\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.Forms.CursosAlumno.resources
+C:\Users\Usuario\OneDrive\Documentos\upv\software\psw\Quizify\MyQuizify-master\MyQuizifyGUI\obj\Debug\MyQuizifyGUI.Forms.CursosAlumno.resources

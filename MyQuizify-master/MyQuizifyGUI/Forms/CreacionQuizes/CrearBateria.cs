@@ -3,12 +3,7 @@ using MyQuizifyLib.BussinessLogic.Servicios;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
@@ -31,8 +26,8 @@ namespace MyQuizifyGUI.Forms
 
         private void CrearPregunta_Load(object sender, EventArgs e)
         {
-            
-            
+
+
         }
         void cargarDatosMO(Dictionary<string, PreguntaMO> data)
         {
@@ -40,7 +35,7 @@ namespace MyQuizifyGUI.Forms
             dataGridPreguntas.Rows.Clear();
 
             foreach (var item in data)
-            { 
+            {
                 dataGridPreguntas.Rows.Add(false, item.Key, item.Value.enunciado,
                     item.Value.puntuacion, item.Value.explicacion);
             }
@@ -50,7 +45,7 @@ namespace MyQuizifyGUI.Forms
         void cargarDatosA(Dictionary<string, PreguntaA> data)
         {
             dataGridPreguntas.Rows.Clear();
-            if (data.Count()!=0)
+            if (data.Count() != 0)
             {
                 foreach (var item in data)
                 {
@@ -83,12 +78,12 @@ namespace MyQuizifyGUI.Forms
             if (comboBox1.Text == "MultiOpcion") cargarDatosMO(preguntasMO);
             if (comboBox1.Text == "Abierta") cargarDatosA(preguntasA);
             if (comboBox1.Text == "Verdadero/Falso") cargarDatosVF(preguntasVF);
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
-            
+        {
+            Cursor.Current = Cursors.WaitCursor;
             int counter = 0;
             if (comprobarCampos())
             {
@@ -120,27 +115,28 @@ namespace MyQuizifyGUI.Forms
                 }
                 if (counter > 3)
                 {
-                    if(comboBox1.Text == "MultiOpcion")
+                    if (comboBox1.Text == "MultiOpcion")
                     {
                         BateriaMultiOpcion nuevaBateria = new BateriaMultiOpcion(textBoxNombreBateria.Text, preguntasBateria);
-                        
+
                         MessageBox.Show("Bateria creada correctamente");
                     }
                     if (comboBox1.Text == "Abierta")
                     {
                         BateriaAbierta nuevaBateria = new BateriaAbierta(textBoxNombreBateria.Text, preguntasBateria);
-                        
+
                         MessageBox.Show("Bateria creada correctamente");
                     }
                     if (comboBox1.Text == "Verdadero/Falso")
                     {
                         BateriaVerdaderoFalso nuevaBateria = new BateriaVerdaderoFalso(textBoxNombreBateria.Text, preguntasBateria);
-                        
+
                         MessageBox.Show("Bateria creada correctamente");
                     }
 
                 }
             }
+            Cursor.Current = Cursors.Default;
         }
         private bool comprobarCampos()
         {
@@ -161,8 +157,8 @@ namespace MyQuizifyGUI.Forms
                         counter++;
                     }
                 }
-                if(counter < 4) { MessageBox.Show("La bateria debe tener al menos 4 preguntas"); }
-                
+                if (counter < 4) { MessageBox.Show("La bateria debe tener al menos 4 preguntas"); }
+
             }
             return true;
         }

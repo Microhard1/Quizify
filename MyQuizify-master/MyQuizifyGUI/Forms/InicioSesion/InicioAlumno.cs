@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MyQuizifyLib.BussinessLogic.Entidades;
+﻿using MyQuizifyGUI.Forms;
 using MyQuizifyLib.Persistencia;
-using FireSharp;
-using FireSharp.Response;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using MyQuizifyGUI.Forms;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI
 {
@@ -29,9 +18,9 @@ namespace MyQuizifyGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int ancho = this.Width - (navBar.Width*2);
-            int alto = this.Height - panel1.Height;
-            AlumnoQuizes alumnoQuizes = new AlumnoQuizes(ancho,alto);
+            int ancho = Width - (navBar.Width * 2);
+            int alto = Height - panel1.Height;
+            AlumnoQuizes alumnoQuizes = new AlumnoQuizes(ancho, alto);
             abrirFormHijo(alumnoQuizes);
             cambiarColorBotones(button1.Name);
 
@@ -51,9 +40,9 @@ namespace MyQuizifyGUI
 
         private void abrirFormHijo(object formHijo)
         {
-            if (this.panelForms.Controls.Count > 0)
+            if (panelForms.Controls.Count > 0)
             {
-                this.panelForms.Controls.RemoveAt(0);
+                panelForms.Controls.RemoveAt(0);
             }
             Form formularioHijo = formHijo as Form;
             formularioHijo.TopMost = true;
@@ -62,14 +51,14 @@ namespace MyQuizifyGUI
             formularioHijo.FormBorderStyle = FormBorderStyle.None;
             formularioHijo.Width = panelForms.Width;
             formularioHijo.Height = panelForms.Height;
-            this.panelForms.Controls.Add(formularioHijo);
-            this.panelForms.Tag = formularioHijo;
+            panelForms.Controls.Add(formularioHijo);
+            panelForms.Tag = formularioHijo;
             formularioHijo.Show();
         }
 
         private void cambiarColorBotones(string nombreBoton)
         {
-            ControlCollection objetosDelFormulario = (ControlCollection)this.Controls;
+            ControlCollection objetosDelFormulario = (ControlCollection)Controls;
 
             foreach (Control c in objetosDelFormulario)
             {
@@ -96,17 +85,5 @@ namespace MyQuizifyGUI
             }
 
         }
-        private void InicioAlumno_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void panelForms_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
     }
 }

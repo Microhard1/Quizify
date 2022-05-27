@@ -60,7 +60,6 @@ namespace MyQuizifyGUI.Forms.Quizzes
             this.listaCompetencias.Name = "listaCompetencias";
             this.listaCompetencias.Size = new System.Drawing.Size(436, 326);
             this.listaCompetencias.TabIndex = 1;
-            this.listaCompetencias.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // textboxID
             // 
@@ -136,7 +135,6 @@ namespace MyQuizifyGUI.Forms.Quizzes
             this.Name = "Competencias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Competencias";
-            this.Load += new System.EventHandler(this.Competencias_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

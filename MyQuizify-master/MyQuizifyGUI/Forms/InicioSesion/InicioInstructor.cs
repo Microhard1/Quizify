@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms.InicioSesion
@@ -18,9 +12,9 @@ namespace MyQuizifyGUI.Forms.InicioSesion
         }
         private void abrirFormHijo(object formHijo)
         {
-            if (this.panelContenedor.Controls.Count > 0)
+            if (panelContenedor.Controls.Count > 0)
             {
-                this.panelContenedor.Controls.RemoveAt(0);
+                panelContenedor.Controls.RemoveAt(0);
             }
             Form formularioHijo = formHijo as Form;
             formularioHijo.TopMost = true;
@@ -29,14 +23,14 @@ namespace MyQuizifyGUI.Forms.InicioSesion
             formularioHijo.FormBorderStyle = FormBorderStyle.None;
             formularioHijo.Width = panelContenedor.Width;
             formularioHijo.Height = panelContenedor.Height;
-            this.panelContenedor.Controls.Add(formularioHijo);
-            this.panelContenedor.Tag = formularioHijo;
+            panelContenedor.Controls.Add(formularioHijo);
+            panelContenedor.Tag = formularioHijo;
             formularioHijo.Show();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             cambiarColorBotones(botonGestionQuiz.Name);
-            abrirFormHijo(new QuizesActivos()) ;
+            abrirFormHijo(new QuizesActivos());
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -61,8 +55,9 @@ namespace MyQuizifyGUI.Forms.InicioSesion
             abrirFormHijo(new CrearPreguntasBaterias());
         }
 
-        private void cambiarColorBotones(string nombreBoton) {
-            ControlCollection objetosDelFormulario = (ControlCollection)this.Controls;
+        private void cambiarColorBotones(string nombreBoton)
+        {
+            ControlCollection objetosDelFormulario = (ControlCollection)Controls;
 
             foreach (Control c in objetosDelFormulario)
             {
@@ -78,7 +73,7 @@ namespace MyQuizifyGUI.Forms.InicioSesion
                                 boton.BackColor = Color.MediumPurple;
                                 boton.ForeColor = Color.White;
                             }
-                            else 
+                            else
                             {
                                 boton.BackColor = Color.SlateBlue;
                                 boton.ForeColor = Color.Black;
@@ -87,16 +82,6 @@ namespace MyQuizifyGUI.Forms.InicioSesion
                     }
                 }
             }
-
-        }
-
-        private void panelContenedor_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void InicioInstructor_Load(object sender, EventArgs e)
-        {
 
         }
     }

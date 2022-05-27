@@ -154,7 +154,7 @@
             this.lblFechaInicio.Size = new System.Drawing.Size(93, 32);
             this.lblFechaInicio.TabIndex = 9;
             this.lblFechaInicio.Text = "label7";
-            this.lblFechaInicio.Click += new System.EventHandler(this.lblFechaInicio_Click);
+           
             // 
             // label6
             // 

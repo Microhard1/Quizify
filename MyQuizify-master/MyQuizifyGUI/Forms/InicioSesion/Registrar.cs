@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MyQuizifyLib.BussinessLogic.Entidades;
-using MyQuizifyLib.Persistencia;
-using FireSharp.Response;
-using FireSharp.Interfaces;
-using FireSharp.Config;
-using System.Text.RegularExpressions;
-using System.Globalization;
+﻿using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.BussinessLogic.Servicios;
+using MyQuizifyLib.Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -24,7 +15,7 @@ namespace MyQuizifyGUI.Forms
         MyQuizifyServices services = new MyQuizifyServices();
         Dictionary<string, Alumno> alumnosDictionary = new Dictionary<string, Alumno>();
         string tipoUsuario;
-        
+
         public Registrar()
         {
             InitializeComponent();
@@ -64,7 +55,7 @@ namespace MyQuizifyGUI.Forms
                                     textBoxCorreo.Text, dateTimeFechaNac.Value);
 
                                     MessageBox.Show("Registrado con éxito");
-                                    this.Close();
+                                    Close();
 
 
                                 }
@@ -76,7 +67,7 @@ namespace MyQuizifyGUI.Forms
                                     textBoxCorreo.Text, dateTimeFechaNac.Value);
 
                                     MessageBox.Show("Registrado con éxito");
-                                    this.Close();
+                                    Close();
                                 }
                             }
                         }
@@ -88,16 +79,18 @@ namespace MyQuizifyGUI.Forms
 
         }
 
-        public bool comprobarCampos() {
+        public bool comprobarCampos()
+        {
 
             if (textBoxNombre.Text == "" || textBoxApellidos.Text == "" || textBoxCorreo.Text == "" ||
                 textBoxTLF.Text == "" || textBoxUsername.Text == "" || textBoxPassword.Text == "" ||
-                textBoxCheckPassword.Text == "" || !dateTimeFechaNac.Checked || 
+                textBoxCheckPassword.Text == "" || !dateTimeFechaNac.Checked ||
                 !botonAlumno.Checked && !botonInstructor.Checked) return false;
             return true;
         }
 
-        public bool comprobarContraseñas() {
+        public bool comprobarContraseñas()
+        {
             if (!textBoxPassword.Text.Equals(textBoxCheckPassword.Text)) return false;
             return true;
         }
@@ -107,7 +100,7 @@ namespace MyQuizifyGUI.Forms
             if (botonAlumno.Checked)
             {
                 Alumno aux = services.getAlumnoById(nombreUser);
-                if ( aux == null) return false;
+                if (aux == null) return false;
                 else return true;
             }
             else
@@ -146,11 +139,11 @@ namespace MyQuizifyGUI.Forms
                     return match.Groups[1].Value + domainName;
                 }
             }
-            catch (RegexMatchTimeoutException e)
+            catch (RegexMatchTimeoutException)
             {
                 return false;
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
                 return false;
             }
@@ -177,6 +170,6 @@ namespace MyQuizifyGUI.Forms
             tipoUsuario = "Instructores";
         }
 
-       
+
     }
 }

@@ -68,7 +68,6 @@ namespace MyQuizifyGUI.Forms
             this.inputImagen.Size = new System.Drawing.Size(308, 357);
             this.inputImagen.TabIndex = 5;
             this.inputImagen.TabStop = false;
-            this.inputImagen.Click += new System.EventHandler(this.inputImagen_Click);
             // 
             // botonAñadirImagen
             // 
@@ -139,7 +138,6 @@ namespace MyQuizifyGUI.Forms
             this.panelFalso.Name = "panelFalso";
             this.panelFalso.Size = new System.Drawing.Size(348, 148);
             this.panelFalso.TabIndex = 7;
-            this.panelFalso.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFalso_Paint);
             // 
             // textboxExplicacion
             // 
@@ -210,7 +208,6 @@ namespace MyQuizifyGUI.Forms
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormVF";
             this.Text = "FormVF";
-            this.Load += new System.EventHandler(this.FormVF_Load);
             ((System.ComponentModel.ISupportInitialize)(this.inputImagen)).EndInit();
             this.panelVerdadero.ResumeLayout(false);
             this.panelVerdadero.PerformLayout();

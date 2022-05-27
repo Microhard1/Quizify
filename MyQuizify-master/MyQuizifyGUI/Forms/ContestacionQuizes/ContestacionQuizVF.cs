@@ -3,13 +3,9 @@ using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms.ContestacionQuizes
@@ -31,17 +27,17 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             quiz.preguntas = servicios.preguntasDeUnQuiz(q.nombreQuiz);
             preguntasSinContestar = quiz.preguntas;
             progreso = getProgreso();
-            cargarPregunta(); 
+            cargarPregunta();
             inputImagen.SizeMode = PictureBoxSizeMode.StretchImage;
-            tiempo = quiz.duracion*60;
+            tiempo = quiz.duracion * 60;
         }
         private int getProgreso()
         {
-            return 100/quiz.preguntas.Count;
+            return 100 / quiz.preguntas.Count;
         }
         private void cargarPregunta()
         {
-            if (preguntasSinContestar.Count>0)
+            if (preguntasSinContestar.Count > 0)
             {
                 Pregunta p = preguntasSinContestar.ElementAt(0);
                 Peso.Text = p.puntuacion + " puntos";
@@ -51,15 +47,15 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             }
             else
             {
-                double notaFinal = Math.Round(puntuacionAlumno / puntuacionTotal * 10,2) ;
+                double notaFinal = Math.Round(puntuacionAlumno / puntuacionTotal * 10, 2);
                 botonSiguiente.Text = "Enviar quiz";
                 var result = MessageBox.Show("Enviar test. \n Su nota ha sido un: " + notaFinal, "Envio",
                  MessageBoxButtons.YesNo,
                 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    new CalificacionVF(notaFinal,(QuizVF)quiz,servicios.getAlumnoById(cf.usuarioConectado.username));
-                    this.Close();
+                    new CalificacionVF(notaFinal, (QuizVF)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
+                    Close();
                 }
             }
 
@@ -68,7 +64,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
         {
             byte[] img = Convert.FromBase64String(preguntasSinContestar.ElementAt(0).imagen);
             MemoryStream ms = new MemoryStream(img);
-            if (ms.Length==0)
+            if (ms.Length == 0)
             {
                 return Image.FromFile("C:/Users/Usuario/OneDrive/Documentos/upv/software/psw/MyQuizify/MyQuizifyGUI/Forms/ContestacionQuizes/pregunta.jpg");
             }
@@ -78,10 +74,11 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             if (preguntasSinContestar.Count > 0)
             {
-                if (comprobarRespuesta()) {
+                if (comprobarRespuesta())
+                {
                     MessageBox.Show("Respuesta correcta");
                 }
                 preguntasSinContestar.Remove(preguntasSinContestar.ElementAt(0));
@@ -95,7 +92,8 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             Pregunta p = preguntasSinContestar.ElementAt(0);
             string res = servicios.getRespuestaVF(p);
             puntuacionTotal += p.puntuacion;
-            if (botonVerdadero.Checked && res.Contains( "True")) {
+            if (botonVerdadero.Checked && res.Contains("True"))
+            {
                 puntuacionAlumno += p.puntuacion;
                 return true;
             }
@@ -109,14 +107,14 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
 
         private void botonPausa_Click(object sender, EventArgs e)
         {
-           
+
             TiempoQuiz.Enabled = false;
             var result = MessageBox.Show("¿Desea pausar el quiz?", "Pausa",
                  MessageBoxButtons.YesNo,
                  MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
-                Quiz quizPausado = new QuizVF(quiz.nombreQuiz+"_PAUSADO", quiz.creadoPor, "Pausado", quiz.peso, tiempo/60,
+                Quiz quizPausado = new QuizVF(quiz.nombreQuiz + "_PAUSADO", quiz.creadoPor, "Pausado", quiz.peso, tiempo / 60,
                                quiz.dificultad, quiz.fechaDeInicio, quiz.fechaFin, quiz.asignatura);
                 foreach (Pregunta p in preguntasSinContestar)
                 {
@@ -127,8 +125,8 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                  MessageBoxIcon.Information);
                 if (cerrar == DialogResult.OK)
                 {
-                    this.Close();
-                }    
+                    Close();
+                }
             }
             else
             {
@@ -146,7 +144,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                  MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
-                    this.Close();
+                    Close();
                 }
             }
             else
@@ -162,11 +160,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             MessageBox.Show(preguntasSinContestar.ElementAt(0).explicacion, "Ayuda",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Question);
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

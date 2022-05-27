@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using FireSharp.Response;
+using MyQuizifyGUI.Forms;
+using MyQuizifyGUI.Forms.InicioSesion;
 using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
-using FireSharp.Response;
-using FireSharp.Interfaces;
-using FireSharp.Config;
-using MyQuizifyGUI.Forms;
-using MyQuizifyGUI.Forms.InicioSesion;
+using System;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI
 {
@@ -63,19 +54,19 @@ namespace MyQuizifyGUI
                     {
                         if (validarContraseña(_usuario, _password))
                         {
-                            
+
                             if (buttonAlumno.Checked)
                             {
                                 cf.usuarioConectado = services.getAlumnoById(_usuario);
                                 inicioAlumno.WindowState = FormWindowState.Maximized;
                                 inicioAlumno.Show();
-                                this.Hide();
+                                Hide();
                             }
                             else
                             {
                                 cf.usuarioConectado = services.getInstructorById(_usuario);
                                 inicioInstructor.Show();
-                                this.Hide();
+                                Hide();
                             }
                         }
                         else MessageBox.Show("Contraseña incorrecta");
@@ -89,7 +80,7 @@ namespace MyQuizifyGUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -171,24 +162,5 @@ namespace MyQuizifyGUI
             tipoUsuario = "Instructores";
         }
 
-        private void textBoxCheckPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void InicioSesion_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,17 +1,10 @@
 ﻿using MyQuizifyLib.BussinessLogic.Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
-using System.IO;
-using MyQuizifyLib.Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -32,7 +25,7 @@ namespace MyQuizifyGUI.Forms
         {
             InitializeComponent();
             contadorPregunta = 0;
-            this.aContestar = q;
+            aContestar = q;
             nota = 0;
             aContestar.preguntas = servicios.preguntasDeUnQuiz(aContestar.nombreQuiz);
             valores = new List<RadioButton>(aContestar.preguntas.Count);
@@ -95,7 +88,7 @@ namespace MyQuizifyGUI.Forms
         {
             Calificacion c = new Calificacion(nota, (QuizVF)aContestar, servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
             MessageBox.Show("Enviado");
-            this.Close();
+            Close();
         }
 
         private void getValorRB(int indice)
@@ -122,11 +115,6 @@ namespace MyQuizifyGUI.Forms
                         valores.Insert(indice, aux);
                         break;
                     }
-        }
-
-        private void ContestacionDeQuizesMultiOpcion_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void BotonAnt_Click(object sender, EventArgs e)
@@ -178,7 +166,7 @@ namespace MyQuizifyGUI.Forms
                  MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
-                    this.Close();
+                    Close();
                 }
             }
             else

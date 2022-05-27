@@ -3,13 +3,9 @@ using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms.ContestacionQuizes
@@ -52,7 +48,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                  MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
-                    this.Close();
+                    Close();
                 }
             }
             else
@@ -96,7 +92,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                  MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
-                Quiz quizPausado = new QuizPA(quiz.nombreQuiz + "_PAUSADO", quiz.creadoPor, "Pausado", tiempo/60 ,
+                Quiz quizPausado = new QuizPA(quiz.nombreQuiz + "_PAUSADO", quiz.creadoPor, "Pausado", tiempo / 60,
                     quiz.peso, quiz.dificultad, quiz.fechaDeInicio, quiz.fechaFin, quiz.asignatura);
                 foreach (Pregunta p in preguntasSinContestar)
                 {
@@ -107,7 +103,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                  MessageBoxIcon.Information);
                 if (cerrar == DialogResult.OK)
                 {
-                    this.Close();
+                    Close();
                 }
             }
             else
@@ -131,11 +127,11 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 botonSiguiente.Text = "Enviar quiz";
                 var result = MessageBox.Show("Enviar test. \n Su nota ha sido un: " + notaFinal, "Envio",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information) ;
+                MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
                     new Calificacion(notaFinal, (QuizVF)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
-                    this.Close();
+                    Close();
                 }
             }
 
@@ -157,16 +153,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
         {
             MessageBox.Show(preguntasSinContestar.ElementAt(0).explicacion, "Ayuda",
             MessageBoxButtons.OK, MessageBoxIcon.Question);
-        }
-
-        private void ContestacionQuizRA_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

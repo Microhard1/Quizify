@@ -237,7 +237,6 @@ namespace MyQuizifyGUI.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CrearPreguntaMO";
             this.Text = "CrearPreguntaMO";
-            this.Load += new System.EventHandler(this.CrearPreguntaMO_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

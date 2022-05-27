@@ -62,9 +62,11 @@ namespace MyQuizifyGUI.Forms
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(121, 231);
+            this.groupBox1.Location = new System.Drawing.Point(161, 284);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(661, 218);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(881, 268);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -72,9 +74,10 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelP1.AutoSize = true;
             this.labelP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP1.Location = new System.Drawing.Point(65, 29);
+            this.labelP1.Location = new System.Drawing.Point(87, 36);
+            this.labelP1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP1.Name = "labelP1";
-            this.labelP1.Size = new System.Drawing.Size(60, 24);
+            this.labelP1.Size = new System.Drawing.Size(79, 29);
             this.labelP1.TabIndex = 8;
             this.labelP1.Text = "label1";
             // 
@@ -82,9 +85,10 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelP4.AutoSize = true;
             this.labelP4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.labelP4.Location = new System.Drawing.Point(65, 146);
+            this.labelP4.Location = new System.Drawing.Point(87, 180);
+            this.labelP4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP4.Name = "labelP4";
-            this.labelP4.Size = new System.Drawing.Size(72, 24);
+            this.labelP4.Size = new System.Drawing.Size(93, 29);
             this.labelP4.TabIndex = 7;
             this.labelP4.Text = "textoP4";
             // 
@@ -92,9 +96,10 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelP3.AutoSize = true;
             this.labelP3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.labelP3.Location = new System.Drawing.Point(62, 107);
+            this.labelP3.Location = new System.Drawing.Point(83, 132);
+            this.labelP3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP3.Name = "labelP3";
-            this.labelP3.Size = new System.Drawing.Size(72, 24);
+            this.labelP3.Size = new System.Drawing.Size(93, 29);
             this.labelP3.TabIndex = 6;
             this.labelP3.Text = "textoP3";
             // 
@@ -102,18 +107,20 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelP2.AutoSize = true;
             this.labelP2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.labelP2.Location = new System.Drawing.Point(62, 67);
+            this.labelP2.Location = new System.Drawing.Point(83, 82);
+            this.labelP2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP2.Name = "labelP2";
-            this.labelP2.Size = new System.Drawing.Size(72, 24);
+            this.labelP2.Size = new System.Drawing.Size(93, 29);
             this.labelP2.TabIndex = 5;
             this.labelP2.Text = "textoP2";
             // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(24, 151);
+            this.radioButton4.Location = new System.Drawing.Point(32, 186);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(33, 17);
+            this.radioButton4.Size = new System.Drawing.Size(39, 21);
             this.radioButton4.TabIndex = 3;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "D";
@@ -122,9 +129,10 @@ namespace MyQuizifyGUI.Forms
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(24, 112);
+            this.radioButton3.Location = new System.Drawing.Point(32, 138);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(32, 17);
+            this.radioButton3.Size = new System.Drawing.Size(38, 21);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "C";
@@ -133,9 +141,10 @@ namespace MyQuizifyGUI.Forms
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(24, 72);
+            this.radioButton2.Location = new System.Drawing.Point(32, 89);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(32, 17);
+            this.radioButton2.Size = new System.Drawing.Size(38, 21);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "B";
@@ -144,9 +153,10 @@ namespace MyQuizifyGUI.Forms
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(24, 34);
+            this.radioButton1.Location = new System.Drawing.Point(32, 42);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(32, 17);
+            this.radioButton1.Size = new System.Drawing.Size(38, 21);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "A";
@@ -156,9 +166,10 @@ namespace MyQuizifyGUI.Forms
             // 
             this.labelEnunciado.AutoSize = true;
             this.labelEnunciado.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEnunciado.Location = new System.Drawing.Point(115, 156);
+            this.labelEnunciado.Location = new System.Drawing.Point(153, 192);
+            this.labelEnunciado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEnunciado.Name = "labelEnunciado";
-            this.labelEnunciado.Size = new System.Drawing.Size(189, 33);
+            this.labelEnunciado.Size = new System.Drawing.Size(241, 42);
             this.labelEnunciado.TabIndex = 8;
             this.labelEnunciado.Text = "ENUNCIADO";
             // 
@@ -170,44 +181,45 @@ namespace MyQuizifyGUI.Forms
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(856, 89);
+            this.panel1.Size = new System.Drawing.Size(1141, 110);
             this.panel1.TabIndex = 18;
             // 
             // labelTiempo
             // 
             this.labelTiempo.AutoSize = true;
             this.labelTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTiempo.Location = new System.Drawing.Point(762, 27);
-            this.labelTiempo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTiempo.Location = new System.Drawing.Point(1016, 33);
             this.labelTiempo.Name = "labelTiempo";
-            this.labelTiempo.Size = new System.Drawing.Size(88, 18);
+            this.labelTiempo.Size = new System.Drawing.Size(115, 24);
             this.labelTiempo.TabIndex = 20;
             this.labelTiempo.Text = "labelTiempo";
             // 
             // botonPausa
             // 
-            this.botonPausa.Location = new System.Drawing.Point(774, 57);
-            this.botonPausa.Margin = new System.Windows.Forms.Padding(2);
+            this.botonPausa.Location = new System.Drawing.Point(1032, 70);
+            this.botonPausa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.botonPausa.Name = "botonPausa";
-            this.botonPausa.Size = new System.Drawing.Size(65, 30);
+            this.botonPausa.Size = new System.Drawing.Size(87, 37);
             this.botonPausa.TabIndex = 19;
             this.botonPausa.Text = "Pausar";
             this.botonPausa.UseVisualStyleBackColor = true;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(122, 28);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
+            this.progressBar1.Location = new System.Drawing.Point(163, 34);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(620, 19);
+            this.progressBar1.Size = new System.Drawing.Size(827, 23);
             this.progressBar1.TabIndex = 0;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(386, 455);
+            this.button3.Location = new System.Drawing.Point(515, 560);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 33);
+            this.button3.Size = new System.Drawing.Size(125, 41);
             this.button3.TabIndex = 19;
             this.button3.Text = "Enviar";
             this.button3.UseVisualStyleBackColor = true;
@@ -215,9 +227,10 @@ namespace MyQuizifyGUI.Forms
             // 
             // BotonSig
             // 
-            this.BotonSig.Location = new System.Drawing.Point(584, 455);
+            this.BotonSig.Location = new System.Drawing.Point(779, 560);
+            this.BotonSig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonSig.Name = "BotonSig";
-            this.BotonSig.Size = new System.Drawing.Size(94, 33);
+            this.BotonSig.Size = new System.Drawing.Size(125, 41);
             this.BotonSig.TabIndex = 20;
             this.BotonSig.Text = "Siguiente";
             this.BotonSig.UseVisualStyleBackColor = true;
@@ -225,9 +238,10 @@ namespace MyQuizifyGUI.Forms
             // 
             // BotonAnt
             // 
-            this.BotonAnt.Location = new System.Drawing.Point(210, 455);
+            this.BotonAnt.Location = new System.Drawing.Point(280, 560);
+            this.BotonAnt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BotonAnt.Name = "BotonAnt";
-            this.BotonAnt.Size = new System.Drawing.Size(94, 33);
+            this.BotonAnt.Size = new System.Drawing.Size(125, 41);
             this.BotonAnt.TabIndex = 21;
             this.BotonAnt.Text = "Anterior";
             this.BotonAnt.UseVisualStyleBackColor = true;
@@ -241,19 +255,19 @@ namespace MyQuizifyGUI.Forms
             // 
             // ContestacionDeQuizesMultiOpcion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 516);
+            this.ClientSize = new System.Drawing.Size(1141, 635);
             this.Controls.Add(this.BotonAnt);
             this.Controls.Add(this.BotonSig);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelEnunciado);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ContestacionDeQuizesMultiOpcion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionDeQuizesMultiOpcion";
-            this.Load += new System.EventHandler(this.ContestacionDeQuizesMultiOpcion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

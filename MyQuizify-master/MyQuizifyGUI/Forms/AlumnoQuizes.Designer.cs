@@ -48,7 +48,6 @@ namespace MyQuizifyGUI.Forms
             this.dataGridQuizes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridQuizes.Size = new System.Drawing.Size(764, 399);
             this.dataGridQuizes.TabIndex = 0;
-            this.dataGridQuizes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridQuizes_CellContentClick);
             // 
             // label1
             // 

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
@@ -18,7 +11,7 @@ namespace MyQuizifyGUI.Forms
             InitializeComponent();
         }
 
-      
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -29,11 +22,6 @@ namespace MyQuizifyGUI.Forms
             cb.Height = panelForms.Height;
             panelForms.Controls.Add(cb);
             cb.Show();
-        }
-
-        private void panelForms_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
