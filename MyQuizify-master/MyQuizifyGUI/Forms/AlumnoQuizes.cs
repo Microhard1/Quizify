@@ -15,11 +15,13 @@ namespace MyQuizifyGUI.Forms
         MyQuizifyServices services = new MyQuizifyServices();
         int tiempo = 53;
         int ancho, alto;
-        public AlumnoQuizes(int ancho, int alto)
+        Aplicacion app;
+        public AlumnoQuizes(int ancho, int alto, Aplicacion app)
         {
             InitializeComponent();
             this.ancho = ancho;
             this.alto = alto;
+            this.app = app;
         }
 
         private void AlumnoQuizes_Load(object sender, EventArgs e)

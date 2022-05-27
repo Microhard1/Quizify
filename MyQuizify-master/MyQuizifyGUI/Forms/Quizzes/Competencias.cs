@@ -17,8 +17,6 @@ namespace MyQuizifyGUI.Forms.Quizzes
             InitializeComponent();
             listaQuizes = q;
             listaComp = new List<Competencia>();
-
-
         }
 
         private void cargarCompetencias()

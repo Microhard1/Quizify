@@ -13,9 +13,11 @@ namespace MyQuizifyGUI.Forms.Quizzes
     {
         MyQuizifyServices services = new MyQuizifyServices();
         ConexionBD cf = ConexionBD.getInstancia();
-        public Clonacion_de_Quizes()
+        Aplicacion app;
+        public Clonacion_de_Quizes(Aplicacion app)
         {
             InitializeComponent();
+            this.app = app;
         }
 
         private void Clonacion_de_Quizes_Load(object sender, EventArgs e)

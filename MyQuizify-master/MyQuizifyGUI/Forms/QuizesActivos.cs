@@ -24,7 +24,7 @@ namespace MyQuizifyGUI
             this.app = app;
             InitializeComponent();
             q = new CrearQuiz();
-            clonacionForm = new Clonacion_de_Quizes();
+            clonacionForm = new Clonacion_de_Quizes(app);
         }
 
         private void button1_Click(object sender, EventArgs e)

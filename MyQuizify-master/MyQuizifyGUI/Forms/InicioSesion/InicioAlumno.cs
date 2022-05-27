@@ -1,4 +1,5 @@
 ﻿using MyQuizifyGUI.Forms;
+using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.Persistencia;
 using System;
 using System.Drawing;
@@ -10,10 +11,12 @@ namespace MyQuizifyGUI
     {
         ConexionBD cf = ConexionBD.getInstancia();
         private CrearQuiz crearQuizForm;
-        public InicioAlumno()
+        Aplicacion app;
+        public InicioAlumno(Aplicacion app)
         {
             InitializeComponent();
             crearQuizForm = new CrearQuiz();
+            this.app = app;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,7 +30,7 @@ namespace MyQuizifyGUI
         }
         private void button3_Click(object sender, EventArgs e)
         {   
-            abrirFormHijo(new CursosAlumno());
+            abrirFormHijo(new CursosAlumno(app));
             cambiarColorBotones(button3.Name);
             
         }

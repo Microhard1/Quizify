@@ -22,7 +22,7 @@ namespace MyQuizifyGUI
         {
             InitializeComponent();
             app = new Aplicacion();
-            inicioAlumno = new InicioAlumno();
+            inicioAlumno = new InicioAlumno(app);
             inicioAlumno.WindowState = FormWindowState.Maximized;
             inicioInstructor = new InicioInstructor(app);
             inicioInstructor.WindowState = FormWindowState.Maximized;

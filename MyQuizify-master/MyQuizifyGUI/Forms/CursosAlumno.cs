@@ -9,11 +9,13 @@ namespace MyQuizifyGUI.Forms
     public partial class CursosAlumno : Form
     {
         MyQuizifyServices services = new MyQuizifyServices();
-        public CursosAlumno()
+        Aplicacion app;
+        public CursosAlumno(Aplicacion app)
         {
             InitializeComponent();
             dataGridViewCursos.Columns.Add("nombre", "Nombre");
             dataGridViewCursos.Columns.Add("id", "Id");
+            this.app = app;
         }
 
         private void button2_Click(object sender, EventArgs e)
