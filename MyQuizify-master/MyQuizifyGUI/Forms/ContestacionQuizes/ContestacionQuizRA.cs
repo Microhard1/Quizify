@@ -92,7 +92,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                  MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
-                Quiz quizPausado = new QuizPA(quiz.nombreQuiz + "_PAUSADO", quiz.creadoPor, "Pausado", tiempo / 60,
+                Quiz quizPausado = new QuizPA(quiz.nombreQuiz + "_PAUSADO", quiz.creadoPor, tiempo/60 ,
                     quiz.peso, quiz.dificultad, quiz.fechaDeInicio, quiz.fechaFin, quiz.asignatura);
                 foreach (Pregunta p in preguntasSinContestar)
                 {
@@ -130,8 +130,8 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    new Calificacion(notaFinal, (QuizVF)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
-                    Close();
+                    new CalificacionVF(notaFinal, (QuizVF)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
+                    this.Close();
                 }
             }
 

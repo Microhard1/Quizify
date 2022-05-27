@@ -137,30 +137,35 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             FirebaseResponse quizesMO = cf.client.Get(@"Quizes/QuizesMO");
             Dictionary<string, QuizMO> quizesMultiOpcion =
                 JsonConvert.DeserializeObject<Dictionary<string, QuizMO>>(quizesMO.Body.ToString());
-
-            foreach (var item in quizesMultiOpcion)
+            if (quizesMultiOpcion != null)
             {
-                quizes.Add(getQuizById(item.Value.nombreQuiz));
+                foreach (var item in quizesMultiOpcion)
+                {
+                    quizes.Add(getQuizById(item.Value.nombreQuiz));
+                }
             }
 
             FirebaseResponse quizesVF = cf.client.Get(@"Quizes/QuizesVF");
             Dictionary<string, QuizVF> quizesVerdaderoFalso =
                 JsonConvert.DeserializeObject<Dictionary<string, QuizVF>>(quizesVF.Body.ToString());
-
-            foreach (var item in quizesVerdaderoFalso)
+            if (quizesVerdaderoFalso != null)
             {
-                quizes.Add(getQuizById(item.Value.nombreQuiz));
+                foreach (var item in quizesVerdaderoFalso)
+                {
+                    quizes.Add(getQuizById(item.Value.nombreQuiz));
+                }
             }
 
             FirebaseResponse quizesPA = cf.client.Get(@"Quizes/QuizesPA");
             Dictionary<string, QuizPA> quizesPreguntaAbierta =
                 JsonConvert.DeserializeObject<Dictionary<string, QuizPA>>(quizesPA.Body.ToString());
-
-            foreach (var item in quizesPreguntaAbierta)
+            if (quizesPreguntaAbierta != null)
             {
-                quizes.Add(getQuizById(item.Value.nombreQuiz));
+                foreach (var item in quizesPreguntaAbierta)
+                {
+                    quizes.Add(getQuizById(item.Value.nombreQuiz));
+                }
             }
-
             return quizes;
         }
 
@@ -442,7 +447,20 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             return null;
         }
 
-
+        public void alumnosRealizadoQuiz(Quiz q)
+        {
+            FirebaseResponse alumnos = cf.client.Get(@"/Calificaciones/" + q.nombreQuiz);
+            Dictionary<string, Calificacion> alumnosQuiz =
+                JsonConvert.DeserializeObject<Dictionary<string, Calificacion>>(alumnos.Body.ToString());
+            if (alumnosQuiz != null)
+            {
+                foreach (var a in alumnosQuiz)
+                {
+                    q.hechoPor.Add(getAlumnoById(a.Key));
+                }
+            }
+        }
+        
 
 
     }

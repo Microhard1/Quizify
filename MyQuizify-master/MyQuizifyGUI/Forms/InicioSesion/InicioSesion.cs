@@ -11,7 +11,7 @@ namespace MyQuizifyGUI
 {
     public partial class InicioSesion : Form
     {
-
+        Aplicacion app;
         MyQuizifyServices services = new MyQuizifyServices();
         ConexionBD cf = ConexionBD.getInstancia();
         private InicioAlumno inicioAlumno;
@@ -21,17 +21,15 @@ namespace MyQuizifyGUI
         public InicioSesion()
         {
             InitializeComponent();
+            app = new Aplicacion();
             inicioAlumno = new InicioAlumno();
             inicioAlumno.WindowState = FormWindowState.Maximized;
-            inicioInstructor = new InicioInstructor();
+            inicioInstructor = new InicioInstructor(app);
             inicioInstructor.WindowState = FormWindowState.Maximized;
-
         }
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
+            
             string _usuario;
             string _password;
             int num = comprobarCredenciales();

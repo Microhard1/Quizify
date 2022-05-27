@@ -30,7 +30,7 @@ namespace MyQuizifyLib.Persistencia
                 AuthSecret = "DGyUyvyoCUWhjlh0kG5W1r3y0WxGwjULCdrxi8q2",
                 BasePath = "https://nueva-bdd-default-rtdb.firebaseio.com/"
             };
-            client = new FireSharp.FirebaseClient(conexionMicrohard);
+            client = new FireSharp.FirebaseClient(conexionNuevaBDD);
         }
 
         public static ConexionBD getInstancia()

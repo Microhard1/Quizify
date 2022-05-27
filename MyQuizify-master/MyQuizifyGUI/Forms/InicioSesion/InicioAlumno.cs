@@ -26,10 +26,10 @@ namespace MyQuizifyGUI
 
         }
         private void button3_Click(object sender, EventArgs e)
-        {
-            CursosAlumno cursosAl = new CursosAlumno();
-            abrirFormHijo(cursosAl);
+        {   
+            abrirFormHijo(new CursosAlumno());
             cambiarColorBotones(button3.Name);
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

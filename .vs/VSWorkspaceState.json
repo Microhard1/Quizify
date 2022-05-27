@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\MyQuizify-master",
-    "\\MyQuizify-master\\MyQuizifyGUI",
-    "\\MyQuizify-master\\MyQuizifyGUI\\Forms",
-    "\\MyQuizify-master\\MyQuizifyGUI\\Forms\\CreacionQuizes"
+    ""
   ],
-  "SelectedNode": "\\MyQuizify-master\\MyQuizifyGUI\\Forms\\CreacionQuizes\\CrearPreguntaMO.cs",
+  "SelectedNode": "\\MyQuizify.sln",
   "PreviewInSolutionExplorer": false
 }
