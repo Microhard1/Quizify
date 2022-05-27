@@ -43,7 +43,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public Quiz(string nombreQuiz, Instructor creadoPor, int duracion, int peso, string dificultad,
                 DateTime fechaDeInicio, DateTime fechaFin, Curso asignatura)
         {
-            
+            cambiarEstado(new Borrador());
             this.peso = peso;
             this.nombreQuiz = nombreQuiz;
             this.creadoPor = creadoPor;
@@ -77,17 +77,6 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         {
             this.estado = estado;
             this.estado.establecerContexto(this);
-
-            if (!(estado is Borrador))
-            {
-                string tipo = "";
-                if (this.GetType().Name == "QuizMO") tipo = "QuizesMO";
-                if (this.GetType().Name == "QuizPA") tipo = "QuizesPA";
-                if (this.GetType().Name == "QuizVF") tipo = "QuizesVF";
-
-                FirebaseResponse BorrarEstado = ConexionBD.getInstancia().client.Update(
-                    "/Quizes/" + tipo + "/" + nombreQuiz, this);
-            }
         }
 
         public bool preguntasRepetidas()

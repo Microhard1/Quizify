@@ -15,6 +15,7 @@ using FireSharp.Config;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using MyQuizifyLib.BussinessLogic.Servicios;
+using System.Security.Cryptography;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -58,7 +59,16 @@ namespace MyQuizifyGUI.Forms
                             {
                                 if (botonAlumno.Checked)
                                 {
-                                    string passwordEncrypted = Encriptador.GetSHA256(textBoxPassword.Text);
+                                    string passwordEncrypted;
+                                    
+                                    SHA256 sha256 = SHA256Managed.Create();
+                                    ASCIIEncoding encoding = new ASCIIEncoding();
+                                    byte[] stream = null;
+                                    StringBuilder sb = new StringBuilder();
+                                    stream = sha256.ComputeHash(encoding.GetBytes(textBoxPassword.Text));
+                                    for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+                                    passwordEncrypted = sb.ToString();
+                                    
                                     Alumno nuevoAlumno = new Alumno(nombreUsuario, passwordEncrypted,
                                     textBoxNombre.Text, textBoxApellidos.Text, textBoxTLF.Text,
                                     textBoxCorreo.Text, dateTimeFechaNac.Value);

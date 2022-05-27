@@ -172,7 +172,6 @@ namespace MyQuizifyGUI.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(856, 89);
             this.panel1.TabIndex = 18;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // labelTiempo
             // 
@@ -203,7 +202,6 @@ namespace MyQuizifyGUI.Forms
             this.TiempoQuiz.Name = "TiempoQuiz";
             this.TiempoQuiz.Size = new System.Drawing.Size(620, 19);
             this.TiempoQuiz.TabIndex = 0;
-            this.TiempoQuiz.Click += new System.EventHandler(this.TiempoQuiz_Click);
             // 
             // button3
             // 
@@ -249,7 +247,6 @@ namespace MyQuizifyGUI.Forms
             this.Name = "ContestacionDeQuizesMultiOpcion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionDeQuizesMultiOpcion";
-            this.Load += new System.EventHandler(this.ContestacionDeQuizesMultiOpcion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

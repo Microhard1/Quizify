@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyQuizifyLib.BussinessLogic.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace MyQuizifyGUI.Forms.InicioSesion
 {
     public partial class InicioInstructor : Form
     {
-        public InicioInstructor()
+        Aplicacion app;
+        public InicioInstructor(Aplicacion app)
         {
+            this.app = app;
             InitializeComponent();
         }
         private void abrirFormHijo(object formHijo)
@@ -36,7 +39,7 @@ namespace MyQuizifyGUI.Forms.InicioSesion
         private void button1_Click(object sender, EventArgs e)
         {
             cambiarColorBotones(botonGestionQuiz.Name);
-            abrirFormHijo(new QuizesActivos()) ;
+            abrirFormHijo(new QuizesActivos(app)) ;
         }
 
         private void button3_Click(object sender, EventArgs e)

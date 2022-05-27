@@ -14,16 +14,15 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public ICollection<Curso> listadoCursos;
         public ICollection<Alumno> listadoAlumnos;
         public ICollection<Instructor> listadoInstructores;
-        public ICollection<QuizMO> listadoQuizesMO;
-        public ICollection<QuizPA> listadoQuizesPA;
-        public ICollection<QuizVF> listadoQuizesVF;
+        public List<Quiz> quizesActivos;
         public ICollection<PreguntaMO> listadoPreguntasMO;
         public ICollection<PreguntaVF> listadoPreguntasVF;
         public ICollection<PreguntaA> listadoPreguntasA;
 
         public Aplicacion()
         {
-            this.listadoCursos = services.listarCursos();
+            quizesActivos = services.listaQuizes();
+            listadoCursos = services.listarCursos();
         }
 
 

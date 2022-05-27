@@ -22,12 +22,14 @@ namespace MyQuizifyGUI
 {
     public partial class QuizesActivos : Form
     {
+        Aplicacion app;
         private CrearQuiz q;
         private Clonacion_de_Quizes clonacionForm;
         ConexionBD cf = ConexionBD.getInstancia();
         MyQuizifyServices services = new MyQuizifyServices();
-        public QuizesActivos()
+        public QuizesActivos(Aplicacion app)
         {
+            this.app = app;
             InitializeComponent();
             q = new CrearQuiz();
             clonacionForm = new Clonacion_de_Quizes();
@@ -48,6 +50,7 @@ namespace MyQuizifyGUI
             dataGridQuizes.Columns.Add("fechaFin", "Fin");
             dataGridQuizes.Columns.Add("estado", "Estado");
             
+            
 
         }
 
@@ -63,142 +66,20 @@ namespace MyQuizifyGUI
 
         public void mostrarQuizes()
         {
-            dataGridQuizes.Rows.Clear();
-                FirebaseResponse quizesMO = cf.client.Get(@"Quizes/QuizesMO");
-                Dictionary<string, QuizMO> quizesMultiOpcion =
-                    JsonConvert.DeserializeObject<Dictionary<string, QuizMO>>(quizesMO.Body.ToString());
-                if (quizesMultiOpcion != null)
-                {
-                    foreach (var q in quizesMultiOpcion)
-                    {
-                        if (q.Value.creadoPor.username == cf.usuarioConectado.username)
-                        {
-                            dataGridQuizes.Rows.Add(false, q.Key, "MultiOpcion", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
-                        }
-                    }
-                }
-
-                FirebaseResponse quizesA = cf.client.Get(@"Quizes/QuizesPA");
-                Dictionary<string, QuizPA> quizesAbiertos =
-                    JsonConvert.DeserializeObject<Dictionary<string, QuizPA>>(quizesA.Body.ToString());
-                if (quizesAbiertos != null)
-                {
-                    foreach (var q in quizesAbiertos)
-                    {
-                        if (q.Value.creadoPor.username == cf.usuarioConectado.username)
-                        {
-                            dataGridQuizes.Rows.Add(false, q.Key, "Pregunta Abierta", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
-                        }
-                    }
-                }
-
-                FirebaseResponse quizesVF = cf.client.Get(@"Quizes/QuizesVF");
-                Dictionary<string, QuizVF> quizesVerdaderoFalso =
-                    JsonConvert.DeserializeObject<Dictionary<string, QuizVF>>(quizesVF.Body.ToString());
-                if (quizesVerdaderoFalso != null)
-                {
-                    foreach (var q in quizesVerdaderoFalso)
-                    {
-                        if (q.Value.creadoPor.username == cf.usuarioConectado.username)
-                        {
-                            dataGridQuizes.Rows.Add(false, q.Key, "Verdadero/Falso", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
-                        }
-                    }
-                }
-
-
-        }
-
-        public void cambiarEstado(string estadoQuiz)
-        {
-            for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
+            app.quizesActivos = services.listaQuizes();
+            foreach (Quiz q in app.quizesActivos)
             {
-                bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
-                if (isCellChecked == true && dataGridQuizes.Rows[i].Cells[1].Value != null)
+                if (q.creadoPor.username == cf.usuarioConectado.username)
                 {
-                    string tipo = services.getTipoQuiz(services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString()));
-                    string nombreQuiz = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
-                    FirebaseResponse editarEstado =
-                        cf.client.Get("/Quizes/" + tipo + "/" + nombreQuiz);
-
-                    if (tipo == "QuizesMO")
-                    {
-
-                        Quiz quizMO = editarEstado.ResultAs<QuizMO>();
-                        cf.client.Set("Quizes/QuizesMO/" + nombreQuiz + "/", quizMO);
-                    }
-                    if (tipo == "QuizesPA")
-                    {
-
-                        Quiz quizPA = editarEstado.ResultAs<QuizPA>();
-                        cf.client.Set("Quizes/QuizesPA/" + nombreQuiz + "/", quizPA);
-                    }
-                    if (tipo == "QuizesVF")
-                    {
-                        Quiz quizVF = editarEstado.ResultAs<QuizVF>();
-                        cf.client.Set("Quizes/QuizesVF/" + nombreQuiz + "/", quizVF);
-                    }
-
-                    dataGridQuizes.Rows[i].Cells[7].Value = estadoQuiz;
+                    dataGridQuizes.Rows.Add(false, q.nombreQuiz, "MultiOpcion", q.dificultad, q.duracion, q.fechaDeInicio, q.fechaFin, q.estado.GetType().Name);
                 }
             }
+            
         }
-
 
         private void comboBoxEstados_SelectedIndexChanged(object sender, EventArgs e)
         {
             string estado = comboBoxEstados.Text;
-            mostrarQuizesFiltrados(estado);
-        }
-
-        
-        public void mostrarQuizesFiltrados(string filtro)
-        {
-            dataGridQuizes.Rows.Clear();
-
-            FirebaseResponse borrador = cf.client.Get(@"Estados/Borrador/");
-            Dictionary<string, QuizMO> quizesMultiOpcion =
-                JsonConvert.DeserializeObject<Dictionary<string, QuizMO>>(borrador.Body.ToString());
-            if (quizesMultiOpcion != null)
-            {
-                foreach (var q in quizesMultiOpcion)
-                {
-                    if (q.Value.estado.GetType().Name == filtro && q.Value.creadoPor.username == cf.usuarioConectado.username)
-                    {
-                        dataGridQuizes.Rows.Add(false, q.Key, "MultiOpcion", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
-                    }
-                }
-            }
-
-            FirebaseResponse quizesA = cf.client.Get(@"Quizes/QuizesPA");
-            Dictionary<string, QuizPA> quizesAbiertos =
-                JsonConvert.DeserializeObject<Dictionary<string, QuizPA>>(quizesA.Body.ToString());
-            if (quizesAbiertos != null)
-            {
-                foreach (var q in quizesAbiertos)
-                {
-                    if (q.Value.estado.GetType().Name == filtro && q.Value.creadoPor.username == cf.usuarioConectado.username)
-                    {
-                        dataGridQuizes.Rows.Add(false, q.Key, "Pregunta Abierta", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
-                    }
-                }
-            }
-
-            FirebaseResponse quizesVF = cf.client.Get(@"Quizes/QuizesVF");
-            Dictionary<string, QuizVF> quizesVerdaderoFalso =
-                JsonConvert.DeserializeObject<Dictionary<string, QuizVF>>(quizesVF.Body.ToString());
-            if (quizesVerdaderoFalso != null)
-            {
-                foreach (var q in quizesVerdaderoFalso)
-                {
-                    if (q.Value.estado.GetType().Name == filtro && q.Value.creadoPor.username == cf.usuarioConectado.username)
-                    {
-                        dataGridQuizes.Rows.Add(false, q.Key, "Verdadero/Falso", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado.GetType().Name);
-                    }
-                }
-            }
-
-            
         }
 
         public void eliminarDatosGrid()
@@ -225,16 +106,23 @@ namespace MyQuizifyGUI
         private void button2_Click(object sender, EventArgs e)
         {
             List<Calificacion> calificacionesQuiz = new List<Calificacion>();
-            Quiz q = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
-                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    calificacionesQuiz = services.listarCalificaciones(q);
-                    SeleccionarEstrategia sel = new SeleccionarEstrategia(q);
-                    sel.ShowDialog();
+                    string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
+                    foreach (Quiz q in app.quizesActivos)
+                    {
+                        if(q.nombreQuiz == nombre)
+                        {  
+                            calificacionesQuiz = services.listarCalificaciones(q);
+                            SeleccionarEstrategia sel = new SeleccionarEstrategia(q);
+                            sel.ShowDialog();
+                            break;
+                        }
+                    }
+                    
                 }
             }
         }
@@ -251,47 +139,56 @@ namespace MyQuizifyGUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Quiz q = null;
+            Quiz quiz = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
-                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
+                    quiz = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
                 }
             }
-            Estadisticas estadisticas = new Estadisticas(q);
-            estadisticas.ShowDialog();
+            if (quiz != null)
+            {
+                Estadisticas estadisticas = new Estadisticas(quiz);
+                estadisticas.ShowDialog();
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Quiz q = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
-                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    dataGridQuizes.Rows.Remove(dataGridQuizes.Rows[i]);
-                    string tipo = q.GetType().Name;
-                    if (tipo == "QuizMO") {
-                        cf.client.Delete("Quizes/QuizesMO/" + q.nombreQuiz);
-                        cf.client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
-                    }
-                   
-                        
-                    else if (tipo == "QuizVF")
+                    string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
+                    foreach (Quiz q in app.quizesActivos)
                     {
-                        cf.client.Delete("Quizes/QuizesVF/" + q.nombreQuiz);
-                        cf.client.Delete("Preguntas/PreguntasVerdaderoFalso/" + q.nombreQuiz);
-                    }
-                        
-                        
-                    else if (tipo == "QuizPA")
-                    {
-                        cf.client.Delete("Quizes/QuizesPA/" + q.nombreQuiz);
-                        cf.client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
+                        if (q.nombreQuiz == nombre)
+                        {
+                            dataGridQuizes.Rows.Remove(dataGridQuizes.Rows[i]);
+                            string tipo = q.GetType().Name;
+                            if (tipo == "QuizMO")
+                            {
+                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesMO/" + q.nombreQuiz);
+                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
+                            }
+
+
+                            else if (tipo == "QuizVF")
+                            {
+                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesVF/" + q.nombreQuiz);
+                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasVerdaderoFalso/" + q.nombreQuiz);
+                            }
+
+
+                            else if (tipo == "QuizPA")
+                            {
+                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesPA/" + q.nombreQuiz);
+                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
+                            }
+                        }
                     }
                        
                         
@@ -302,47 +199,48 @@ namespace MyQuizifyGUI
         private void button6_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            Quiz q = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
-                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    if (q.estado is Borrador)
+                    string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
+                    foreach (Quiz q in app.quizesActivos)
                     {
-                        q.cambiarEstado(new Publicado());
-                        MessageBox.Show("Quiz publicado con éxito");
-                        
+                        if (q.nombreQuiz == nombre && q.estado is Borrador)
+                        {
+                            q.cambiarEstado(new Publicado());
+                            MessageBox.Show("Quiz publicado con éxito");
+                            dataGridQuizes.Rows[i].Cells[7].Value = q.estado.GetType().Name;
 
+                        }
+                        else MessageBox.Show("El quiz " + q.nombreQuiz + "con estado : " + q.estado.GetType().Name +
+                            ", no se puede publicar ya que no está en estado Borrador");
                     }
-                    else MessageBox.Show("El quiz " + q.nombreQuiz + "con estado : " + q.estado.GetType().Name +
-                        ", no se puede publicar ya que no está en estado Borrador");
                 }
             }
-            mostrarQuizes();
             deseleccionarChecks();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Quiz q = null;
-            Quiz aux = null;
+            
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
-                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    if (q.estado is Publicado)
+                    string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
+                    foreach (Quiz q in app.quizesActivos)
                     {
-                        q.cambiarEstado(new Borrador());
-                        MessageBox.Show("Quiz cancelado con éxito");
-                        aux = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                        dataGridQuizes.Rows[i].Cells[7].Value = aux.estado.GetType().Name;
+                        if (q.nombreQuiz == nombre && q.estado is Publicado)
+                        {
+                            q.cambiarEstado(new Borrador());
+                            MessageBox.Show("Quiz cancelado con éxito");
+                            dataGridQuizes.Rows[i].Cells[7].Value = q.estado.GetType().Name;
+                        }
+                        else MessageBox.Show("El quiz " + q.nombreQuiz + " no se puede cancelar ya que no se ha publicado todavia");
                     }
-                    else MessageBox.Show("El quiz " + q.nombreQuiz + " no se puede cancelar ya que no se ha publicado todavia");
-
                 }
             }
             deseleccionarChecks();
@@ -350,18 +248,20 @@ namespace MyQuizifyGUI
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Quiz q = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
-                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    if (!(q.estado is Borrador)) MessageBox.Show("El quiz ya ha sido publicado, no puedes editar preguntas");
-                    else
+                    string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
+                    foreach (Quiz q in app.quizesActivos)
                     {
-                        EditarPreguntasMO edit = new EditarPreguntasMO(q);
-                        edit.ShowDialog();
+                        if (!(q.estado is Borrador) && q.nombreQuiz == nombre) MessageBox.Show("El quiz ya ha sido publicado, no puedes editar preguntas");
+                        else
+                        {
+                            EditarPreguntasMO edit = new EditarPreguntasMO(q);
+                            edit.ShowDialog();
+                        }
                     }
                 }
             }
@@ -370,17 +270,20 @@ namespace MyQuizifyGUI
 
         private void button10_Click(object sender, EventArgs e)
         {
-             Quiz q = null;
              List<Quiz> listaQuizes = new List<Quiz>();
              for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
+             {
+                bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
+                if (isCellChecked == true)
                 {
-                    bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
-                    if (isCellChecked == true)
+                    string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
+                    foreach (Quiz q in app.quizesActivos)
                     {
-                        q = services.getQuizById((string)dataGridQuizes.Rows[i].Cells[1].Value);
-                            listaQuizes.Add(q);
+                        if(q.nombreQuiz == nombre)
+                        listaQuizes.Add(q);
                     }
                 }
+             }
              new Competencias(listaQuizes).ShowDialog();
         }
 
@@ -394,23 +297,23 @@ namespace MyQuizifyGUI
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Quiz q = null;
-            Quiz aux = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
-                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    //if (!(q.estado is Terminado)) MessageBox.Show("El quiz debe estar en estado Terminado para publicar los resultados");
-                    //else
-                    //{
-                        q.cambiarEstado(new ResultadosPublicados());
-                        q.notificar();
-                        MessageBox.Show("Resultados publicados con éxito");
-                        aux = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                        dataGridQuizes.Rows[i].Cells[7].Value = aux.estado;
-                    //}
+                    string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
+                    foreach (Quiz q in app.quizesActivos)
+                    {
+                        if (!(q.estado is Terminado) && q.nombreQuiz == nombre) MessageBox.Show("El quiz debe estar en estado Terminado para publicar los resultados");
+                        else
+                        {
+                            q.cambiarEstado(new ResultadosPublicados());
+                            q.notificar();
+                            MessageBox.Show("Resultados publicados con éxito");
+                            dataGridQuizes.Rows[i].Cells[7].Value = q.estado.GetType().Name;
+                        }
+                    }
                     
 
                 }
@@ -420,23 +323,22 @@ namespace MyQuizifyGUI
 
         private void button11_Click(object sender, EventArgs e)
         {
-            Quiz q = null;
-            Quiz aux = null;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
                 if (isCellChecked == true)
                 {
-                    q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                    //if (!(q.estado is Publicado)) MessageBox.Show("El quiz debe estar en estado Publicado para poder finalizarlo");
-                    //else
-                    //{
-                        q.cambiarEstado(new Terminado());
-                        MessageBox.Show("Terminado con éxito");
-                        aux = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
-                        dataGridQuizes.Rows[i].Cells[7].Value = aux.estado;
-                    //}
-
+                    string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
+                    foreach (Quiz q in app.quizesActivos) { 
+                   
+                        if (!(q.estado is Publicado) && q.nombreQuiz == nombre) MessageBox.Show("El quiz debe estar en estado Publicado para poder finalizarlo");
+                        else
+                        {
+                            q.cambiarEstado(new Terminado());
+                            MessageBox.Show("Terminado con éxito");
+                            dataGridQuizes.Rows[i].Cells[7].Value = q.estado.GetType().Name;
+                        }
+                    }
 
                 }
             }

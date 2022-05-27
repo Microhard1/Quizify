@@ -455,9 +455,12 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             FirebaseResponse alumnos = cf.client.Get(@"/Calificaciones/" + q.nombreQuiz);
             Dictionary<string, Calificacion> alumnosQuiz =
                 JsonConvert.DeserializeObject<Dictionary<string, Calificacion>>(alumnos.Body.ToString());
-            foreach(var a in alumnosQuiz)
+            if (alumnosQuiz != null)
             {
-                q.hechoPor.Add(getAlumnoById(a.Key));
+                foreach (var a in alumnosQuiz)
+                {
+                    q.hechoPor.Add(getAlumnoById(a.Key));
+                }
             }
         }
         
