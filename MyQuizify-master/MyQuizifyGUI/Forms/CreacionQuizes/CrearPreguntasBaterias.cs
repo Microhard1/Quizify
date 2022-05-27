@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyQuizifyLib.BussinessLogic.Entidades;
+using System;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
@@ -6,7 +7,7 @@ namespace MyQuizifyGUI.Forms
     public partial class CrearPreguntasBaterias : Form
     {
         private CrearBateria cb;
-        public CrearPreguntasBaterias()
+        public CrearPreguntasBaterias(Aplicacion app)
         {
             InitializeComponent();
         }

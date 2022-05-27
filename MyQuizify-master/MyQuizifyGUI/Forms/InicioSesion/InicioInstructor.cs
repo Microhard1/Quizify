@@ -39,13 +39,13 @@ namespace MyQuizifyGUI.Forms.InicioSesion
         private void button3_Click(object sender, EventArgs e)
         {
             cambiarColorBotones(button3.Name);
-            abrirFormHijo(new CursosInstructor());
+            abrirFormHijo(new CursosInstructor(app));
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             cambiarColorBotones(button4.Name);
-            abrirFormHijo(new CreacionDeQuizes());
+            abrirFormHijo(new CreacionDeQuizes(app));
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace MyQuizifyGUI.Forms.InicioSesion
         private void button1_Click_1(object sender, EventArgs e)
         {
             cambiarColorBotones(button1.Name);
-            abrirFormHijo(new CrearPreguntasBaterias());
+            abrirFormHijo(new CrearPreguntasBaterias(app));
         }
 
         private void cambiarColorBotones(string nombreBoton)

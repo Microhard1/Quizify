@@ -15,13 +15,15 @@ namespace MyQuizifyGUI.Forms
         Dictionary<string, PreguntaVF> preguntasVF;
         Dictionary<string, PreguntaA> preguntasA;
         ArrayList preguntasBateria;
-        public CrearBateria()
+        Aplicacion app;
+        public CrearBateria(Aplicacion app)
         {
             InitializeComponent();
             preguntasMO = services.obtenerPreguntasMO();
             preguntasVF = services.obtenerPreguntasVF();
             preguntasA = services.obtenerPreguntasA();
             preguntasBateria = new ArrayList();
+            this.app = app;
         }
 
         private void CrearPregunta_Load(object sender, EventArgs e)

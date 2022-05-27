@@ -22,12 +22,14 @@ namespace MyQuizifyGUI.Forms
         string tipoDeQuiz = "";
         MyQuizifyServices servicio = new MyQuizifyServices();
         Quiz quizActual;
-        public CreacionDeQuizes()
+        Aplicacion app;
+        public CreacionDeQuizes(Aplicacion app)
         {
             formVF = new FormVF();
             formMO = new FormMO();
             formAb = new FormAbierto();
             InitializeComponent();
+            this.app = app;
         }
 
         private void CreacionDeQuizes_Load(object sender, EventArgs e)

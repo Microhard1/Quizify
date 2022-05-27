@@ -11,7 +11,7 @@ namespace MyQuizifyGUI.Forms
     {
         ConexionBD cf = ConexionBD.getInstancia();
         MyQuizifyServices services = new MyQuizifyServices();
-        public CursosInstructor()
+        public CursosInstructor(Aplicacion app)
         {
             InitializeComponent();
         }

@@ -16,12 +16,8 @@ namespace MyQuizifyGUI.Forms
         double nota;
         List<RadioButton> valores;
         MyQuizifyServices servicios = new MyQuizifyServices();
-        int progreso = 0;
         int tiempo;
-        double puntuacionTotal = 0;
-        double puntuacionAlumno = 0;
         ConexionBD cf = ConexionBD.getInstancia();
-        List<Respuesta> res = new List<Respuesta>();
         public ContestacionDeQuizesMultiOpcion(Quiz q)
         {
             InitializeComponent();
