@@ -150,26 +150,7 @@ namespace MyQuizifyGUI
                         if (q.nombreQuiz == nombre)
                         {
                             dataGridQuizes.Rows.Remove(dataGridQuizes.Rows[i]);
-                            string tipo = q.GetType().Name;
-                            if (tipo == "QuizMO")
-                            {
-                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesMO/" + q.nombreQuiz);
-                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
-                            }
-
-
-                            else if (tipo == "QuizVF")
-                            {
-                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesVF/" + q.nombreQuiz);
-                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasVerdaderoFalso/" + q.nombreQuiz);
-                            }
-
-
-                            else if (tipo == "QuizPA")
-                            {
-                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesPA/" + q.nombreQuiz);
-                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
-                            }
+                            services.borrarQuiz(q);
                         }
                     }
 
