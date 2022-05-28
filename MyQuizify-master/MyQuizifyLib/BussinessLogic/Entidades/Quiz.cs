@@ -74,28 +74,18 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 
         public bool preguntasRepetidas()
         {
-            /* REFACTORING?
-            var myArray = preguntasQuiz.ToArray<Pregunta>();
-            var longitud = preguntasQuiz.Count;
+            Pregunta[] preguntasDelQuiz = preguntas.ToArray<Pregunta>();
+            int longitud = preguntas.Count;
 
             for (int i = 0; i < longitud - 1; i++)
             {
-                if (myArray[i].enunciado.Equals(myArray[i + 1].enunciado))
+                if (preguntasDelQuiz[i].enunciado.Equals(preguntasDelQuiz[i + 1].enunciado))
                 {
                     return true;
                 }
             }
             return false;
-            */
-
-            for (int i = 0; i < preguntas.Count - 1; i++)
-            {
-                if (preguntas.ToArray<Pregunta>()[i].enunciado.Equals(preguntas.ToArray<Pregunta>()[i + 1].enunciado))
-                {
-                    return true;
-                }
-            }
-            return false;
+            
         }
         public void ordenAleatorioPreguntas(Quiz q)
         {
@@ -103,12 +93,8 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             q.preguntas.OrderBy(item => rnd.Next());
         }
         public Quiz clonarQuiz(Quiz q)
-        {
-            //eliminar despues de entrega sprint 2
-            String nombreUsuario = "a";
-            MyQuizifyServices services = new MyQuizifyServices();
-            Instructor a = services.getInstructorById(nombreUsuario);
-            //eliminar despues de entrega de sprint 2
+        { 
+            Instructor a = services.getInstructorById(ConexionBD.getInstancia().usuarioConectado.username);
 
             if (GetType().Name == "QuizMO")
             {
@@ -144,9 +130,11 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 
         public override string ToString()
         {
-            return "Nombre: " + nombreQuiz + "\n" +
-                "Creado por: " + creadoPor.username + "\n" +
-                "peso: " + peso + "\n"
+            return
+                
+                "Nombre: " + nombreQuiz + "\n"
+                + "Creado por: " + creadoPor.username + "\n"
+                + "peso: " + peso + "\n"
                 + "duracion: " + duracion + "\n"
                 + "dificultad: " + dificultad + "\n"
                 + "fechaDeInicio: " + fechaDeInicio + "\n"

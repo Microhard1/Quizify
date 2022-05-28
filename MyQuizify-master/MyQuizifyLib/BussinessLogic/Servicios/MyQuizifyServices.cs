@@ -2,6 +2,7 @@
 using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.Persistencia;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace MyQuizifyLib.BussinessLogic.Servicios
@@ -14,6 +15,12 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
         }
 
         ConexionBD cf = ConexionBD.getInstancia();
+
+        public string getUserPassword(string username, string tipoUsuario)
+        {
+            FirebaseResponse contraseña = ConexionBD.getInstancia().client.Get("/Usuarios/" + tipoUsuario + "/" + username + "/password");
+            return contraseña.ResultAs<string>();
+        }
 
         public Dictionary<string, PreguntaMO> obtenerPreguntasMO()
         {
@@ -119,6 +126,11 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
                 listaCursos.Add(aux);
             }
             return listaCursos;
+        }
+
+        public string getUserPassword(string username)
+        {
+            throw new NotImplementedException();
         }
 
         public List<string> nombreQuizes()

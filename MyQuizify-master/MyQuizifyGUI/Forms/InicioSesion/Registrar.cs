@@ -1,31 +1,26 @@
 ﻿using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.BussinessLogic.Servicios;
-using MyQuizifyLib.Persistencia;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using MyQuizifyLib.BussinessLogic.Servicios;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace MyQuizifyGUI.Forms
 {
     public partial class Registrar : Form
     {
-        ConexionBD cf = ConexionBD.getInstancia();
-        MyQuizifyServices services = new MyQuizifyServices();
-        Dictionary<string, Alumno> alumnosDictionary = new Dictionary<string, Alumno>();
-        string tipoUsuario;
+        MyQuizifyServices services;
+        public string tipoUsuario;
 
         public Registrar()
         {
             InitializeComponent();
+            services = new MyQuizifyServices();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string nombreUsuario = textBoxUsername.Text;
             string correo = textBoxCorreo.Text;
             string contraseña = textBoxPassword.Text;
             bool check = comprobarCampos();
@@ -34,7 +29,7 @@ namespace MyQuizifyGUI.Forms
             {
                 if (IsValidEmail(correo))
                 {
-                    string nombreUsuario = textBoxUsername.Text;
+                    
                     if (existeUsuario(nombreUsuario))
                     {
                         MessageBox.Show("Nombre de usuario no disponible");
@@ -43,41 +38,27 @@ namespace MyQuizifyGUI.Forms
                     {
                         if (contraseñaFormatoCorrecto(contraseña))
                         {
-                            bool passwords = comprobarContraseñas();
-                            if (!passwords)
+                            bool contraseñasCorrectas = comprobarContraseñas();
+                            if (!contraseñasCorrectas)
                             {
                                 MessageBox.Show("Las contraseñas no coinciden");
                             }
                             else
                             {
+                                Encriptador encriptador = new Encriptador(contraseña);
                                 if (botonAlumno.Checked)
                                 {
-                                    string passwordEncrypted;
-                                    
-                                    SHA256 sha256 = SHA256Managed.Create();
-                                    ASCIIEncoding encoding = new ASCIIEncoding();
-                                    byte[] stream = null;
-                                    StringBuilder sb = new StringBuilder();
-                                    stream = sha256.ComputeHash(encoding.GetBytes(textBoxPassword.Text));
-                                    for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-                                    passwordEncrypted = sb.ToString();
-                                    
-                                    Alumno nuevoAlumno = new Alumno(nombreUsuario, passwordEncrypted,
+                                    new Alumno(nombreUsuario, encriptador.password,
                                     textBoxNombre.Text, textBoxApellidos.Text, textBoxTLF.Text,
                                     textBoxCorreo.Text, dateTimeFechaNac.Value);
-
                                     MessageBox.Show("Registrado con éxito");
                                     Close();
-
-
                                 }
                                 else if (botonInstructor.Checked)
                                 {
-                                    string passwordEncrypted = Encriptador.GetSHA256(textBoxPassword.Text);
-                                    Instructor nuevoAlumno = new Instructor(nombreUsuario, passwordEncrypted,
+                                    new Instructor(nombreUsuario, encriptador.password,
                                     textBoxNombre.Text, textBoxApellidos.Text, textBoxTLF.Text,
                                     textBoxCorreo.Text, dateTimeFechaNac.Value);
-
                                     MessageBox.Show("Registrado con éxito");
                                     Close();
                                 }
@@ -135,19 +116,13 @@ namespace MyQuizifyGUI.Forms
 
             try
             {
-                // Normalize the domain
                 email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
                                       RegexOptions.None, TimeSpan.FromMilliseconds(200));
 
-                // Examines the domain part of the email and normalizes it.
                 string DomainMapper(Match match)
                 {
-                    // Use IdnMapping class to convert Unicode domain names.
                     var idn = new IdnMapping();
-
-                    // Pull out and process domain name (throws ArgumentException on invalid)
                     string domainName = idn.GetAscii(match.Groups[2].Value);
-
                     return match.Groups[1].Value + domainName;
                 }
             }

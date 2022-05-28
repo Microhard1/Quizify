@@ -120,9 +120,16 @@ namespace MyQuizifyGUI
 
         public bool verificarUsuario(string username)
         {
-            FirebaseResponse listado = cf.client.Get("/Usuarios/" + tipoUsuario + "/" + username + "/username");
-            string nombreUsuario = listado.ResultAs<string>();
-            if (nombreUsuario != null) return true;
+            if (tipoUsuario == "Alumnos")
+            {
+                Alumno a = services.getAlumnoById(username);
+                if (a != null) return true;
+            }
+            if (tipoUsuario == "Instructores")
+            {
+                Instructor i = services.getInstructorById(username);
+                if (i != null) return true;
+            }
             return false;
         }
 
@@ -134,9 +141,7 @@ namespace MyQuizifyGUI
 
         public bool validarContraseña(string username, string pass)
         {
-
-            FirebaseResponse response = cf.client.Get("/Usuarios/" + tipoUsuario + "/" + username + "/password");
-            string a = response.ResultAs<string>();
+            string a = services.getUserPassword(username, tipoUsuario);
 
             if (Encriptador.GetSHA256(pass).Equals(a)) return true;
             return false;
