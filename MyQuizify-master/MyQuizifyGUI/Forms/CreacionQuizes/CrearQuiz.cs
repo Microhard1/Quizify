@@ -18,44 +18,6 @@ namespace MyQuizifyGUI
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string filtro = comboBox1.Text;
-            switch (filtro)
-            {
-                case "Baterias":
-                    int duracion = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
-                    int peso = Int32.Parse(textBoxPeso.Text);
-
-                    Bateria bateria = getBateria();
-                    Fachada fachada = new Fachada();
-
-                    fachada.publicarQuizCreadoPorBateria(textBoxNombreQuiz.Text,
-                        services.getInstructorById(cf.usuarioConectado.username), "Borrador",
-                        duracion, peso, textBoxDificultad.Text,
-                        dateTimePicker1.Value, dateTimePicker2.Value,
-                        services.getCursoById(comboBoxCurso.Text), bateria);
-
-
-                    MessageBox.Show("Quiz creado con exito");
-                    break;
-
-
-
-
-
-                case "Preguntas":
-                    int duracionQuiz = Int32.Parse(textBoxHoras.Text) * 60 + Int32.Parse(textBoxMinutos.Text);
-                    Quiz qPregunta = new QuizMO(textBoxNombreQuiz.Text,
-                        services.getInstructorById(cf.usuarioConectado.username),
-                        duracionQuiz, Int32.Parse(textBoxPeso.Text), textBoxDificultad.Text,
-                        dateTimePicker1.Value, dateTimePicker2.Value,
-                        services.getCursoById(comboBoxCurso.Text));
-                    break;
-            }
-        }
-
-
         void cargarDatosMO(Dictionary<string, PreguntaMO> data)
         {
 
@@ -76,8 +38,6 @@ namespace MyQuizifyGUI
                 dataGridPreguntas.Rows.Add(false, item.Key, item.Value.enunciado,
                     item.Value.puntuacion, item.Value.explicacion);
             }
-
-
         }
 
         void cargarDatosA(Dictionary<string, PreguntaA> data)
@@ -100,8 +60,6 @@ namespace MyQuizifyGUI
                 dataGridPreguntas.Rows.Add(false, item.Key, item.Value.enunciado,
                     item.Value.puntuacion, item.Value.explicacion);
             }
-
-
         }
 
         void cargarDatosVF(Dictionary<string, PreguntaVF> data)
@@ -126,68 +84,6 @@ namespace MyQuizifyGUI
             }
 
 
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dataGridPreguntas.Columns.Clear();
-            dataGridPreguntas.Rows.Clear();
-
-            Dictionary<string, PreguntaMO> preguntasMO = services.obtenerPreguntasMO();
-            Dictionary<string, PreguntaVF> preguntasVF = services.obtenerPreguntasVF();
-            Dictionary<string, PreguntaA> preguntasA = services.obtenerPreguntasA();
-            string filtro = comboBox1.Text;
-            if (filtro == "Baterias MultiOpcion")
-            {
-                Dictionary<string, BateriaMultiOpcion> bateriasMO = services.obtenerBateriasMO();
-                dataGridPreguntas.Columns.Clear();
-                dataGridPreguntas.Rows.Clear();
-                DataGridViewCheckBoxColumn col1 = new DataGridViewCheckBoxColumn();
-                col1.HeaderText = "Selecciona";
-                dataGridPreguntas.Columns.Add(col1);
-                dataGridPreguntas.Columns.Add("nombre", "id");
-                dataGridPreguntas.Columns.Add("Numero de preguntas", "numero de preguntas");
-
-                foreach (var bateria in bateriasMO)
-                {
-                    dataGridPreguntas.Rows.Add(false, bateria.Key, bateria.Value.preguntasBateria.Count);
-                }
-            }
-            if (filtro == "Baterias Abiertas")
-            {
-                Dictionary<string, BateriaAbierta> bateriasA = services.obtenerBateriasA();
-                dataGridPreguntas.Columns.Clear();
-                dataGridPreguntas.Rows.Clear();
-                DataGridViewCheckBoxColumn col1 = new DataGridViewCheckBoxColumn();
-                col1.HeaderText = "Selecciona";
-                dataGridPreguntas.Columns.Add(col1);
-                dataGridPreguntas.Columns.Add("nombre", "id");
-                dataGridPreguntas.Columns.Add("Numero de preguntas", "numero de preguntas");
-
-                foreach (var bateria in bateriasA)
-                {
-                    dataGridPreguntas.Rows.Add(false, bateria.Key, bateria.Value.preguntasBateria.Count);
-                }
-            }
-            if (filtro == "Baterias Verdadero/Falso")
-            {
-                Dictionary<string, BateriaVerdaderoFalso> bateriasVF = services.obtenerBateriasVF();
-                dataGridPreguntas.Columns.Clear();
-                dataGridPreguntas.Rows.Clear();
-                DataGridViewCheckBoxColumn col1 = new DataGridViewCheckBoxColumn();
-                col1.HeaderText = "Selecciona";
-                dataGridPreguntas.Columns.Add(col1);
-                dataGridPreguntas.Columns.Add("nombre", "id");
-                dataGridPreguntas.Columns.Add("Numero de preguntas", "numero de preguntas");
-
-                foreach (var bateria in bateriasVF)
-                {
-                    dataGridPreguntas.Rows.Add(false, bateria.Key, bateria.Value.preguntasBateria.Count);
-                }
-            }
-            if (filtro == "Preguntas MultiOpcion") { cargarDatosMO(preguntasMO); }
-            if (filtro == "Preguntas Verdadero/Falso") { cargarDatosVF(preguntasVF); }
-            if (filtro == "Preguntas Abiertas") { cargarDatosA(preguntasA); }
         }
 
         public BateriaMultiOpcion getBateriaMO()

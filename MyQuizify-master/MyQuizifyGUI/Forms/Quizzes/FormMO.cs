@@ -15,14 +15,11 @@ namespace MyQuizifyGUI.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            // image filters  
+            OpenFileDialog open = new OpenFileDialog(); 
             open.Filter = "Image Files(*.jpg;)|*.jpg;";
             if (open.ShowDialog() == DialogResult.OK)
             {
-                // display image in picture box  
                 inputImagen.Image = new Bitmap(open.FileName);
-
             }
         }
         private void ckeckPregunta2_CheckedChanged(object sender, EventArgs e)

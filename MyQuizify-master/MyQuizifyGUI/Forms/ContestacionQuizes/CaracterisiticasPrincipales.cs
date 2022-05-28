@@ -44,5 +44,10 @@ namespace MyQuizifyGUI.Forms
             }
 
         }
+
+        private void panelQuizes_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

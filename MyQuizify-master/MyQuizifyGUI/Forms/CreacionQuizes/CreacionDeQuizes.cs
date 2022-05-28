@@ -22,6 +22,7 @@ namespace MyQuizifyGUI.Forms
         string tipoDeQuiz = "";
         MyQuizifyServices servicio = new MyQuizifyServices();
         Quiz quizActual;
+        List<Curso> cursos;
         Aplicacion app;
         public CreacionDeQuizes(Aplicacion app)
         {
@@ -29,6 +30,7 @@ namespace MyQuizifyGUI.Forms
             formMO = new FormMO();
             formAb = new FormAbierto();
             InitializeComponent();
+            cursos = servicio.listarCursos();
             this.app = app;
         }
 
@@ -36,16 +38,15 @@ namespace MyQuizifyGUI.Forms
         {
             panelQuizes.Controls.Clear();
             comboBoxCursos.Items.Clear();
-            FirebaseResponse r = cf.client.Get(@"Cursos/");
-            Dictionary<string, Curso> cursos = new Dictionary<string, Curso>();
-            cursos = r.ResultAs<Dictionary<string, Curso>>();
+
             if (cursos != null)
             {
-                foreach (var item in cursos)
+                foreach (Curso curso in cursos)
                 {
-                    comboBoxCursos.Items.Add(item.Key);
+                    comboBoxCursos.Items.Add(curso.id);
                 }
             }
+
             formVF.TopLevel = false;
             formMO.TopLevel = false;
             formAb.TopLevel = false;
@@ -207,10 +208,6 @@ namespace MyQuizifyGUI.Forms
             string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
 
             Pregunta pregunta = new PreguntaVF(id, enunciado, imagen, puntuacion, explicacion);
-
-            //Mirar esto no funciona por el añadir respuesta pide un string y no una respuesta
-            Respuesta r = pregunta.crearRespuesta(verdaderoOFalso.ToString());
-            r.inicialize(verdaderoOFalso);
             pregunta.añadirRespuesta(verdaderoOFalso.ToString());
             preguntas.Add(pregunta);
 

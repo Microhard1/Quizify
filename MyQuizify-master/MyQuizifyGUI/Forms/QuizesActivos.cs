@@ -13,16 +13,16 @@ namespace MyQuizifyGUI
 {
     public partial class QuizesActivos : Form
     {
-        Aplicacion app;
+        private Aplicacion app;
         private CrearQuiz q;
         private Clonacion_de_Quizes clonacionForm;
-        ConexionBD cf = ConexionBD.getInstancia();
-        MyQuizifyServices services = new MyQuizifyServices();
+        private MyQuizifyServices services;
         public QuizesActivos(Aplicacion app)
         {
             this.app = app;
             InitializeComponent();
             q = new CrearQuiz();
+            services = new MyQuizifyServices();
             clonacionForm = new Clonacion_de_Quizes(app);
         }
 
@@ -53,12 +53,19 @@ namespace MyQuizifyGUI
 
         public void mostrarQuizes()
         {
+            string tipoQuiz = "";
+            
             app.quizesActivos = services.listaQuizes();
             foreach (Quiz q in app.quizesActivos)
             {
-                if (q.creadoPor.username == cf.usuarioConectado.username)
+
+                if (q.GetType().Name == "QuizMO") tipoQuiz = "MultiOpcion";
+                if (q.GetType().Name == "QuizVF") tipoQuiz = "Verdadero/Falso";
+                if (q.GetType().Name == "QuizPA") tipoQuiz = "Preguntas Abiertas";
+
+                if (q.creadoPor.username == ConexionBD.getInstancia().usuarioConectado.username)
                 {
-                    dataGridQuizes.Rows.Add(false, q.nombreQuiz, "MultiOpcion", q.dificultad, q.duracion, q.fechaDeInicio, q.fechaFin, q.estado.GetType().Name);
+                    dataGridQuizes.Rows.Add(false, q.nombreQuiz, tipoQuiz , q.dificultad, q.duracion, q.fechaDeInicio, q.fechaFin, q.estado.GetType().Name);
                 }
             }
             

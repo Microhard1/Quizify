@@ -23,7 +23,7 @@ namespace MyQuizifyGUI
         {
             int ancho = Width - (navBar.Width * 2);
             int alto = Height - panel1.Height;
-            AlumnoQuizes alumnoQuizes = new AlumnoQuizes(ancho, alto);
+            AlumnoQuizes alumnoQuizes = new AlumnoQuizes(ancho, alto, app);
             abrirFormHijo(alumnoQuizes);
             cambiarColorBotones(button1.Name);
 

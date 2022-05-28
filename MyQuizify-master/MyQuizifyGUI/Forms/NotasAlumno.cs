@@ -7,8 +7,6 @@ namespace MyQuizifyGUI.Forms
 {
     public partial class NotasAlumno : Form
     {
-        ConexionBD cf = ConexionBD.getInstancia();
-        MyQuizifyServices services = new MyQuizifyServices();
         public NotasAlumno()
         {
             InitializeComponent();

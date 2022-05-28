@@ -154,5 +154,10 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             MessageBox.Show(preguntasSinContestar.ElementAt(0).explicacion, "Ayuda",
             MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
+
+        private void ContestacionQuizRA_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

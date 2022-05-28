@@ -220,6 +220,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.Name = "ContestacionQuizVF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionQuizVF";
+            this.Load += new System.EventHandler(this.ContestacionQuizVF_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputImagen)).EndInit();

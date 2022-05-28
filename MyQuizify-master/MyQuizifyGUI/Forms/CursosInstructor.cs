@@ -9,9 +9,9 @@ namespace MyQuizifyGUI.Forms
 {
     public partial class CursosInstructor : Form
     {
-        ConexionBD cf = ConexionBD.getInstancia();
-        MyQuizifyServices services = new MyQuizifyServices();
-        Aplicacion app;
+        
+        private MyQuizifyServices services = new MyQuizifyServices();
+        private Aplicacion app;
         public CursosInstructor(Aplicacion app)
         {
             InitializeComponent();
@@ -32,8 +32,7 @@ namespace MyQuizifyGUI.Forms
         public void poblarGrid()
         {
             dataGridViewCursos.Rows.Clear();
-            List<Curso> lista = services.listarCursos();
-            foreach (Curso c in lista)
+            foreach (Curso c in app.listadoCursos)
             {
                 dataGridViewCursos.Rows.Add(false, c.nombre, c.id);
             }
@@ -48,7 +47,7 @@ namespace MyQuizifyGUI.Forms
                 if (isCellChecked == true)
                 {
                     Curso c = services.getCursoById(dataGridViewCursos.Rows[i].Cells[2].Value.ToString());
-                    c.addInstructor(services.getInstructorById(cf.usuarioConectado.username));
+                    c.addInstructor(services.getInstructorById(ConexionBD.getInstancia().usuarioConectado.username));
                 }
             }
 

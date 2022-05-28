@@ -9,16 +9,17 @@ namespace MyQuizifyGUI.Forms
 {
     public partial class Estadisticas : Form
     {
-        ConexionBD cf = ConexionBD.getInstancia();
-        Quiz quiz;
-        MyQuizifyServices services = new MyQuizifyServices();
-        Dictionary<string, CalificacionVF> diccionarioCalificacion = new Dictionary<string, CalificacionVF>();
-        Dictionary<string, CalificacionVF> diccionarioFiltrado = new Dictionary<string, CalificacionVF>();
+        private Quiz quiz;
+        private MyQuizifyServices services;
+        private Dictionary<string, CalificacionVF> diccionarioCalificacion;
+        
         public Estadisticas(Quiz q)
         {
             InitializeComponent();
             quiz = q;
+            services = new MyQuizifyServices();
             lblNombreQuiz.Text = quiz.nombreQuiz;
+            diccionarioCalificacion = new Dictionary<string, CalificacionVF>();
         }
 
         private void Estadisticas_Load(object sender, EventArgs e)
@@ -27,7 +28,6 @@ namespace MyQuizifyGUI.Forms
             dataGridEstadisticas.Columns.Add("apellidos", "Apellidos");
             dataGridEstadisticas.Columns.Add("nota", "Nota");
             diccionarioCalificacion = services.getDiccionarioCalificacionVF(quiz);
-            diccionarioFiltrado = diccionarioCalificacion;
             mostrarEstadisticas();
         }
         public void mostrarEstadisticas()

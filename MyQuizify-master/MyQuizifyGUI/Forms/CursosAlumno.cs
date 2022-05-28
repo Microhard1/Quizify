@@ -22,8 +22,8 @@ namespace MyQuizifyGUI.Forms
         {
             Cursor.Current = Cursors.WaitCursor;
             dataGridViewCursos.Rows.Clear();
-            List<Curso> lista = services.listarCursos();
-            foreach (Curso c in lista)
+
+            foreach (Curso c in app.listadoCursos)
             {
                 dataGridViewCursos.Rows.Add(false, c.nombre, c.id);
             }

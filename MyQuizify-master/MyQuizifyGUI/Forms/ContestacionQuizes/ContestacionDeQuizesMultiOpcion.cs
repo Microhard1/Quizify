@@ -65,8 +65,6 @@ namespace MyQuizifyGUI.Forms
         {
             aContestar.añadirObservador(servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
             Calificacion c = new Calificacion(nota, (QuizMO)aContestar, servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
-            FireSharp.Response.FirebaseResponse eliminar = ConexionBD.getInstancia().client.Delete
-                ("Calificaciones/" + aContestar.nombreQuiz + "/" + servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username).username + "/quizRealizado/preguntas");
             MessageBox.Show("Enviado");
             Close();
         }

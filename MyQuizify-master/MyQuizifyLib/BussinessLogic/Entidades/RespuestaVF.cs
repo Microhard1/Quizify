@@ -2,7 +2,7 @@
 {
     public class RespuestaVF : Respuesta
     {
-        bool correcta;
+        public bool correcta;
         public RespuestaVF(string enunciado) : base(enunciado)
         {
 

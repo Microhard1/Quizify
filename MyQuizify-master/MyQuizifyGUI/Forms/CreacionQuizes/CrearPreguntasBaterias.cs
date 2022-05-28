@@ -7,9 +7,11 @@ namespace MyQuizifyGUI.Forms
     public partial class CrearPreguntasBaterias : Form
     {
         private CrearBateria cb;
+        private Aplicacion app;
         public CrearPreguntasBaterias(Aplicacion app)
         {
             InitializeComponent();
+            this.app = app;
         }
 
 
@@ -17,7 +19,7 @@ namespace MyQuizifyGUI.Forms
         private void button1_Click_1(object sender, EventArgs e)
         {
             panelForms.Controls.Clear();
-            CrearBateria cb = new CrearBateria();
+            CrearBateria cb = new CrearBateria(app);
             cb.TopLevel = false;
             cb.Width = panelForms.Width;
             cb.Height = panelForms.Height;

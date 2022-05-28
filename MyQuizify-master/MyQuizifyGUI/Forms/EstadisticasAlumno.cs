@@ -8,11 +8,12 @@ namespace MyQuizifyGUI.Forms
 {
     public partial class EstadisticasAlumno : Form
     {
-        Dictionary<string, CalificacionVF> diccionarioCalificacion;
-        MyQuizifyServices services = new MyQuizifyServices();
+        private Dictionary<string, CalificacionVF> diccionarioCalificacion;
+        private MyQuizifyServices services;
         public EstadisticasAlumno()
         {
             InitializeComponent();
+            services = new MyQuizifyServices();
             diccionarioCalificacion = services.getDiccionarioCalificacionesAlumno();
             dataGridEstadisticas.Columns.Add("nombre", "Nombre");
             dataGridEstadisticas.Columns.Add("apellidos", "Apellidos");

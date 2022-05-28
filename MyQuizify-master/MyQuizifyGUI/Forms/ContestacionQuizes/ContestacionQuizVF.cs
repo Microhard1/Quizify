@@ -161,5 +161,10 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Question);
         }
+
+        private void ContestacionQuizVF_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

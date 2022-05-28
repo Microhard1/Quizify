@@ -37,48 +37,20 @@ namespace MyQuizifyGUI.Forms.Quizzes
         }
         public void mostrarQuizes()
         {
-
-            FirebaseResponse quizesMO = cf.client.Get(@"Quizes/QuizesMO");
-            Dictionary<string, QuizMO> quizesMultiOpcion =
-                JsonConvert.DeserializeObject<Dictionary<string, QuizMO>>(quizesMO.Body.ToString());
-            if (quizesMultiOpcion != null)
+            string tipo = "";
+            foreach (Quiz q in app.quizesActivos)
             {
-                foreach (var q in quizesMultiOpcion)
+                if (q.GetType().Name == "QuizMO") tipo = "MultiOpcion";
+                if (q.GetType().Name == "QuizVF") tipo = "Verdadero/Falso";
+                if (q.GetType().Name == "QuizPA") tipo = "Preguntas Abiertas";
+
+                if (q.creadoPor.username != cf.usuarioConectado.username)
                 {
-                    if (q.Value.creadoPor.username != cf.usuarioConectado.username)
-                    {
-                        dataGridQuizes.Rows.Add(false, q.Key, "MultiOpcion", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
-                    }
-                }
+                    dataGridQuizes.Rows.Add(false, q.nombreQuiz, tipo, q.dificultad, q.duracion, q.fechaDeInicio, q.fechaFin, q.estado);
+                }       
             }
 
-            FirebaseResponse quizesA = cf.client.Get(@"Quizes/QuizesPA");
-            Dictionary<string, QuizPA> quizesAbiertos =
-                JsonConvert.DeserializeObject<Dictionary<string, QuizPA>>(quizesA.Body.ToString());
-            if (quizesAbiertos != null)
-            {
-                foreach (var q in quizesAbiertos)
-                {
-                    if (q.Value.creadoPor.username != cf.usuarioConectado.username)
-                    {
-                        dataGridQuizes.Rows.Add(false, q.Key, "Pregunta Abierta", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
-                    }
-                }
-            }
-
-            FirebaseResponse quizesVF = cf.client.Get(@"Quizes/QuizesVF");
-            Dictionary<string, QuizVF> quizesVerdaderoFalso =
-                JsonConvert.DeserializeObject<Dictionary<string, QuizVF>>(quizesVF.Body.ToString());
-            if (quizesVerdaderoFalso != null)
-            {
-                foreach (var q in quizesVerdaderoFalso)
-                {
-                    if (q.Value.creadoPor.username != cf.usuarioConectado.username)
-                    {
-                        dataGridQuizes.Rows.Add(false, q.Key, "Verdadero/Falso", q.Value.dificultad, q.Value.duracion, q.Value.fechaDeInicio, q.Value.fechaFin, q.Value.estado);
-                    }
-                }
-            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)

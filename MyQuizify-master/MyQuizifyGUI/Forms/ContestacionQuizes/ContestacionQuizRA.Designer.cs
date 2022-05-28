@@ -184,6 +184,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.Name = "ContestacionQuizRA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionQuizRA";
+            this.Load += new System.EventHandler(this.ContestacionQuizRA_Load);
             ((System.ComponentModel.ISupportInitialize)(this.inputImagen)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
