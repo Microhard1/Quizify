@@ -169,6 +169,7 @@ namespace MyQuizifyGUI
                         {
                             dataGridQuizes.Rows.Remove(dataGridQuizes.Rows[i]);
                             string tipo = q.GetType().Name;
+                            //METODO borrarQuiz(Quiz q, string tipo);
                             if (tipo == "QuizMO")
                             {
                                 ConexionBD.getInstancia().client.Delete("Quizes/QuizesMO/" + q.nombreQuiz);

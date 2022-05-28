@@ -9,7 +9,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 {
     public class Encriptador
     {
-        string password;
+        private string password;
         public Encriptador(string contraseña)
         {
             this.password = GetSHA256(contraseña);
