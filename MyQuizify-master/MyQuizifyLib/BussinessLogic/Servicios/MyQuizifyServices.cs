@@ -1,13 +1,8 @@
 ﻿using FireSharp.Response;
 using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.Persistencia;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using static System.Net.Mime.MediaTypeNames;
+using System.Collections.Generic;
 
 namespace MyQuizifyLib.BussinessLogic.Servicios
 {
@@ -130,7 +125,8 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
         {
             List<Quiz> lista = listaQuizes();
             List<string> res = new List<string>();
-            foreach (Quiz q in lista) {
+            foreach (Quiz q in lista)
+            {
                 res.Add(q.nombreQuiz);
             }
             return res;
@@ -370,13 +366,13 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
         }
         public Dictionary<string, CalificacionVF> getDiccionarioCalificacionVF(Quiz q)
         {
-            FirebaseResponse calificaciones = cf.client.Get("Calificaciones/" + q.nombreQuiz+"/");
+            FirebaseResponse calificaciones = cf.client.Get("Calificaciones/" + q.nombreQuiz + "/");
             Dictionary<string, CalificacionVF> diccionarioCalificacion =
                 JsonConvert.DeserializeObject<Dictionary<string, CalificacionVF>>(calificaciones.Body.ToString());
             return diccionarioCalificacion;
         }
         public Dictionary<string, CalificacionVF> getDiccionarioCalificacionesAlumno()
-        { 
+        {
             Dictionary<string, CalificacionVF> diccionarioRespuesta = new Dictionary<string, CalificacionVF>();
             List<string> nombresQuizes = nombreQuizes();
             Dictionary<string, CalificacionVF> diccionarioCalificacion = new Dictionary<string, CalificacionVF>();
@@ -384,7 +380,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
 
             foreach (string nombre in nombresQuizes)
             {
-                FirebaseResponse calificaciones = cf.client.Get("Calificaciones/"+ nombre+"/");
+                FirebaseResponse calificaciones = cf.client.Get("Calificaciones/" + nombre + "/");
                 diccionarioCalificacion =
                 JsonConvert.DeserializeObject<Dictionary<string, CalificacionVF>>(calificaciones.Body.ToString());
             }
@@ -395,7 +391,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
                     diccionarioRes.Add(calificacion.Key, calificacion.Value);
                 }
             }
-                return diccionarioRespuesta;
+            return diccionarioRespuesta;
         }
         public List<Competencia> getListaCompetencias()
         {
@@ -403,7 +399,8 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             FirebaseResponse competenciasDicc = cf.client.Get(@"Competencias/");
             Dictionary<string, Competencia> diccionarioCompetencia =
                 JsonConvert.DeserializeObject<Dictionary<string, Competencia>>(competenciasDicc.Body.ToString());
-            if (diccionarioCompetencia != null) {
+            if (diccionarioCompetencia != null)
+            {
                 foreach (var competencia in diccionarioCompetencia)
                 {
                     competencias.Add(competencia.Value);
@@ -442,7 +439,7 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             FirebaseResponse compes = cf.client.Get(@"Competencias/");
             Dictionary<string, Competencia> competencias =
                 JsonConvert.DeserializeObject<Dictionary<string, Competencia>>(compes.Body.ToString());
-            foreach(var c in competencias)
+            foreach (var c in competencias)
             {
                 if (c.Value.texto == id) return c.Value;
             }
@@ -464,6 +461,29 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             }
         }
         
+        public void borrarQuiz(Quiz q)
+        {
+            string tipo = q.GetType().Name;
+            if (tipo == "QuizMO")
+            {
+                ConexionBD.getInstancia().client.Delete("Quizes/QuizesMO/" + q.nombreQuiz);
+                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
+            }
+
+
+            else if (tipo == "QuizVF")
+            {
+                ConexionBD.getInstancia().client.Delete("Quizes/QuizesVF/" + q.nombreQuiz);
+                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasVerdaderoFalso/" + q.nombreQuiz);
+            }
+
+
+            else if (tipo == "QuizPA")
+            {
+                ConexionBD.getInstancia().client.Delete("Quizes/QuizesPA/" + q.nombreQuiz);
+                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
+            }
+        }
 
 
     }

@@ -1,13 +1,9 @@
-﻿using System;
+﻿using MyQuizifyLib.BussinessLogic.Servicios;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyQuizifyLib.BussinessLogic.Servicios;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
-    
+
     public class Aplicacion
     {
         MyQuizifyServices services = new MyQuizifyServices();

@@ -1,16 +1,8 @@
-﻿using FireSharp.Response;
-using MyQuizifyLib.BussinessLogic.Entidades;
+﻿using MyQuizifyLib.BussinessLogic.Entidades;
 using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
@@ -42,7 +34,8 @@ namespace MyQuizifyGUI.Forms
         {
             double media = 0, maxima = 0, minima = 10;
             int count = 0;
-            if (diccionarioCalificacion != null) { 
+            if (diccionarioCalificacion != null)
+            {
                 foreach (var calificacion in diccionarioCalificacion)
                 {
                     if (calificacion.Value.quizRealizado.nombreQuiz == quiz.nombreQuiz)
@@ -63,12 +56,7 @@ namespace MyQuizifyGUI.Forms
 
         private void btbVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            Close();
         }
 
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -88,11 +76,6 @@ namespace MyQuizifyGUI.Forms
         {
             dataGridEstadisticas.Rows.Clear();
             mostrarEstadisticas();
-        }
-
-        private void dataGridEstadisticas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

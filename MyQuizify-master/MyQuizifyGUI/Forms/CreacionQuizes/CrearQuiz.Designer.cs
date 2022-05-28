@@ -264,7 +264,6 @@ namespace MyQuizifyGUI
             this.Controls.Add(this.button1);
             this.Name = "CrearQuiz";
             this.Text = "CrearQuiz";
-            this.Load += new System.EventHandler(this.CrearQuiz_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPreguntas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

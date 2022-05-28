@@ -63,7 +63,6 @@ namespace MyQuizifyGUI.Forms
             this.Name = "SeleccionarEstrategia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SeleccionarEstrategia";
-            this.Load += new System.EventHandler(this.SeleccionarEstrategia_Load);
             this.ResumeLayout(false);
 
         }

@@ -1,10 +1,6 @@
-﻿using MyQuizifyLib.Persistencia;
+﻿using FireSharp.Response;
+using MyQuizifyLib.Persistencia;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Response;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
@@ -23,8 +19,8 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             this.nota = nota;
             this.quizRealizado = quizRealizado;
             this.examinado = examinado;
-            
-            FirebaseResponse nuevaCalificacion = 
+
+            FirebaseResponse nuevaCalificacion =
                 cf.client.Set("Calificaciones/" + quizRealizado.nombreQuiz + "/" + examinado.username + "/", this);
         }
     }

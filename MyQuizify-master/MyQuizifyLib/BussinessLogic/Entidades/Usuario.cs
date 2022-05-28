@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
@@ -18,8 +14,9 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public string correo;
         private DateTime fechaNacimiento;
 
-        public Usuario(string username, string password, string nombre, 
-            string apellidos, string telefono, string correo, DateTime fechaNacimiento) {
+        public Usuario(string username, string password, string nombre,
+            string apellidos, string telefono, string correo, DateTime fechaNacimiento)
+        {
 
             this.username = username;
             this.password = password;
@@ -28,7 +25,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             this.telefono = telefono;
             this.correo = correo;
             this.fechaNacimiento = fechaNacimiento;
-        
+
         }
 
         public void cambiarContraseña(string contraseñaNueva)

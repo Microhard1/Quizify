@@ -61,7 +61,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.groupBox1.Size = new System.Drawing.Size(554, 141);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // botonVerdadero
             // 
@@ -134,7 +133,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(857, 89);
             this.panel1.TabIndex = 17;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // labelTiempo
             // 

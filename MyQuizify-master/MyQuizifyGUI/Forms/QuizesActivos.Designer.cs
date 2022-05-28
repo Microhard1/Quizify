@@ -60,8 +60,6 @@ namespace MyQuizifyGUI
             this.dataGridQuizes.RowHeadersWidth = 51;
             this.dataGridQuizes.Size = new System.Drawing.Size(841, 316);
             this.dataGridQuizes.TabIndex = 0;
-            this.dataGridQuizes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridQuizes_CellContentClick);
-            // 
             // Selecciona
             // 
             this.Selecciona.HeaderText = "Selecciona";

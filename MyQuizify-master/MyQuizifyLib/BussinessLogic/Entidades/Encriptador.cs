@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
@@ -12,7 +8,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         private string password;
         public Encriptador(string contraseña)
         {
-            this.password = GetSHA256(contraseña);
+            password = GetSHA256(contraseña);
         }
         public static string GetSHA256(string str)
         {

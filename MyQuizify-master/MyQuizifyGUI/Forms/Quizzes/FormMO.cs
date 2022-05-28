@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
@@ -18,25 +12,6 @@ namespace MyQuizifyGUI.Forms
             inputImagen.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
-        private void FormMO_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxOpciones_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void inputImagen_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -50,17 +25,6 @@ namespace MyQuizifyGUI.Forms
 
             }
         }
-
-            private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBoxPuntuacion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ckeckPregunta2_CheckedChanged(object sender, EventArgs e)
         {
             ckeckPregunta1.Checked = false;

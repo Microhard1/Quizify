@@ -129,7 +129,6 @@ namespace MyQuizifyGUI
             this.panelForms.Name = "panelForms";
             this.panelForms.Size = new System.Drawing.Size(829, 526);
             this.panelForms.TabIndex = 2;
-            this.panelForms.Paint += new System.Windows.Forms.PaintEventHandler(this.panelForms_Paint);
             // 
             // InicioAlumno
             // 
@@ -143,7 +142,6 @@ namespace MyQuizifyGUI
             this.Name = "InicioAlumno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioAlumno";
-            this.Load += new System.EventHandler(this.InicioAlumno_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.navBar.ResumeLayout(false);

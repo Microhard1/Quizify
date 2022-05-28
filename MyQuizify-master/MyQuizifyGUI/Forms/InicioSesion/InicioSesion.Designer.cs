@@ -90,7 +90,6 @@ namespace MyQuizifyGUI
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(276, 20);
             this.textBoxUsername.TabIndex = 3;
-            this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsername_TextChanged);
             // 
             // textBoxPassword
             // 
@@ -99,7 +98,6 @@ namespace MyQuizifyGUI
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(276, 20);
             this.textBoxPassword.TabIndex = 4;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // label3
             // 
@@ -181,7 +179,6 @@ namespace MyQuizifyGUI
             this.Name = "InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioSesion";
-            this.Load += new System.EventHandler(this.InicioSesion_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

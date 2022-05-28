@@ -101,7 +101,6 @@ namespace MyQuizifyGUI.Forms
             this.textPregunta1.Name = "textPregunta1";
             this.textPregunta1.Size = new System.Drawing.Size(359, 91);
             this.textPregunta1.TabIndex = 0;
-            this.textPregunta1.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // panel2
             // 
@@ -181,7 +180,6 @@ namespace MyQuizifyGUI.Forms
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(421, 97);
             this.panel4.TabIndex = 3;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // textPregunta4
             // 
@@ -214,7 +212,6 @@ namespace MyQuizifyGUI.Forms
             this.inputImagen.Size = new System.Drawing.Size(421, 277);
             this.inputImagen.TabIndex = 4;
             this.inputImagen.TabStop = false;
-            this.inputImagen.Click += new System.EventHandler(this.inputImagen_Click);
             // 
             // label1
             // 
@@ -254,7 +251,6 @@ namespace MyQuizifyGUI.Forms
             this.textBoxPuntuacion.Name = "textBoxPuntuacion";
             this.textBoxPuntuacion.Size = new System.Drawing.Size(173, 22);
             this.textBoxPuntuacion.TabIndex = 2;
-            this.textBoxPuntuacion.TextChanged += new System.EventHandler(this.textBoxPuntuacion_TextChanged);
             // 
             // textBoxExplicacion
             // 
@@ -300,7 +296,6 @@ namespace MyQuizifyGUI.Forms
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormMO";
             this.Text = "FormMO";
-            this.Load += new System.EventHandler(this.FormMO_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MyQuizifyGUI;
-using MyQuizifyLib.Persistencia;
-using MyQuizifyLib.BussinessLogic.Servicios;
-using FireSharp.Response;
+﻿using FireSharp.Response;
 using MyQuizifyLib.BussinessLogic.Entidades;
-using System.IO;
+using MyQuizifyLib.BussinessLogic.Servicios;
+using MyQuizifyLib.Persistencia;
+using System;
+using System.Collections.Generic;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -21,7 +14,7 @@ namespace MyQuizifyGUI.Forms
     {
         private FormMO formMO;
         private FormVF formVF;
-        private FormAbierto formAb; 
+        private FormAbierto formAb;
         ConexionBD cf = ConexionBD.getInstancia();
         int numeroDePregunta = 0;
         Form formularioActual = null;
@@ -29,17 +22,19 @@ namespace MyQuizifyGUI.Forms
         string tipoDeQuiz = "";
         MyQuizifyServices servicio = new MyQuizifyServices();
         Quiz quizActual;
-        public CreacionDeQuizes()
+        Aplicacion app;
+        public CreacionDeQuizes(Aplicacion app)
         {
             formVF = new FormVF();
             formMO = new FormMO();
             formAb = new FormAbierto();
             InitializeComponent();
+            this.app = app;
         }
 
         private void CreacionDeQuizes_Load(object sender, EventArgs e)
         {
-            panelQuizes.Controls.Clear();         
+            panelQuizes.Controls.Clear();
             comboBoxCursos.Items.Clear();
             FirebaseResponse r = cf.client.Get(@"Cursos/");
             Dictionary<string, Curso> cursos = new Dictionary<string, Curso>();
@@ -61,7 +56,7 @@ namespace MyQuizifyGUI.Forms
             Cursor.Current = Cursors.WaitCursor;
             int pesoQuiz = Int32.Parse(textBoxPeso.Text);
             string nombreQuiz = textBoxNombreQuiz.Text;
-            
+
             string dificultad = comboBoxDificultad.Text;
             int horas = Int32.Parse(textBoxHoras.Text) * 60;
             int duracion = horas + Int32.Parse(textBoxMin.Text);
@@ -94,7 +89,7 @@ namespace MyQuizifyGUI.Forms
 
                     AñadirPreguntas(quizActual);
                 }
-                
+
                 MessageBox.Show("Quiz creado \n" + quizActual.ToString());
             }
             Cursor.Current = Cursors.Default;
@@ -145,20 +140,20 @@ namespace MyQuizifyGUI.Forms
 
 
         }
-       
+
         public void CrearPreguntaVerdaderoFalso()
         {
             ControlCollection objetosDelFormulario = (ControlCollection)formularioActual.Controls;
             string enunciado = "";
             bool verdaderoOFalso = false;
 
-            string imagen="";
-            double puntuacion=0;
-            string explicacion="";
+            string imagen = "";
+            double puntuacion = 0;
+            string explicacion = "";
 
             foreach (Control c in objetosDelFormulario)
             {
-                
+
                 if (c.GetType() == typeof(TextBox))
                 {
                     if (c.Name == "textBoxEnunciado")
@@ -168,7 +163,7 @@ namespace MyQuizifyGUI.Forms
                     }
 
                 }
-                else if(c is Panel)
+                else if (c is Panel)
                 {
                     foreach (Control p in c.Controls)
                     {
@@ -204,22 +199,22 @@ namespace MyQuizifyGUI.Forms
                 }
                 else if (c.GetType() == typeof(PictureBox))
                 {
-                    
+
                     imagen = convertirImagen((PictureBox)c);
                 }
             }
 
-            string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta; 
+            string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
 
-            Pregunta pregunta = new PreguntaVF(id,enunciado,imagen,puntuacion,explicacion);
-           
+            Pregunta pregunta = new PreguntaVF(id, enunciado, imagen, puntuacion, explicacion);
+
             //Mirar esto no funciona por el añadir respuesta pide un string y no una respuesta
             Respuesta r = pregunta.crearRespuesta(verdaderoOFalso.ToString());
             r.inicialize(verdaderoOFalso);
             pregunta.añadirRespuesta(verdaderoOFalso.ToString());
             preguntas.Add(pregunta);
 
-            MessageBox.Show("Se ha insertado una pregunta: " + pregunta.ToString()) ;
+            MessageBox.Show("Se ha insertado una pregunta: " + pregunta.ToString());
         }
 
         public void CrearPreguntaTipoTest()
@@ -314,9 +309,12 @@ namespace MyQuizifyGUI.Forms
                     respuestas.Add(resp);
                 }
             }
-            
-            
-            string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
+            string nombreQuiz = "QuizTipoTest";
+            if (textBoxNombreQuiz.Text == "")
+            {
+                nombreQuiz = textBoxNombreQuiz.Text;
+            }
+            string id = nombreQuiz + "_" + numeroDePregunta;
             if (puntuacion > 5.0 && false) MessageBox.Show("La pregunta no puede superar los 5 puntos");
             else
             {
@@ -379,17 +377,17 @@ namespace MyQuizifyGUI.Forms
 
             string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
 
-            Pregunta pregunta = new PreguntaA(id,enunciado, imagen, puntuacion, explicacion);
+            Pregunta pregunta = new PreguntaA(id, enunciado, imagen, puntuacion, explicacion);
             Respuesta r = pregunta.crearRespuesta(respuesta);
             pregunta.añadirRespuesta(respuesta);
 
             preguntas.Add(pregunta);
             MessageBox.Show("Se ha insertado una respuesta: " + r.ToString());
-            MessageBox.Show("Se ha insertado una pregunta: " + pregunta.ToString()) ;
+            MessageBox.Show("Se ha insertado una pregunta: " + pregunta.ToString());
         }
         private void añadirRespuestas(List<Respuesta> respuestas, Pregunta p)
         {
-            foreach(Respuesta r in respuestas)
+            foreach (Respuesta r in respuestas)
             {
                 p.añadirRespuesta(r.enunciado);
             }
@@ -399,20 +397,20 @@ namespace MyQuizifyGUI.Forms
             List<TextBox> respuestas = new List<TextBox>();
             ControlCollection objetosDelFormulario = (ControlCollection)formularioActual.Controls;
             foreach (Control c in objetosDelFormulario)
-            {   
-                    if (c is Panel)
+            {
+                if (c is Panel)
+                {
+                    foreach (Control t in c.Controls)
+                    {
+                        if (t.GetType() == typeof(TextBox))
                         {
-                            foreach (Control t in c.Controls)
-                            {
-                                if (t.GetType() == typeof(TextBox))
-                                {
-                                    TextBox aux = (TextBox)t;
-                                    respuestas.Add(aux);
-                                }
-                            }
+                            TextBox aux = (TextBox)t;
+                            respuestas.Add(aux);
                         }
-                    
-                    
+                    }
+                }
+
+
             }
             return respuestas;
         }
@@ -443,11 +441,11 @@ namespace MyQuizifyGUI.Forms
             if (picture.Image == null) return "";
             string imagen = "";
             MemoryStream ms = new MemoryStream();
-            picture.Image.Save(ms,ImageFormat.Jpeg);
+            picture.Image.Save(ms, ImageFormat.Jpeg);
             byte[] aux = ms.GetBuffer();
 
             imagen = Convert.ToBase64String(aux);
-            
+
             return imagen;
         }
 
@@ -509,7 +507,7 @@ namespace MyQuizifyGUI.Forms
             formMO.Show();
             Cursor.Current = Cursors.Default;
         }
-       
+
         private void respuestaAbierta_Click(object sender, EventArgs e)
         {
             abrirRespuestaAbierta();

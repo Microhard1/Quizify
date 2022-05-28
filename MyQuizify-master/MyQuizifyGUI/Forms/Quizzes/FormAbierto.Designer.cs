@@ -74,7 +74,6 @@ namespace MyQuizifyGUI.Forms
             this.inputImagen.Size = new System.Drawing.Size(379, 414);
             this.inputImagen.TabIndex = 13;
             this.inputImagen.TabStop = false;
-            this.inputImagen.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button1
             // 
@@ -98,7 +97,6 @@ namespace MyQuizifyGUI.Forms
             this.textBoxResp.Size = new System.Drawing.Size(444, 413);
             this.textBoxResp.TabIndex = 17;
             this.textBoxResp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxResp.TextChanged += new System.EventHandler(this.textBoxResp_TextChanged);
             // 
             // label1
             // 
@@ -179,7 +177,6 @@ namespace MyQuizifyGUI.Forms
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormAbierto";
             this.Text = "FormAbierto";
-            this.Load += new System.EventHandler(this.FormAbierto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.inputImagen)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

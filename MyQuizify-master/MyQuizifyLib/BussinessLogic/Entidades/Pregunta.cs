@@ -1,16 +1,12 @@
 ﻿using FireSharp.Response;
 using MyQuizifyLib.Persistencia;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
     public abstract class Pregunta
     {
-        
+
         public ICollection<Respuesta> respuestas;
         public string id;
         public string enunciado;
@@ -29,28 +25,28 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             respuestas = new List<Respuesta>();
         }
 
-        
+
 
         public void añadirRespuesta(string enunciado)
         {
             string tipo = "";
-            if (this.GetType().Name == "PreguntaMO") tipo = "RespuestasMultiOpcion";
-            if (this.GetType().Name == "PreguntaA") tipo = "RespuestasAbiertas";
-            if (this.GetType().Name == "PreguntaVF") tipo = "RespuestasVerdaderoFalso";
+            if (GetType().Name == "PreguntaMO") tipo = "RespuestasMultiOpcion";
+            if (GetType().Name == "PreguntaA") tipo = "RespuestasAbiertas";
+            if (GetType().Name == "PreguntaVF") tipo = "RespuestasVerdaderoFalso";
             Respuesta r = crearRespuesta(enunciado);
 
             respuestas.Add(r);
-            FirebaseResponse addRespuesta = ConexionBD.getInstancia().client.Set("Respuestas/"+ tipo + "/" + this.id, respuestas);
+            FirebaseResponse addRespuesta = ConexionBD.getInstancia().client.Set("Respuestas/" + tipo + "/" + id, respuestas);
         }
 
         public abstract Respuesta crearRespuesta(string enunciado);
 
         public override string ToString()
         {
-            return "id: " + this.id + "\n" + 
-                "Enunciado: " + this.enunciado + "\n" + 
-                "Explicacion: " + this.explicacion + "\n" 
-                + "puntuacion: " + this.puntuacion + "\n" ;
+            return "id: " + id + "\n" +
+                "Enunciado: " + enunciado + "\n" +
+                "Explicacion: " + explicacion + "\n"
+                + "puntuacion: " + puntuacion + "\n";
         }
-    }   
+    }
 }

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MyQuizifyGUI.Forms.ContestacionQuizes;
+﻿using MyQuizifyGUI.Forms.ContestacionQuizes;
 using MyQuizifyLib.BussinessLogic.Entidades;
+using System;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -31,29 +24,24 @@ namespace MyQuizifyGUI.Forms
 
         private void btbAceptar_Click(object sender, EventArgs e)
         {
-            if (quiz.GetType().Name=="QuizMO")
+            if (quiz.GetType().Name == "QuizMO")
             {
                 ContestacionDeQuizesMultiOpcion contestacionDeQuizesMultiOpcion = new ContestacionDeQuizesMultiOpcion(quiz);
                 contestacionDeQuizesMultiOpcion.ShowDialog();
-                this.Close();
+                Close();
             }
             else if (quiz.GetType().Name == "QuizVF")
             {
-                ContestacionQuizVF contQuizVF = new ContestacionQuizVF(quiz) ;
+                ContestacionQuizVF contQuizVF = new ContestacionQuizVF(quiz);
                 contQuizVF.ShowDialog();
-                this.Close();
+                Close();
             }
             else if (quiz.GetType().Name == "QuizPA")
             {
                 ContestacionQuizRA contQuizRA = new ContestacionQuizRA(quiz);
                 contQuizRA.ShowDialog();
-                this.Close();
+                Close();
             }
-            
-        }
-
-        private void lblFechaInicio_Click(object sender, EventArgs e)
-        {
 
         }
     }

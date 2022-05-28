@@ -161,7 +161,6 @@ namespace MyQuizifyGUI.Forms.InicioSesion
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(608, 413);
             this.panelContenedor.TabIndex = 3;
-            this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
             // 
             // InicioInstructor
             // 
@@ -175,7 +174,6 @@ namespace MyQuizifyGUI.Forms.InicioSesion
             this.Name = "InicioInstructor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioInstructor";
-            this.Load += new System.EventHandler(this.InicioInstructor_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.navbar.ResumeLayout(false);

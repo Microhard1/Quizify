@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyQuizifyLib.Persistencia;
-using FireSharp.Config;
-using FireSharp.Interfaces;
+﻿using EASendMail;
 using FireSharp.Response;
 using MyQuizifyLib.BussinessLogic.Servicios;
-using EASendMail;
+using MyQuizifyLib.Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
@@ -30,9 +26,6 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 
         public DateTime fechaDeInicio;
         public DateTime fechaFin;
-
-        
-
 
         public int peso;
         public int duracion;
@@ -56,7 +49,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             notasQuiz = new List<Calificacion>();
             competencias = new List<Competencia>();
             hechoPor = new List<Alumno>();
-            
+
         }
 
 
@@ -117,13 +110,13 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             Instructor a = services.getInstructorById(nombreUsuario);
             //eliminar despues de entrega de sprint 2
 
-            if (this.GetType().Name == "QuizMO")
+            if (GetType().Name == "QuizMO")
             {
                 QuizMO quiz = new QuizMO(q.nombreQuiz, q.creadoPor, q.duracion, q.peso, q.dificultad, q.fechaDeInicio, q.fechaFin, q.asignatura);
                 quiz.preguntas = q.preguntas;
                 return quiz;
             }
-            else if (this.GetType().Name == "QuizVF")
+            else if (GetType().Name == "QuizVF")
             {
                 QuizVF quiz = new QuizVF(q.nombreQuiz, q.creadoPor, q.duracion, q.peso, q.dificultad, q.fechaDeInicio, q.fechaFin, q.asignatura);
                 quiz.preguntas = q.preguntas;
@@ -145,7 +138,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
 
         public void obtenerCalificaciones()
         {
-            this.notasQuiz = services.listarCalificaciones(this);
+            notasQuiz = services.listarCalificaciones(this);
             estrategia.generarInforme((List<Calificacion>)notasQuiz, this);
         }
 
@@ -162,7 +155,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
                 + "asignatura: " + asignatura.id + "\n";
         }
 
-       
+
         public void añadirCompetencias(List<Competencia> compe)
         {
             List<Competencia> auxiliar = new List<Competencia>();
@@ -196,7 +189,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public void notificar()
         {
             services.alumnosRealizadoQuiz(this);
-            foreach(IObservador a in hechoPor)
+            foreach (IObservador a in hechoPor)
             {
                 a.actualizar(this);
             }
@@ -239,10 +232,7 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
                 }
             }
         }
-
-
-
-
-
     }
 }
+
+

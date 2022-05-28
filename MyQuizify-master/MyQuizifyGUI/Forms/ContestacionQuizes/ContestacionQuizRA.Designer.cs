@@ -76,7 +76,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(854, 89);
             this.panel1.TabIndex = 25;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // labelTiempo
             // 
@@ -185,7 +184,6 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             this.Name = "ContestacionQuizRA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContestacionQuizRA";
-            this.Load += new System.EventHandler(this.ContestacionQuizRA_Load);
             ((System.ComponentModel.ISupportInitialize)(this.inputImagen)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

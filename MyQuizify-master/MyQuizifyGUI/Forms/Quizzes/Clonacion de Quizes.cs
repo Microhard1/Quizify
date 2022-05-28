@@ -1,17 +1,11 @@
-﻿using MyQuizifyLib.BussinessLogic.Entidades;
+﻿using FireSharp.Response;
+using MyQuizifyLib.BussinessLogic.Entidades;
+using MyQuizifyLib.BussinessLogic.Servicios;
+using MyQuizifyLib.Persistencia;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using MyQuizifyLib.Persistencia;
-using FireSharp.Response;
-using MyQuizifyLib.BussinessLogic.Servicios;
 
 namespace MyQuizifyGUI.Forms.Quizzes
 {
@@ -19,9 +13,11 @@ namespace MyQuizifyGUI.Forms.Quizzes
     {
         MyQuizifyServices services = new MyQuizifyServices();
         ConexionBD cf = ConexionBD.getInstancia();
-        public Clonacion_de_Quizes()
+        Aplicacion app;
+        public Clonacion_de_Quizes(Aplicacion app)
         {
             InitializeComponent();
+            this.app = app;
         }
 
         private void Clonacion_de_Quizes_Load(object sender, EventArgs e)
@@ -115,7 +111,7 @@ namespace MyQuizifyGUI.Forms.Quizzes
 
         private void btbVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

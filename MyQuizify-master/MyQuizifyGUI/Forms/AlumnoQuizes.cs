@@ -1,16 +1,10 @@
 ﻿using MyQuizifyLib.BussinessLogic.Entidades;
+using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FireSharp.Response;
-using MyQuizifyLib.BussinessLogic.Servicios;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -21,11 +15,13 @@ namespace MyQuizifyGUI.Forms
         MyQuizifyServices services = new MyQuizifyServices();
         int tiempo = 53;
         int ancho, alto;
-        public AlumnoQuizes(int ancho, int alto)
+        Aplicacion app;
+        public AlumnoQuizes(int ancho, int alto, Aplicacion app)
         {
             InitializeComponent();
             this.ancho = ancho;
             this.alto = alto;
+            this.app = app;
         }
 
         private void AlumnoQuizes_Load(object sender, EventArgs e)
@@ -42,7 +38,7 @@ namespace MyQuizifyGUI.Forms
             dataGridQuizes.Columns.Add("duracion", "Duracion");
             dataGridQuizes.Columns.Add("fechaDeInicio", "Inicio");
             dataGridQuizes.Columns.Add("fechaFin", "Fin");
-            this.Size = new Size(ancho,alto);
+            Size = new Size(ancho, alto);
             setWidthColumnas();
 
         }
@@ -60,7 +56,7 @@ namespace MyQuizifyGUI.Forms
         {
             dataGridQuizes.Rows.Clear();
             List<Quiz> quizes = services.listaQuizes();
-            foreach(var quiz in quizes)
+            foreach (var quiz in quizes)
             {
                 dataGridQuizes.Rows.Add(false, quiz.nombreQuiz, quiz.GetType().Name, quiz.dificultad, quiz.duracion,
                         quiz.fechaDeInicio, quiz.fechaFin);
@@ -74,7 +70,7 @@ namespace MyQuizifyGUI.Forms
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
-                if(isCellChecked == true)
+                if (isCellChecked == true)
                 {
                     q = services.getQuizById(dataGridQuizes.Rows[i].Cells[1].Value.ToString());
                     counter++;
@@ -88,11 +84,6 @@ namespace MyQuizifyGUI.Forms
             }
             else MessageBox.Show("Solo puedes realizar un quiz al mismo tiempo." +
                 "Escoge tan solo un quiz para realizar");
-        }
-
-        private void dataGridQuizes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)

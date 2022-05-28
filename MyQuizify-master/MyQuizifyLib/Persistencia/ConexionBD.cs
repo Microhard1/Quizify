@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Config;
+﻿using FireSharp.Config;
 using FireSharp.Interfaces;
-using FireSharp.Response;
 using MyQuizifyLib.BussinessLogic.Entidades;
 
 namespace MyQuizifyLib.Persistencia
@@ -38,7 +32,7 @@ namespace MyQuizifyLib.Persistencia
             };
             client = new FireSharp.FirebaseClient(conexionNuevaBDD);
         }
-        
+
         public static ConexionBD getInstancia()
         {
             if (instancia == null)

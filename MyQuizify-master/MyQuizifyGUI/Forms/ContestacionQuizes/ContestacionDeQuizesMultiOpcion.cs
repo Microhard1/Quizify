@@ -1,17 +1,10 @@
 ﻿using MyQuizifyLib.BussinessLogic.Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using MyQuizifyLib.BussinessLogic.Servicios;
 using MyQuizifyLib.Persistencia;
-using System.IO;
-using MyQuizifyLib.Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI.Forms
 {
@@ -23,12 +16,8 @@ namespace MyQuizifyGUI.Forms
         double nota;
         List<RadioButton> valores;
         MyQuizifyServices servicios = new MyQuizifyServices();
-        int progreso = 0;
         int tiempo;
-        double puntuacionTotal = 0;
-        double puntuacionAlumno = 0;
         ConexionBD cf = ConexionBD.getInstancia();
-        List<Respuesta> res = new List<Respuesta>();
         public ContestacionDeQuizesMultiOpcion(Quiz q)
         {
             InitializeComponent();
@@ -79,7 +68,7 @@ namespace MyQuizifyGUI.Forms
             FireSharp.Response.FirebaseResponse eliminar = ConexionBD.getInstancia().client.Delete
                 ("Calificaciones/" + aContestar.nombreQuiz + "/" + servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username).username + "/quizRealizado/preguntas");
             MessageBox.Show("Enviado");
-            this.Close();
+            Close();
         }
 
         private void getValorRB(int indice)
@@ -168,7 +157,7 @@ namespace MyQuizifyGUI.Forms
                  MessageBoxIcon.Information);
                 if (cerrar == DialogResult.OK)
                 {
-                    this.Close();
+                    Close();
                 }
             }
             else

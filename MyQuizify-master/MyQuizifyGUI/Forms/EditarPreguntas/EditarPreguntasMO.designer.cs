@@ -110,7 +110,6 @@ namespace MyQuizifyGUI.Forms.EdicionDePreguntas
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Respuesta 3";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 

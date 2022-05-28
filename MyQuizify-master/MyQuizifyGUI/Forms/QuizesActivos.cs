@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MyQuizifyLib.Persistencia;
-using FireSharp.Response;
-using FireSharp.Interfaces;
-using FireSharp.Config;
-using MyQuizifyLib.BussinessLogic.Entidades;
-using Newtonsoft.Json;
-using MyQuizifyLib.BussinessLogic.Servicios;
-using MyQuizifyGUI.Forms.Quizzes;
+﻿using FireSharp.Response;
 using MyQuizifyGUI.Forms;
 using MyQuizifyGUI.Forms.EdicionDePreguntas;
+using MyQuizifyGUI.Forms.Quizzes;
+using MyQuizifyLib.BussinessLogic.Entidades;
+using MyQuizifyLib.BussinessLogic.Servicios;
+using MyQuizifyLib.Persistencia;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace MyQuizifyGUI
 {
@@ -32,7 +24,7 @@ namespace MyQuizifyGUI
             this.app = app;
             InitializeComponent();
             q = new CrearQuiz();
-            clonacionForm = new Clonacion_de_Quizes();
+            clonacionForm = new Clonacion_de_Quizes(app);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,13 +41,9 @@ namespace MyQuizifyGUI
             dataGridQuizes.Columns.Add("fechaDeInicio", "Inicio");
             dataGridQuizes.Columns.Add("fechaFin", "Fin");
             dataGridQuizes.Columns.Add("estado", "Estado");
-            
-            
+
 
         }
-
-        
-        
         public string getTipoQuiz(string quiz)
         {
             string tipo = "QuizesMO";
@@ -126,12 +114,6 @@ namespace MyQuizifyGUI
                 }
             }
         }
-
-        private void dataGridQuizes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             clonacionForm.ShowDialog();
@@ -168,31 +150,11 @@ namespace MyQuizifyGUI
                         if (q.nombreQuiz == nombre)
                         {
                             dataGridQuizes.Rows.Remove(dataGridQuizes.Rows[i]);
-                            string tipo = q.GetType().Name;
-                            //METODO borrarQuiz(Quiz q, string tipo);
-                            if (tipo == "QuizMO")
-                            {
-                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesMO/" + q.nombreQuiz);
-                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
-                            }
-
-
-                            else if (tipo == "QuizVF")
-                            {
-                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesVF/" + q.nombreQuiz);
-                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasVerdaderoFalso/" + q.nombreQuiz);
-                            }
-
-
-                            else if (tipo == "QuizPA")
-                            {
-                                ConexionBD.getInstancia().client.Delete("Quizes/QuizesPA/" + q.nombreQuiz);
-                                ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
-                            }
+                            services.borrarQuiz(q);
                         }
                     }
-                       
-                        
+
+
                 }
             }
         }
