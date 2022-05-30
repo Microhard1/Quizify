@@ -27,17 +27,5 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             this.fechaNacimiento = fechaNacimiento;
 
         }
-
-        public void cambiarContraseña(string contraseñaNueva)
-        {
-
-        }
-
-        public void cambiarCorreo(string correoNuevo)
-        {
-
-        }
-
-
     }
 }
