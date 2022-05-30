@@ -91,7 +91,6 @@
             this.panelQuizes.Name = "panelQuizes";
             this.panelQuizes.Size = new System.Drawing.Size(800, 369);
             this.panelQuizes.TabIndex = 4;
-            this.panelQuizes.Paint += new System.Windows.Forms.PaintEventHandler(this.panelQuizes_Paint);
             // 
             // btbAceptar
             // 

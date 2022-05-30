@@ -151,7 +151,7 @@ namespace MyQuizifyGUI.Forms.EdicionDePreguntas
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(342, 420);
+            this.button3.Location = new System.Drawing.Point(348, 420);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 17;

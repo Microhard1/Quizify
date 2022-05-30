@@ -47,7 +47,6 @@ namespace MyQuizifyGUI
                 _password = textBoxPassword.Text;
                 if (contraseñaFormatoCorrecto(_password))
                 {
-
                     if (verificarUsuario(_usuario))
                     {
                         if (validarContraseña(_usuario, _password))
@@ -120,16 +119,12 @@ namespace MyQuizifyGUI
 
         public bool verificarUsuario(string username)
         {
-            if (tipoUsuario == "Alumnos")
-            {
-                Alumno a = services.getAlumnoById(username);
-                if (a != null) return true;
-            }
-            if (tipoUsuario == "Instructores")
-            {
-                Instructor i = services.getInstructorById(username);
-                if (i != null) return true;
-            }
+            if (tipoUsuario == "Alumno")
+                if(services.getAlumnoById(username) != null) return true;
+              
+            if (tipoUsuario == "Instructor")
+                if(services.getInstructorById(username) != null) return true;
+            
             return false;
         }
 
@@ -141,9 +136,9 @@ namespace MyQuizifyGUI
 
         public bool validarContraseña(string username, string pass)
         {
-            string a = services.getUserPassword(username, tipoUsuario);
+            string password = services.getUserPassword(username, tipoUsuario);
 
-            if (Encriptador.GetSHA256(pass).Equals(a)) return true;
+            if (Encriptador.GetSHA256(pass).Equals(password)) return true;
             return false;
         }
 
@@ -157,12 +152,12 @@ namespace MyQuizifyGUI
 
         private void buttonAlumno_CheckedChanged(object sender, EventArgs e)
         {
-            tipoUsuario = "Alumnos";
+            tipoUsuario = buttonAlumno.Text;
         }
 
         private void buttonInstructor_CheckedChanged(object sender, EventArgs e)
         {
-            tipoUsuario = "Instructores";
+            tipoUsuario = buttonInstructor.Text;
         }
 
     }

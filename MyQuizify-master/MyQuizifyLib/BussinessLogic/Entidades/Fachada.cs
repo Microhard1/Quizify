@@ -1,10 +1,13 @@
-﻿using System;
+﻿using FireSharp.Response;
+using MyQuizifyLib.Persistencia;
+using System;
 
 namespace MyQuizifyLib.BussinessLogic.Entidades
 {
     public class Fachada
     {
         protected Quiz quiz;
+        protected Usuario usuario;
         public Fachada()
         {
 
@@ -40,6 +43,18 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             }
 
         }
+
+        public void crearUsuario(string tipoUsuario, string username, string contraseña, 
+            string nombre, string apellidos, string telefono, string correo, DateTime fechaNacimiento)
+        {
+            Encriptador encriptador = new Encriptador(contraseña);
+            if (tipoUsuario == "Alumno")
+                new Alumno(username, encriptador.password, nombre, apellidos, telefono, correo, fechaNacimiento);
+            else if (tipoUsuario == "Instructor")
+                new Instructor(username, encriptador.password, nombre, apellidos, telefono, correo, fechaNacimiento);
+        }
+
+        
 
     }
 }

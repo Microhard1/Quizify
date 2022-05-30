@@ -43,14 +43,7 @@ namespace MyQuizifyGUI
 
 
         }
-        public string getTipoQuiz(string quiz)
-        {
-            string tipo = "QuizesMO";
-            if (quiz == "Pregunta Abierta") tipo = "QuizesPA";
-            else if (quiz == "Verdadero/Falso") tipo = "QuizesVF";
-            return tipo;
-        }
-
+        
         public void mostrarQuizes()
         {
             string tipoQuiz = "";
@@ -74,18 +67,6 @@ namespace MyQuizifyGUI
         private void comboBoxEstados_SelectedIndexChanged(object sender, EventArgs e)
         {
             string estado = comboBoxEstados.Text;
-        }
-
-        public void eliminarDatosGrid()
-        {
-            for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
-            {
-                bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
-                if (isCellChecked == true)
-                {
-                    dataGridQuizes.Rows.Remove(dataGridQuizes.Rows[i]);
-                }
-            }
         }
 
         public void deseleccionarChecks()

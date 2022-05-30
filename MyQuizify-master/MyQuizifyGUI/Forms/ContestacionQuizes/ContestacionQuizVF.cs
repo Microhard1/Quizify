@@ -13,6 +13,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
     public partial class ContestacionQuizVF : Form
     {
         Quiz quiz;
+        Aplicacion app;
         ICollection<Pregunta> preguntasSinContestar = new List<Pregunta>();
         MyQuizifyServices servicios = new MyQuizifyServices();
         ConexionBD cf = ConexionBD.getInstancia();
@@ -20,10 +21,11 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
         int tiempo;
         double puntuacionTotal = 0;
         double puntuacionAlumno = 0;
-        public ContestacionQuizVF(Quiz q)
+        public ContestacionQuizVF(Quiz q, Aplicacion app)
         {
             InitializeComponent();
             quiz = q;
+            this.app = app;
             quiz.preguntas = servicios.preguntasDeUnQuiz(q.nombreQuiz);
             preguntasSinContestar = quiz.preguntas;
             progreso = getProgreso();
@@ -54,7 +56,8 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    new CalificacionVF(notaFinal, (QuizVF)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
+                    Calificacion c = new Calificacion(notaFinal, (QuizVF)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
+                    app.listadoCalificacionesQuiz.Add(quiz, c);
                     Close();
                 }
             }
@@ -116,6 +119,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
             {
                 Quiz quizPausado = new QuizVF(quiz.nombreQuiz+"_PAUSADO", quiz.creadoPor, quiz.peso, tiempo/60,
                                quiz.dificultad, quiz.fechaDeInicio, quiz.fechaFin, quiz.asignatura);
+                app.quizesActivos.Add(quizPausado);
                 foreach (Pregunta p in preguntasSinContestar)
                 {
                     quizPausado.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);

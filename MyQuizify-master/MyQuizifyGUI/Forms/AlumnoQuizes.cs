@@ -11,7 +11,6 @@ namespace MyQuizifyGUI.Forms
     public partial class AlumnoQuizes : Form
     {
 
-        ConexionBD cf = ConexionBD.getInstancia();
         MyQuizifyServices services = new MyQuizifyServices();
         int tiempo = 53;
         int ancho, alto;
@@ -79,7 +78,7 @@ namespace MyQuizifyGUI.Forms
 
             if (counter == 1)
             {
-                CaracteristicasPrincipales caracteristicasPrincipales = new CaracteristicasPrincipales(q);
+                CaracteristicasPrincipales caracteristicasPrincipales = new CaracteristicasPrincipales(q, app);
                 caracteristicasPrincipales.ShowDialog();
             }
             else MessageBox.Show("Solo puedes realizar un quiz al mismo tiempo." +

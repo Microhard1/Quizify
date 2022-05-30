@@ -24,9 +24,6 @@ namespace MyQuizifyGUI.Forms
 
             dataGridViewCursos.Columns.Add("nombre", "Nombre");
             dataGridViewCursos.Columns.Add("id", "Id");
-
-
-
         }
 
         public void poblarGrid()

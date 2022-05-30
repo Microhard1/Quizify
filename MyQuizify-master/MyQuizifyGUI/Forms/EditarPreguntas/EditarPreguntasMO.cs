@@ -41,25 +41,8 @@ namespace MyQuizifyGUI.Forms.EdicionDePreguntas
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FirebaseResponse actualizarPregQuiz =
-               ConexionBD.getInstancia().client.Set
-               ("Preguntas/PreguntasMultiOpcion/" + aEditar.nombreQuiz + "/" + p.id + "/enunciado", textBox1.Text);
-            FirebaseResponse actualizarPreg0 =
-               ConexionBD.getInstancia().client.Set
-               ("Preguntas/PreguntasMultiOpcion/" + p.id + "/enunciado", textBox1.Text);
-            FirebaseResponse actualizarPreg1 =
-                ConexionBD.getInstancia().client.Set
-                ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 0 + "/enunciado", textBox2.Text);
-            FirebaseResponse actualizarPreg2 =
-                ConexionBD.getInstancia().client.Set
-                ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 1 + "/enunciado", textBox3.Text);
-            FirebaseResponse actualizarPreg3 =
-                ConexionBD.getInstancia().client.Set
-                ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 2 + "/enunciado", textBox4.Text);
-            FirebaseResponse actualizarPreg4 =
-                ConexionBD.getInstancia().client.Set
-                ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 3 + "/enunciado", textBox5.Text);
-
+            servicios.actualizarPregunta(p, aEditar, textBox1.Text, textBox2.Text,
+                textBox3.Text, textBox4.Text, textBox5.Text);
             MessageBox.Show("Pregunta actualizada con exito");
         }
 

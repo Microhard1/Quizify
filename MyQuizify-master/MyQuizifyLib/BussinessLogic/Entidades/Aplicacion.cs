@@ -14,11 +14,15 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         public ICollection<PreguntaMO> listadoPreguntasMO;
         public ICollection<PreguntaVF> listadoPreguntasVF;
         public ICollection<PreguntaA> listadoPreguntasA;
+        public ICollection<Pregunta> listadoPreguntas;
+        public Dictionary<Quiz, Calificacion> listadoCalificacionesQuiz;
 
         public Aplicacion()
         {
             quizesActivos = services.listaQuizes();
             listadoCursos = services.listarCursos();
+            listadoCalificacionesQuiz = new Dictionary<Quiz, Calificacion>();
+            listadoPreguntas = services.listarPreguntas();
         }
 
 

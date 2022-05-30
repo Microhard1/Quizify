@@ -10,23 +10,31 @@ namespace MyQuizifyGUI.Forms
     public partial class Registrar : Form
     {
         MyQuizifyServices services;
+        Fachada fachada;
         public string tipoUsuario;
 
         public Registrar()
         {
             InitializeComponent();
+            fachada = new Fachada();
             services = new MyQuizifyServices();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nombreUsuario = textBoxUsername.Text;
-            string correo = textBoxCorreo.Text;
-            string contraseña = textBoxPassword.Text;
-            bool check = comprobarCampos();
-            if (!check) MessageBox.Show("Existen campos sin rellenar");
+            
+            if (!comprobarCampos()) MessageBox.Show("Existen campos sin rellenar");
             else
             {
+                string nombreUsuario = textBoxUsername.Text;
+                string correo = textBoxCorreo.Text;
+                string contraseña = textBoxPassword.Text;
+                string nombre = textBoxNombre.Text;
+                string apellidos = textBoxApellidos.Text;
+                string telefono = textBoxTLF.Text;
+                DateTime fechaNac = dateTimeFechaNac.Value;
+
+
                 if (IsValidEmail(correo))
                 {
                     
@@ -45,23 +53,8 @@ namespace MyQuizifyGUI.Forms
                             }
                             else
                             {
-                                Encriptador encriptador = new Encriptador(contraseña);
-                                if (botonAlumno.Checked)
-                                {
-                                    new Alumno(nombreUsuario, encriptador.password,
-                                    textBoxNombre.Text, textBoxApellidos.Text, textBoxTLF.Text,
-                                    textBoxCorreo.Text, dateTimeFechaNac.Value);
-                                    MessageBox.Show("Registrado con éxito");
-                                    Close();
-                                }
-                                else if (botonInstructor.Checked)
-                                {
-                                    new Instructor(nombreUsuario, encriptador.password,
-                                    textBoxNombre.Text, textBoxApellidos.Text, textBoxTLF.Text,
-                                    textBoxCorreo.Text, dateTimeFechaNac.Value);
-                                    MessageBox.Show("Registrado con éxito");
-                                    Close();
-                                }
+                                fachada.crearUsuario(tipoUsuario, nombreUsuario, contraseña,
+                                    nombre, apellidos, telefono, correo, fechaNac);
                             }
                         }
                         else MessageBox.Show("La contraseña debe contener al menos 6 caracteres");
@@ -149,12 +142,12 @@ namespace MyQuizifyGUI.Forms
 
         private void botonAlumno_CheckedChanged(object sender, EventArgs e)
         {
-            tipoUsuario = "Alumnos";
+            tipoUsuario = botonAlumno.Text;
         }
 
         private void botonInstructor_CheckedChanged(object sender, EventArgs e)
         {
-            tipoUsuario = "Instructores";
+            tipoUsuario = botonInstructor.Text;
         }
 
 

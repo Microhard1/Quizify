@@ -72,22 +72,21 @@ namespace MyQuizifyGUI.Forms
                 {
                     quizActual = new QuizMO(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
                         duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
-                    
+                    app.quizesActivos.Add(quizActual);
                     AñadirPreguntas(quizActual);
                 }
                 else if (tipoDeQuiz == "Verdadero/Falso")
                 {
                     quizActual = new QuizVF(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
                        duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
-                    
+                    app.quizesActivos.Add(quizActual);
                     AñadirPreguntas(quizActual);
                 }
                 else if (tipoDeQuiz == "Respuesta Abierta")
                 {
                     quizActual = new QuizPA(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
                        duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
-                    
-
+                    app.quizesActivos.Add(quizActual);
                     AñadirPreguntas(quizActual);
                 }
 
@@ -208,6 +207,7 @@ namespace MyQuizifyGUI.Forms
             string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
 
             Pregunta pregunta = new PreguntaVF(id, enunciado, imagen, puntuacion, explicacion);
+            app.listadoPreguntas.Add(pregunta);
             pregunta.añadirRespuesta(verdaderoOFalso.ToString());
             preguntas.Add(pregunta);
 
@@ -227,7 +227,7 @@ namespace MyQuizifyGUI.Forms
             string imagen = "";
             double puntuacion = 0.0;
             string explicacion = "";
-            Pregunta pregunta;
+
             foreach (Control c in objetosDelFormulario)
             {
                 if (c.GetType() == typeof(TextBox))
@@ -315,7 +315,8 @@ namespace MyQuizifyGUI.Forms
             if (puntuacion > 5.0 && false) MessageBox.Show("La pregunta no puede superar los 5 puntos");
             else
             {
-                pregunta = new PreguntaMO(id, enunciado, imagen, puntuacion, explicacion);
+                Pregunta pregunta = new PreguntaMO(id, enunciado, imagen, puntuacion, explicacion);
+                app.listadoPreguntas.Add(pregunta);
                 añadirRespuestas(respuestas, pregunta);
                 preguntas.Add(pregunta);
 
@@ -375,6 +376,7 @@ namespace MyQuizifyGUI.Forms
             string id = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
 
             Pregunta pregunta = new PreguntaA(id, enunciado, imagen, puntuacion, explicacion);
+            app.listadoPreguntas.Add(pregunta);
             Respuesta r = pregunta.crearRespuesta(respuesta);
             pregunta.añadirRespuesta(respuesta);
 

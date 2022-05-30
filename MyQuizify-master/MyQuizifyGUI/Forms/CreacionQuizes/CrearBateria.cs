@@ -14,7 +14,7 @@ namespace MyQuizifyGUI.Forms
         Dictionary<string, PreguntaMO> preguntasMO;
         Dictionary<string, PreguntaVF> preguntasVF;
         Dictionary<string, PreguntaA> preguntasA;
-        ArrayList preguntasBateria;
+        List<string> nombrePreguntas;
         Aplicacion app;
         public CrearBateria(Aplicacion app)
         {
@@ -22,8 +22,8 @@ namespace MyQuizifyGUI.Forms
             preguntasMO = services.obtenerPreguntasMO();
             preguntasVF = services.obtenerPreguntasVF();
             preguntasA = services.obtenerPreguntasA();
-            preguntasBateria = new ArrayList();
             this.app = app;
+            nombrePreguntas = new List<string>();
         }
 
         private void CrearPregunta_Load(object sender, EventArgs e)
@@ -55,10 +55,8 @@ namespace MyQuizifyGUI.Forms
                         item.Value.puntuacion, item.Value.explicacion);
                 }
             }
-
-
-
         }
+
         void cargarDatosVF(Dictionary<string, PreguntaVF> data)
         {
 
@@ -92,50 +90,16 @@ namespace MyQuizifyGUI.Forms
                 bool isChecked = false;
                 for (int i = 0; i < dataGridPreguntas.Rows.Count - 1; i++)
                 {
+                    string nombrePregunta = dataGridPreguntas.Rows[i].Cells[1].Value.ToString();
                     isChecked = (bool)dataGridPreguntas.Rows[i].Cells[0].Value;
                     if (isChecked)
                     {
-                        if (comboBox1.Text == "MultiOpcion")
-                        {
-                            PreguntaMO p = services.getPreguntaMOById(dataGridPreguntas.Rows[i].Cells[1].Value.ToString());
-                            preguntasBateria.Add(p);
-                            counter++;
-                        }
-                        if (comboBox1.Text == "Abierta")
-                        {
-                            PreguntaA p = services.getPreguntaAById(dataGridPreguntas.Rows[i].Cells[1].Value.ToString());
-                            preguntasBateria.Add(p);
-                            counter++;
-                        }
-                        if (comboBox1.Text == "Verdadero/Falso")
-                        {
-                            PreguntaVF p = services.getPreguntaVFById(dataGridPreguntas.Rows[i].Cells[1].Value.ToString());
-                            preguntasBateria.Add(p);
-                            counter++;
-                        }
+                        nombrePreguntas.Add(nombrePregunta);
                     }
                 }
                 if (counter > 3)
                 {
-                    if (comboBox1.Text == "MultiOpcion")
-                    {
-                        BateriaMultiOpcion nuevaBateria = new BateriaMultiOpcion(textBoxNombreBateria.Text, preguntasBateria);
-
-                        MessageBox.Show("Bateria creada correctamente");
-                    }
-                    if (comboBox1.Text == "Abierta")
-                    {
-                        BateriaAbierta nuevaBateria = new BateriaAbierta(textBoxNombreBateria.Text, preguntasBateria);
-
-                        MessageBox.Show("Bateria creada correctamente");
-                    }
-                    if (comboBox1.Text == "Verdadero/Falso")
-                    {
-                        BateriaVerdaderoFalso nuevaBateria = new BateriaVerdaderoFalso(textBoxNombreBateria.Text, preguntasBateria);
-
-                        MessageBox.Show("Bateria creada correctamente");
-                    }
-
+                    
                 }
             }
             Cursor.Current = Cursors.Default;

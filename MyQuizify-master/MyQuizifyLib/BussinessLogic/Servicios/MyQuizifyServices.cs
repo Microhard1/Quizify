@@ -22,6 +22,27 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             return contraseña.ResultAs<string>();
         }
 
+        public List<Pregunta> listarPreguntas()
+        {
+            List<Pregunta> listado = new List<Pregunta>();
+            if(obtenerPreguntasMO() != null)
+                foreach(var p in obtenerPreguntasMO())
+                {
+                    listado.Add(p.Value);
+                }
+            if (obtenerPreguntasA() != null)
+                foreach (var p in obtenerPreguntasA())
+                {
+                    listado.Add(p.Value);
+                }
+            if (obtenerPreguntasVF() != null)
+                foreach (var p in obtenerPreguntasVF())
+                {
+                    listado.Add(p.Value);
+                }
+            return listado;
+        }
+
         public Dictionary<string, PreguntaMO> obtenerPreguntasMO()
         {
             FirebaseResponse preguntasDB = cf.client.Get(@"Preguntas/PreguntasMultiOpcion");
@@ -495,6 +516,29 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
                 ConexionBD.getInstancia().client.Delete("Quizes/QuizesPA/" + q.nombreQuiz);
                 ConexionBD.getInstancia().client.Delete("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz);
             }
+        }
+
+        public void actualizarPregunta(Pregunta p, Quiz q, string enunciadoP, string enunciadoR1,
+            string enunciadoR2, string enunciadoR3, string enunciadoR4)
+        {
+            FirebaseResponse actualizarPregQuiz =
+               ConexionBD.getInstancia().client.Set
+               ("Preguntas/PreguntasMultiOpcion/" + q.nombreQuiz + "/" + p.id + "/enunciado", enunciadoP);
+            FirebaseResponse actualizarPreg0 =
+               ConexionBD.getInstancia().client.Set
+               ("Preguntas/PreguntasMultiOpcion/" + p.id + "/enunciado", enunciadoP);
+            FirebaseResponse actualizarPreg1 =
+                ConexionBD.getInstancia().client.Set
+                ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 0 + "/enunciado", enunciadoR1);
+            FirebaseResponse actualizarPreg2 =
+                ConexionBD.getInstancia().client.Set
+                ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 1 + "/enunciado", enunciadoR2);
+            FirebaseResponse actualizarPreg3 =
+                ConexionBD.getInstancia().client.Set
+                ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 2 + "/enunciado", enunciadoR3);
+            FirebaseResponse actualizarPreg4 =
+                ConexionBD.getInstancia().client.Set
+                ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 3 + "/enunciado", enunciadoR4);
         }
 
 

@@ -10,21 +10,29 @@ namespace MyQuizifyGUI.Forms
 {
     public partial class ContestacionDeQuizesMultiOpcion : Form
     {
-        Quiz aContestar;
         ICollection<Pregunta> preguntasSinContestar = new List<Pregunta>();
+        Quiz aContestar;
+        Aplicacion app;
+        
         int contadorPregunta;
         double nota;
-        List<RadioButton> valores;
-        MyQuizifyServices servicios = new MyQuizifyServices();
         int tiempo;
+
+        List<RadioButton> valores;
+        MyQuizifyServices servicios;
+        
         ConexionBD cf = ConexionBD.getInstancia();
-        public ContestacionDeQuizesMultiOpcion(Quiz q)
+        public ContestacionDeQuizesMultiOpcion(Quiz q, Aplicacion app)
         {
             InitializeComponent();
             contadorPregunta = 0;
-            this.aContestar = q;
-            preguntasSinContestar = aContestar.preguntas;
             nota = 0;
+
+            aContestar = q;
+            preguntasSinContestar = aContestar.preguntas;
+            servicios = new MyQuizifyServices();
+            this.app = app;
+
             aContestar.preguntas = servicios.preguntasDeUnQuiz(aContestar.nombreQuiz);
             valores = new List<RadioButton>(aContestar.preguntas.Count);
             button3.Enabled = false;
@@ -65,6 +73,7 @@ namespace MyQuizifyGUI.Forms
         {
             aContestar.añadirObservador(servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
             Calificacion c = new Calificacion(nota, (QuizMO)aContestar, servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
+            app.listadoCalificacionesQuiz.Add(aContestar, c);
             MessageBox.Show("Enviado");
             Close();
         }
@@ -146,6 +155,7 @@ namespace MyQuizifyGUI.Forms
             {
                 Quiz quizPausado = new QuizPA(aContestar.nombreQuiz + "_PAUSADO", aContestar.creadoPor, tiempo / 60,
                     aContestar.peso, aContestar.dificultad, aContestar.fechaDeInicio, aContestar.fechaFin, aContestar.asignatura);
+                app.quizesActivos.Add(quizPausado);
                 foreach (Pregunta p in preguntasSinContestar)
                 {
                     quizPausado.añadirPregunta(p.id, p.enunciado, p.imagen, p.puntuacion, p.explicacion);
