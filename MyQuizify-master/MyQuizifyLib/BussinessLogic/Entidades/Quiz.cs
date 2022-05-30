@@ -70,6 +70,8 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         {
             this.estado = estado;
             this.estado.establecerContexto(this);
+            if(estado is ResultadosPublicados)
+                notificar();
         }
 
         public bool preguntasRepetidas()
@@ -183,43 +185,6 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
             }
         }
 
-        public void enviarNotificacion()
-        {
-            string mensaje = "";
-            List<string> mensajes = new List<string>();
-            foreach (IObservador observador in hechoPor)
-            {
-                Alumno aNotificar = (Alumno)observador;
-                FirebaseResponse nota = ConexionBD.getInstancia().client.Get("Calificaciones/" + this.nombreQuiz +
-                    "/" + aNotificar.username + "/nota");
-                double calificacion = nota.ResultAs<double>();
-                try
-                {
-                    SmtpMail objetoCorreo = new SmtpMail("TryIt");
-                    objetoCorreo.From = "quizifynotifications@gmail.com";
-                    objetoCorreo.To = aNotificar.correo;
-                    objetoCorreo.Subject = "NOTA " + this.nombreQuiz + " publicada";
-                    objetoCorreo.TextBody = "La nota del examen " + this.nombreQuiz + " ha sido Publicada \n" +
-                        aNotificar.nombre + " " + aNotificar.apellidos + " ha obtenido una calificacion de " + calificacion;
-
-                    SmtpServer objetoServidor = new SmtpServer("smtp.gmail.com");
-                    objetoServidor.User = "quizifyNotifications@gmail.com";
-                    objetoServidor.Password = "quizify1*";
-                    objetoServidor.Port = 587;
-                    objetoServidor.ConnectType = SmtpConnectType.ConnectSSLAuto;
-
-                    SmtpClient objetoCliente = new SmtpClient();
-                    objetoCliente.SendMail(objetoServidor, objetoCorreo);
-                    mensaje = "Mensaje enviado correctamente";
-                    mensajes.Add(mensaje);
-                }
-                catch (Exception e)
-                {
-                    mensaje = "Error al realizar el envio " + e.Message;
-                    mensajes.Add(mensaje);
-                }
-            }
-        }
     }
 }
 

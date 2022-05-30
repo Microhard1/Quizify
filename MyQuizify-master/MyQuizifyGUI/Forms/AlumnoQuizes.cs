@@ -56,7 +56,7 @@ namespace MyQuizifyGUI.Forms
             dataGridQuizes.Rows.Clear();
             foreach (Quiz quiz in app.quizesActivos)
             {
-                if(quiz.estado is Publicado)
+                //if(quiz.estado is Publicado)
                 dataGridQuizes.Rows.Add(false, quiz.nombreQuiz, quiz.GetType().Name, quiz.dificultad, quiz.duracion,
                         quiz.fechaDeInicio, quiz.fechaFin);
             }

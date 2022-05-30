@@ -11,7 +11,7 @@ namespace MyQuizifyGUI.Forms
     public partial class ContestacionDeQuizesMultiOpcion : Form
     {
         ICollection<Pregunta> preguntasSinContestar = new List<Pregunta>();
-        Quiz aContestar;
+        QuizMO aContestar;
         Aplicacion app;
         
         int contadorPregunta;
@@ -19,6 +19,7 @@ namespace MyQuizifyGUI.Forms
         int tiempo;
 
         List<RadioButton> valores;
+        Alumno contestador ;
         MyQuizifyServices servicios;
         
         ConexionBD cf = ConexionBD.getInstancia();
@@ -27,10 +28,11 @@ namespace MyQuizifyGUI.Forms
             InitializeComponent();
             contadorPregunta = 0;
             nota = 0;
-
-            aContestar = q;
-            preguntasSinContestar = aContestar.preguntas;
             servicios = new MyQuizifyServices();
+            contestador = servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username);
+            aContestar = (QuizMO)q;
+            preguntasSinContestar = aContestar.preguntas;
+            
             this.app = app;
 
             aContestar.preguntas = servicios.preguntasDeUnQuiz(aContestar.nombreQuiz);
@@ -71,8 +73,8 @@ namespace MyQuizifyGUI.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            aContestar.añadirObservador(servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
-            Calificacion c = new Calificacion(nota, (QuizMO)aContestar, servicios.getAlumnoById(ConexionBD.getInstancia().usuarioConectado.username));
+            
+            Calificacion c = new Calificacion(nota, aContestar, contestador);
             app.listadoCalificacionesQuiz.Add(aContestar, c);
             MessageBox.Show("Enviado");
             Close();
@@ -106,6 +108,7 @@ namespace MyQuizifyGUI.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             contadorPregunta--;
             button5.Enabled = true;
             if (contadorPregunta == 0) button4.Enabled = false;
@@ -121,6 +124,7 @@ namespace MyQuizifyGUI.Forms
 
         private void button5_Click(object sender, EventArgs e)
         {
+            nota += aContestar.preguntas.ToArray<Pregunta>()[contadorPregunta].puntuacion;
             guardarValores(contadorPregunta);
 
             foreach (Control c in groupBox1.Controls)

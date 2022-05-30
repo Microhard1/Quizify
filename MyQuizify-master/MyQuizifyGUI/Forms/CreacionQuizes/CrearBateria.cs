@@ -16,6 +16,7 @@ namespace MyQuizifyGUI.Forms
         Dictionary<string, PreguntaA> preguntasA;
         List<string> nombrePreguntas;
         Aplicacion app;
+        Fachada fachada;
         public CrearBateria(Aplicacion app)
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace MyQuizifyGUI.Forms
             preguntasVF = services.obtenerPreguntasVF();
             preguntasA = services.obtenerPreguntasA();
             this.app = app;
+            fachada = new Fachada();
             nombrePreguntas = new List<string>();
         }
 
@@ -99,7 +101,7 @@ namespace MyQuizifyGUI.Forms
                 }
                 if (counter > 3)
                 {
-                    
+                    fachada.crearBateria(textBoxNombreBateria.Text, comboBox1.Text, nombrePreguntas);
                 }
             }
             Cursor.Current = Cursors.Default;

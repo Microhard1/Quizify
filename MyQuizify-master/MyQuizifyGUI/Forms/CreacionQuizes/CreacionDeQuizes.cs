@@ -15,23 +15,28 @@ namespace MyQuizifyGUI.Forms
         private FormMO formMO;
         private FormVF formVF;
         private FormAbierto formAb;
-        ConexionBD cf = ConexionBD.getInstancia();
-        int numeroDePregunta = 0;
-        Form formularioActual = null;
-        List<Pregunta> preguntas = new List<Pregunta>();
+        private int numeroDePregunta;
+        private Form formularioActual;
+        private List<Pregunta> preguntas;
         string tipoDeQuiz = "";
-        MyQuizifyServices servicio = new MyQuizifyServices();
-        Quiz quizActual;
-        List<Curso> cursos;
-        Aplicacion app;
+        private MyQuizifyServices servicios;
+        private Quiz quizActual;
+        private List<Curso> cursos;
+        private Aplicacion app;
+        private Fachada fachada;
+
         public CreacionDeQuizes(Aplicacion app)
-        {
+        {   
+            InitializeComponent();
             formVF = new FormVF();
             formMO = new FormMO();
             formAb = new FormAbierto();
-            InitializeComponent();
-            cursos = servicio.listarCursos();
+            servicios = new MyQuizifyServices();
+            preguntas = new List<Pregunta>();
+            numeroDePregunta = 0;
+            cursos = servicios.listarCursos();
             this.app = app;
+            fachada = new Fachada();
         }
 
         private void CreacionDeQuizes_Load(object sender, EventArgs e)
@@ -61,36 +66,18 @@ namespace MyQuizifyGUI.Forms
             string dificultad = comboBoxDificultad.Text;
             int horas = Int32.Parse(textBoxHoras.Text) * 60;
             int duracion = horas + Int32.Parse(textBoxMin.Text);
-            Curso asignatura = servicio.getCursoById(comboBoxCursos.Text);
+            Curso asignatura = servicios.getCursoById(comboBoxCursos.Text);
             if (pesoQuiz < 5 || pesoQuiz > 65)
             {
                 MessageBox.Show("El peso del quiz debe estar entre 5% y 65%");
             }
             else
             {
-                if (tipoDeQuiz == "MultiOpcion")
-                {
-                    quizActual = new QuizMO(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
+                Quiz quiz = fachada.creacionDeQuiz(tipoDeQuiz, preguntas, nombreQuiz, ConexionBD.getInstancia().usuarioConectado,
                         duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
-                    app.quizesActivos.Add(quizActual);
-                    AñadirPreguntas(quizActual);
-                }
-                else if (tipoDeQuiz == "Verdadero/Falso")
-                {
-                    quizActual = new QuizVF(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
-                       duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
-                    app.quizesActivos.Add(quizActual);
-                    AñadirPreguntas(quizActual);
-                }
-                else if (tipoDeQuiz == "Respuesta Abierta")
-                {
-                    quizActual = new QuizPA(nombreQuiz, servicio.getInstructorById(cf.usuarioConectado.username),
-                       duracion, pesoQuiz, dificultad, dateTimePickerInicio.Value, dateTimePickerFin.Value, asignatura);
-                    app.quizesActivos.Add(quizActual);
-                    AñadirPreguntas(quizActual);
-                }
+                app.quizesActivos.Add(quizActual);
 
-                MessageBox.Show("Quiz creado \n" + quizActual.ToString());
+                MessageBox.Show("Quiz creado \n" + quiz.ToString());
             }
             Cursor.Current = Cursors.Default;
 
@@ -306,7 +293,7 @@ namespace MyQuizifyGUI.Forms
                     respuestas.Add(resp);
                 }
             }
-            string nombreQuiz = "QuizTipoTest";
+            string nombreQuiz = textBoxNombreQuiz.Text + "_" + numeroDePregunta;
             if (textBoxNombreQuiz.Text == "")
             {
                 nombreQuiz = textBoxNombreQuiz.Text;

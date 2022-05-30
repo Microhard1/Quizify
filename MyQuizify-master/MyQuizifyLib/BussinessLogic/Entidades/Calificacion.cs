@@ -8,11 +8,11 @@ namespace MyQuizifyLib.BussinessLogic.Entidades
         ConexionBD cf = ConexionBD.getInstancia();
 
         public double nota;
-        public Quiz quizRealizado;
+        public QuizMO quizRealizado;
         public Alumno examinado;
 
 
-        public Calificacion(double nota, Quiz quizRealizado, Alumno examinado)
+        public Calificacion(double nota, QuizMO quizRealizado, Alumno examinado)
         {
             this.nota = nota;
             this.quizRealizado = quizRealizado;

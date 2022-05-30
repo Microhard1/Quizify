@@ -136,7 +136,10 @@ namespace MyQuizifyGUI
 
         public bool validarContraseña(string username, string pass)
         {
-            string password = services.getUserPassword(username, tipoUsuario);
+            string ruta = "";
+            if (tipoUsuario == "Alumno") ruta = "Alumnos";
+            if (tipoUsuario == "Instructor") ruta = "Instructores";
+            string password = services.getUserPassword(username, ruta);
 
             if (Encriptador.GetSHA256(pass).Equals(password)) return true;
             return false;

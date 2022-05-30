@@ -133,7 +133,7 @@ namespace MyQuizifyGUI.Forms.ContestacionQuizes
                 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    Calificacion c = new Calificacion(notaFinal, (QuizPA)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
+                    Calificacion c = new Calificacion(notaFinal, (QuizMO)quiz, servicios.getAlumnoById(cf.usuarioConectado.username));
                     app.listadoCalificacionesQuiz.Add(quiz, c);
                     this.Close();
                 }

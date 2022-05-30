@@ -148,6 +148,7 @@ namespace MyQuizifyGUI
 
         private void button6_Click(object sender, EventArgs e)
         {
+            int comprobador = 0;
             Cursor.Current = Cursors.WaitCursor;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
@@ -159,14 +160,17 @@ namespace MyQuizifyGUI
                     {
                         if (q.nombreQuiz == nombre && q.estado is Borrador)
                         {
+                            comprobador++;
                             q.cambiarEstado(new Publicado());
                             MessageBox.Show("Quiz publicado con éxito");
                             dataGridQuizes.Rows[i].Cells[7].Value = q.estado.GetType().Name;
-
+                            break;
                         }
-                        else MessageBox.Show("El quiz " + q.nombreQuiz + "con estado : " + q.estado.GetType().Name +
-                            ", no se puede publicar ya que no está en estado Borrador");
                     }
+                    if (comprobador == 0)
+                        MessageBox.Show("El quiz no se puede publicar ya que no está en estado Borrador");
+                    else comprobador = 0;
+                            
                 }
             }
             deseleccionarChecks();
@@ -174,7 +178,7 @@ namespace MyQuizifyGUI
 
         private void button7_Click(object sender, EventArgs e)
         {
-            
+            int comprobador = 0;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
@@ -185,12 +189,15 @@ namespace MyQuizifyGUI
                     {
                         if (q.nombreQuiz == nombre && q.estado is Publicado)
                         {
+                            comprobador++;
                             q.cambiarEstado(new Borrador());
                             MessageBox.Show("Quiz cancelado con éxito");
                             dataGridQuizes.Rows[i].Cells[7].Value = q.estado.GetType().Name;
                         }
-                        else MessageBox.Show("El quiz " + q.nombreQuiz + " no se puede cancelar ya que no se ha publicado todavia");
                     }
+                    if (comprobador == 0)
+                        MessageBox.Show("El quiz no se puede cancelar ya que no está en estado Publicado");
+                    else comprobador = 0;
                 }
             }
             deseleccionarChecks();
@@ -198,6 +205,7 @@ namespace MyQuizifyGUI
 
         private void button9_Click(object sender, EventArgs e)
         {
+            int comprobador = 0;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
@@ -206,13 +214,18 @@ namespace MyQuizifyGUI
                     string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
                     foreach (Quiz q in app.quizesActivos)
                     {
-                        if (!(q.estado is Borrador) && q.nombreQuiz == nombre) MessageBox.Show("El quiz ya ha sido publicado, no puedes editar preguntas");
-                        else
+                        if (q.estado is Borrador && q.nombreQuiz == nombre)
                         {
+                            comprobador++;
                             EditarPreguntasMO edit = new EditarPreguntasMO(q);
                             edit.ShowDialog();
+                            break;
                         }
+                        
                     }
+                    if (comprobador == 0)
+                        MessageBox.Show("El quiz ya ha sido publicado, no puedes editar preguntas");
+                    else comprobador = 0;
                 }
             }
             deseleccionarChecks();
@@ -230,7 +243,7 @@ namespace MyQuizifyGUI
                     foreach (Quiz q in app.quizesActivos)
                     {
                         if(q.nombreQuiz == nombre)
-                        listaQuizes.Add(q);
+                            listaQuizes.Add(q);
                     }
                 }
              }
@@ -247,6 +260,7 @@ namespace MyQuizifyGUI
 
         private void button8_Click(object sender, EventArgs e)
         {
+            int comprobador = 0;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
@@ -255,16 +269,19 @@ namespace MyQuizifyGUI
                     string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
                     foreach (Quiz q in app.quizesActivos)
                     {
-                        if (!(q.estado is Terminado) && q.nombreQuiz == nombre) MessageBox.Show("El quiz debe estar en estado Terminado para publicar los resultados");
-                        else
+                        if (q.estado is Terminado && q.nombreQuiz == nombre)
                         {
+                            comprobador++;
                             q.cambiarEstado(new ResultadosPublicados());
-                            q.notificar();
                             MessageBox.Show("Resultados publicados con éxito");
                             dataGridQuizes.Rows[i].Cells[7].Value = q.estado.GetType().Name;
+                            break;
                         }
+                        
                     }
-                    
+                    if (comprobador == 0)
+                        MessageBox.Show("El quiz debe estar en estado Terminado para publicar los resultados");
+                    else comprobador = 0;
 
                 }
             }
@@ -273,6 +290,7 @@ namespace MyQuizifyGUI
 
         private void button11_Click(object sender, EventArgs e)
         {
+            int comprobador = 0;
             for (int i = 0; i < dataGridQuizes.Rows.Count - 1; i++)
             {
                 bool isCellChecked = (bool)dataGridQuizes.Rows[i].Cells[0].Value;
@@ -281,13 +299,17 @@ namespace MyQuizifyGUI
                     string nombre = dataGridQuizes.Rows[i].Cells[1].Value.ToString();
                     foreach (Quiz q in app.quizesActivos) { 
                    
-                        if (!(q.estado is Publicado) && q.nombreQuiz == nombre) MessageBox.Show("El quiz debe estar en estado Publicado para poder finalizarlo");
-                        else
+                        if (q.estado is Publicado && q.nombreQuiz == nombre)
                         {
+                            comprobador++;
                             q.cambiarEstado(new Terminado());
                             MessageBox.Show("Terminado con éxito");
                             dataGridQuizes.Rows[i].Cells[7].Value = q.estado.GetType().Name;
+                            break;
                         }
+                        if (comprobador == 0)
+                            MessageBox.Show("El quiz debe estar en estado Publicado para poder finalizarlo");
+                        else comprobador = 0;
                     }
 
                 }

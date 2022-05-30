@@ -9,12 +9,13 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
 {
     public class MyQuizifyServices : IServices
     {
+        private ConexionBD cf;
         public MyQuizifyServices()
         {
-
+            cf = ConexionBD.getInstancia();
         }
 
-        ConexionBD cf = ConexionBD.getInstancia();
+        
 
         public string getUserPassword(string username, string tipoUsuario)
         {
@@ -539,6 +540,15 @@ namespace MyQuizifyLib.BussinessLogic.Servicios
             FirebaseResponse actualizarPreg4 =
                 ConexionBD.getInstancia().client.Set
                 ("Respuestas/RespuestasMultiOpcion/" + p.id + "/" + 3 + "/enunciado", enunciadoR4);
+        }
+
+        public double getNota(Quiz q, Alumno alumno)
+        {
+            double nota;
+            FirebaseResponse calificacion = ConexionBD.getInstancia().client.Get("Calificaciones/" + q.nombreQuiz +
+                "/" + alumno.username + "/nota");
+            nota = calificacion.ResultAs<double>();
+            return nota;
         }
 
 
